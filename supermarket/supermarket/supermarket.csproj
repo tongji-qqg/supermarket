@@ -364,6 +364,19 @@
   <ItemGroup>
     <Resource Include="skin\ico\fullbox_reg_clean.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\back.jpg" />
+    <Resource Include="Images\back8.jpg" />
+    <Resource Include="Images\back10.jpg" />
+    <Resource Include="Images\back7.jpg" />
+    <Resource Include="Images\back14.jpg" />
+    <Resource Include="Images\back6.jpg" />
+    <Resource Include="Images\back4.jpg" />
+    <Resource Include="Images\back3.jpg" />
+    <Resource Include="Images\back2.jpg" />
+    <Resource Include="Images\back11.jpg" />
+    <Resource Include="Images\back13.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
