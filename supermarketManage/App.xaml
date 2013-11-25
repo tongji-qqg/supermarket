@@ -4,7 +4,7 @@
              StartupUri="MainWindow.xaml">
     <!--
     项目推送地址
-    git@github.com:tongji-qqg/supermarketManageSystem.git
+    git@github.com:tongji-qqg/supermarket.git
     -->
     <Application.Resources>
          
