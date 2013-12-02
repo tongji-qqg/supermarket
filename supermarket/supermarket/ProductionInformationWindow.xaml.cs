@@ -9,17 +9,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace supermarketManage
+namespace supermarket
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// ProductionInformationWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ProductionInformationWindow : Window
     {
-        public MainWindow()
+        public ProductionInformationWindow()
         {
             InitializeComponent();
         }
