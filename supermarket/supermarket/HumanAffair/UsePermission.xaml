@@ -44,7 +44,7 @@
 		                       ResourceId=DataGridHeaderFilterControlStyle}}"
                         
                         AutoGenerateColumns="False"
-                        SelectionMode="Single"
+                        SelectionMode="Single"                        
                         x:Name="EmployeeInfoDataGrid"
                         CanUserAddRows="False" >
                     <DataGrid.Columns>
