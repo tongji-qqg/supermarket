@@ -2,7 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:my="clr-namespace:supermarket"
-             StartupUri="MainWindow.xaml">
+             StartupUri="./HumanAffair/EmployeeInfo.xaml"
+             xmlns:sex="clr-namespace:supermarket.HumanAffair"
+             xmlns:assembly="clr-namespace:System;assembly=mscorlib" >
     <!--
     项目推送地址
     git@github.com:tongji-qqg/supermarket.git
@@ -27,6 +29,13 @@
             <CollectionViewSource x:Key="MemberViewSource" Source="{Binding Path=Member, Source={StaticResource marketDataSet}}" />
             <CollectionViewSource x:Key="InventoryViewSource" Source="{Binding Path=Inventory, Source={StaticResource marketDataSet}}" />
 
+            <ObjectDataProvider x:Key="keySex" MethodName="GetValues" ObjectType="{x:Type assembly:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type Type="sex:Sex"></x:Type>
+                    <!--引用后台的枚举类型，为字段‘性别’提供数据源。上面引用了命名空间Demo-->
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+            
         </ResourceDictionary>        
         
     </Application.Resources>

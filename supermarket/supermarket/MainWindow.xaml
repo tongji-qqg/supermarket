@@ -28,10 +28,10 @@
             </Grid.RowDefinitions>
         
             <TabControl Grid.RowSpan="2" Margin="0" Style="{DynamicResource TabControlStyle}" Grid.Row="1" Background="{x:Null}">
-                <!--Promotion-->
-                <TabItem Header="优惠促销" Height="83" Margin="5,0,0,0" Width="74" Style="{DynamicResource TabItemStyle}">
+                <!--Stock-->
+                <TabItem Header="仓库管理" Height="83" Margin="5,0,0,0" Width="74" Style="{DynamicResource TabItemStyle}">
                     <TabItem.Background>
-                        <ImageBrush ImageSource="skin/ico/ico_Examine.png"/>
+                        <ImageBrush ImageSource="skin/ico/ico_PluginCleaner.png"/>
                     </TabItem.Background>
                     <ItemsControl Style="{StaticResource TabItemGridItemsStyle}">
                         <Border Style="{StaticResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
@@ -43,17 +43,27 @@
                         <Button Content="商品信息" Style="{StaticResource MyButton2}" Grid.Column="1"/>
                         <Button Content="销售信息" Style="{StaticResource MyButton3}" Grid.Column="1"/>
                         <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
-                            <Button Content="价格调整" Style="{DynamicResource Buttonlist}" Click="Promotion_Button_Click">
+                            <Button Content="管理商品档案" Style="{DynamicResource Buttonlist}" Click="Promotion_Button_Click">
     								<Button.Background>
     									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
     								</Button.Background>
     						</Button>
-                            <Button Content="限量购买" Style="{DynamicResource Buttonlist}" Click="Promotion_Button_Click">
+                            <Button Content="商品入库" Style="{DynamicResource Buttonlist}" Click="Promotion_Button_Click">
     								<Button.Background>
     									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
     								</Button.Background>
     						</Button>
-                            <Button Content="捆绑销售" Style="{DynamicResource Buttonlist}" Click="Promotion_Button_Click">
+                            <Button Content="商品出库" Style="{DynamicResource Buttonlist}" Click="Promotion_Button_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                            <Button Content="库存查询" Style="{DynamicResource Buttonlist}" Click="Promotion_Button_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                            <Button Content="过期管理" Style="{DynamicResource Buttonlist}" Click="Promotion_Button_Click">
     								<Button.Background>
     									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
     								</Button.Background>
@@ -62,8 +72,8 @@
                         
                     </ItemsControl>
                 </TabItem>
-                <!--Product-->
-                <TabItem Header="商品信息" Height="83" Margin="80,0,0,0" Width="74" Style="{DynamicResource TabItemStyle}">
+                <!--Sell-->
+                <TabItem Header="销售管理" Height="83" Margin="80,0,0,0" Width="74" Style="{DynamicResource TabItemStyle}">
                     <TabItem.Background>
                         <ImageBrush ImageSource="skin/ico/ico_dsmain.png"/>
                     </TabItem.Background>
@@ -71,12 +81,12 @@
                         <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
                         
                         <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
-                            <Button Content="供货商" Style="{DynamicResource Buttonlist}">
+                            <Button Content="收银" Style="{DynamicResource Buttonlist}">
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button Content="商品类别" Style="{DynamicResource Buttonlist}">
+                            <Button Content="会员管理" Style="{DynamicResource Buttonlist}">
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>
@@ -86,7 +96,17 @@
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button Content="计量单位" Style="{DynamicResource Buttonlist}">
+                            <Button Content="价格调整" Style="{DynamicResource Buttonlist}">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                            <Button Content="会员优惠" Style="{DynamicResource Buttonlist}">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                            <Button Content="销售分析" Style="{DynamicResource Buttonlist}">
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>
@@ -94,10 +114,10 @@
                         </UniformGrid>
                     </ItemsControl>
                 </TabItem>
-                <!--Goodsin-->
-                <TabItem Style="{DynamicResource TabItemStyle}" Header="进货" Height="83" Margin="155,0,0,0" Width="74" >
+                <!--Finance-->
+                <TabItem Style="{DynamicResource TabItemStyle}" Header="财务管理" Height="83" Margin="155,0,0,0" Width="74" >
                     <TabItem.Background>
-                        <ImageBrush ImageSource="skin/ico/ico_PluginCleaner.png"/>
+                        <ImageBrush ImageSource="skin/ico/ico_Examine.png"/>
                     </TabItem.Background>
                     <ItemsControl Style="{StaticResource TabItemGridItemsStyle}">
                         <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
@@ -110,45 +130,54 @@
                         <Button Content="销售信息" Style="{StaticResource MyButton3}" Grid.Column="1"/>
                         
                         <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
-                             <Button Content="查看采购表" Style="{DynamicResource Buttonlist}">
+                             <Button Content="日常支出" Style="{DynamicResource Buttonlist}">
     								<Button.Background>
     									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
     								</Button.Background>
     						</Button>
-                            <Button Content="采购" Style="{DynamicResource Buttonlist}">
+                            <Button Content="工资发放" Style="{DynamicResource Buttonlist}">
     								<Button.Background>
     									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
     								</Button.Background>
     					    </Button>
+                            <Button Content="利润报表" Style="{DynamicResource Buttonlist}">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
                         </UniformGrid>
                     </ItemsControl>
                 </TabItem>
-                <!--Stock-->
-                <TabItem Header="库存" Height="83" Margin="230,0,0,0" Width="74" Style="{DynamicResource TabItemStyle}">
+                <!--HumanAffaris-->
+                <TabItem Header="人事管理" Height="83" Margin="230,0,0,0" Width="74" Style="{DynamicResource TabItemStyle}">
                     <TabItem.Background>
                         <ImageBrush ImageSource="skin/ico/ico_VulRepair.png"/>
                     </TabItem.Background>
                     <ItemsControl Style="{StaticResource TabItemGridItemsStyle}">
                         <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
-
-                        <Button Content="采购单查看" Style="{StaticResource MyButton1}" Grid.Column="1"/>
+                        
                         <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
-                            <Button Content="库存查看" Style="{DynamicResource Buttonlist}">
+                            <Button Content="招聘新员工" Style="{DynamicResource Buttonlist}" Click="HumanAffair_Button_Click" >
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button Content="入库" Style="{DynamicResource Buttonlist}">
+                            <Button Content="员工信息" Style="{DynamicResource Buttonlist}" Click="HumanAffair_Button_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button Content="库存上下线" Style="{DynamicResource Buttonlist}">
+                            <Button Content="职位调动" Style="{DynamicResource Buttonlist}" Click="HumanAffair_Button_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button Content="过期管理" Style="{DynamicResource Buttonlist}">
+                            <Button Content="系统使用权限" Style="{DynamicResource Buttonlist}" Click="HumanAffair_Button_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                            <Button Content="解聘员工" Style="{DynamicResource Buttonlist}" Click="HumanAffair_Button_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>
@@ -156,10 +185,10 @@
                         </UniformGrid>
                     </ItemsControl>
                 </TabItem>
-                <!--Sell-->
-                <TabItem Header="销售" Height="83" Margin="305,0,0,0" Width="74" Style="{DynamicResource TabItemStyle}">
+                <!--System-->
+                <TabItem Header="系统" Height="83" Margin="305,0,0,0" Width="74" Style="{DynamicResource TabItemStyle}">
                     <TabItem.Background>
-                        <ImageBrush ImageSource="skin/ico/ico_RubbishCleaner.png"/>
+                        <ImageBrush ImageSource="skin/ico/ico_SpeedupOpt.png"/>
                     </TabItem.Background>
                     <ItemsControl Style="{StaticResource TabItemGridItemsStyle}">
                         <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
@@ -170,129 +199,21 @@
                         <Button Content="库存信息查看" Style="{StaticResource MyButton2}" Grid.Column="1"/>
 
                         <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
-                            <Button Content="开始收银" Style="{DynamicResource Buttonlist}">
+                            <Button Content="修改密码" Style="{DynamicResource Buttonlist}">
     								<Button.Background>
     									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
     								</Button.Background>
     						</Button>
-                            <Button Content="退货处理" Style="{DynamicResource Buttonlist}">
+                            <Button Content="退出系统" Style="{DynamicResource Buttonlist}">
     								<Button.Background>
     									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
     								</Button.Background>
     					    </Button>
-                            <Button Content="销售分析" Style="{DynamicResource Buttonlist}">
+                            <Button Content="切换账号" Style="{DynamicResource Buttonlist}">
     								<Button.Background>
     									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
     								</Button.Background>
     						</Button>
-                        </UniformGrid>
-                    </ItemsControl>
-                </TabItem>
-                <!--Finance-->
-                <TabItem Header="财务" Height="83" Margin="380,0,0,0" Width="74" Style="{DynamicResource TabItemStyle}">
-                    <TabItem.Background>
-                        <ImageBrush ImageSource="skin/ico/ico_TraceCleaner.png"/>
-                    </TabItem.Background>
-                    <ItemsControl Style="{StaticResource TabItemGridItemsStyle}">
-                        <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
-
-                        <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
-                            <Button Content="商品销售报表" Style="{DynamicResource Buttonlist}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-                                </Button.Background>
-                            </Button>
-                            <Button Content="收入利润折线" Style="{DynamicResource Buttonlist}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-                                </Button.Background>
-                            </Button>
-                            <Button Content="收支平衡" Style="{DynamicResource Buttonlist}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-                                </Button.Background>
-                            </Button>
-                            <Button Content="工资发放" Style="{DynamicResource Buttonlist}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-                                </Button.Background>
-                            </Button>
-                        </UniformGrid>
-                    </ItemsControl>
-                </TabItem>
-                <!--HumanAffairs-->
-                <TabItem Header="人事" Height="83" Margin="455,0,0,0" Width="74" Style="{DynamicResource TabItemStyle}">
-                    <TabItem.Background>
-                        <ImageBrush ImageSource="skin/ico/ico_SysRepair.png"/>
-                    </TabItem.Background>
-                    <ItemsControl Style="{StaticResource TabItemGridItemsStyle}">
-                        <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
-
-                        <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
-                            <Button Content="部门管理" Style="{DynamicResource Buttonlist}">
-    								<Button.Background>
-    									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-    								</Button.Background>
-    						</Button>
-                            <Button Content="员工信息" Style="{DynamicResource Buttonlist}">
-    								<Button.Background>
-    									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-    								</Button.Background>
-    					    </Button>
-                            <Button Content="员工销售业绩" Style="{DynamicResource Buttonlist}">
-    								<Button.Background>
-    									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-    								</Button.Background>
-    						</Button>
-                        </UniformGrid>
-                    </ItemsControl>
-                </TabItem>
-                <!--Member-->
-                <TabItem Header="会员" Height="83" Margin="530,0,0,0" Width="74" Style="{DynamicResource TabItemStyle}">
-                    <TabItem.Background>
-                        <ImageBrush ImageSource="skin/ico/ico_AdvTools.png"/>
-                    </TabItem.Background>
-                    <ItemsControl Style="{StaticResource TabItemGridItemsStyle}">
-                        <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
-
-                        <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
-                            <Button Content="会员管理" Style="{DynamicResource Buttonlist}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-                                </Button.Background>
-                            </Button>
-                            <Button Content="会员福利" Style="{DynamicResource Buttonlist}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-                                </Button.Background>
-                            </Button>
-                        </UniformGrid>
-                    </ItemsControl>
-                </TabItem>
-                <!--System-->
-                <TabItem Header="系统" Height="83" Margin="605,0,0,0" Width="74" Style="{DynamicResource TabItemStyle}">
-                    <TabItem.Background>
-                        <ImageBrush ImageSource="skin/ico/ico_softmgr.png"/>
-                    </TabItem.Background>
-                    <ItemsControl Style="{StaticResource TabItemGridItemsStyle}">
-                        <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
-
-                        <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
-                            <Button Content="信息公告" Style="{DynamicResource Buttonlist}">
-    								<Button.Background>
-    									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-    								</Button.Background>
-    						</Button>
-                            <Button Content="个人信息" Style="{DynamicResource Buttonlist}">
-    								<Button.Background>
-    									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-    								</Button.Background>
-    						</Button>
-                            <Button Content="安全退出" Style="{DynamicResource Buttonlist}">
-    								<Button.Background>
-    									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-    								</Button.Background>
-    					    </Button>
                         </UniformGrid>
                     </ItemsControl>
                 </TabItem>

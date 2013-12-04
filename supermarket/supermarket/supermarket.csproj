@@ -56,6 +56,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="HumanAffair\ChangePosition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HumanAffair\DismissEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HumanAffair\EmployeeInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HumanAffair\NewEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HumanAffair\UsePermission.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +83,21 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HumanAffair\ChangePosition.xaml.cs">
+      <DependentUpon>ChangePosition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanAffair\DismissEmployee.xaml.cs">
+      <DependentUpon>DismissEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanAffair\EmployeeInfo.xaml.cs">
+      <DependentUpon>EmployeeInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanAffair\NewEmployee.xaml.cs">
+      <DependentUpon>NewEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanAffair\UsePermission.xaml.cs">
+      <DependentUpon>UsePermission.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -195,6 +230,12 @@
     <Resource Include="skin\ico\toolbar_hover.png" />
     <Resource Include="skin\ico\toolbar_pushed.png" />
     <Resource Include="skin\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataGridFilterLibrary\DataGridFilterLibrary.csproj">
+      <Project>{512FD53F-9AD1-46A1-A961-9FABDFAD50C5}</Project>
+      <Name>DataGridFilterLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

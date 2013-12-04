@@ -11234,10 +11234,13 @@ namespace supermarket {
             public string Phone {
                 get {
                     try {
+                        if((this[this.tableEmployee.PhoneColumn] is System.DBNull))
+                            return "";
                         return ((string)(this[this.tableEmployee.PhoneColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Employee”中列“Phone”的值为 DBNull。", e);
+                        //throw new global::System.Data.StrongTypingException("表“Employee”中列“Phone”的值为 DBNull。", e);
+                        return "";
                     }
                 }
                 set {
@@ -11266,10 +11269,13 @@ namespace supermarket {
             public string Remark {
                 get {
                     try {
-                        return ((string)(this[this.tableEmployee.RemarkColumn]));
+                        if((this[this.tableEmployee.PhoneColumn] is System.DBNull))
+                            return "";
+                        return ((string)((this[this.tableEmployee.PhoneColumn])));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“Employee”中列“Remark”的值为 DBNull。", e);
+                        //throw new global::System.Data.StrongTypingException("表“Employee”中列“Remark”的值为 DBNull。", e);
+                        return "";
                     }
                 }
                 set {

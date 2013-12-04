@@ -69,6 +69,37 @@ namespace supermarket
             }
         }
 
+
+
+        private void HumanAffair_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null)
+            {               
+                string content = button.Content as string;
+                Window window = null;
+                switch (content)
+                {
+                    case "招聘新员工":
+                        window = new supermarket.HumanAffair.EmployeeInfo(marketDataSet);
+                        break;
+                    case "员工信息":
+                        window = new supermarket.HumanAffair.EmployeeInfo(marketDataSet);
+                        break;
+                    case "职位调动":
+                        break;
+                    case "系统使用权限":
+                        break;
+                    case "解聘员工":
+                        break;
+                    default:
+                        break;
+                }
+
+                if (window != null)
+                    window.Show();
+            }
+        }
         #endregion
 
 
