@@ -56,6 +56,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="sale\MemberInfo.xaml.cs">
+      <DependentUpon>MemberInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="sale\NewMember.xaml.cs">
+      <DependentUpon>NewMember.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="sale\POS.xaml.cs">
+      <DependentUpon>POS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="sale\Price.xaml.cs">
+      <DependentUpon>Price.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="sale\SaleAnalysis.xaml.cs">
+      <DependentUpon>SaleAnalysis.xaml</DependentUpon>
+    </Compile>
     <Page Include="HumanAffair\EmployeeInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,6 +111,26 @@
     <Page Include="PromotionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="sale\MemberInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="sale\NewMember.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="sale\POS.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="sale\Price.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="sale\SaleAnalysis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="style\ButtonResource.xaml">
       <Generator>MSBuild:Compile</Generator>
