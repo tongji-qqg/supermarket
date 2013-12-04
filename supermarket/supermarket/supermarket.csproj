@@ -56,14 +56,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="HumanAffair\ChangePosition.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HumanAffair\DismissEmployee.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="HumanAffair\EmployeeInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,12 +75,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="HumanAffair\ChangePosition.xaml.cs">
-      <DependentUpon>ChangePosition.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="HumanAffair\DismissEmployee.xaml.cs">
-      <DependentUpon>DismissEmployee.xaml</DependentUpon>
     </Compile>
     <Compile Include="HumanAffair\EmployeeInfo.xaml.cs">
       <DependentUpon>EmployeeInfo.xaml</DependentUpon>

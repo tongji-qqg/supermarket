@@ -20,23 +20,50 @@ namespace supermarket.HumanAffair
     {
         #region Data
         MarketDataSet mds;
+        MarketDataSet.EmployeeRow er;
         #endregion
 
         public NewEmployee(MarketDataSet set)
         {
             InitializeComponent();
             mds = set;
+            loadData();
         }
+
+        public NewEmployee()
+        {
+            InitializeComponent();
+            mds = new MarketDataSet();
+            loadData();
+        }
+
         private void loadData()
         {
-            supermarket.MarketDataSetTableAdapters.DepartmentTableAdapter adapter1
-                = new MarketDataSetTableAdapters.DepartmentTableAdapter();
-            adapter1.Fill(mds.Department);
-
-            supermarket.MarketDataSetTableAdapters.EmployeeTableAdapter adapter2
-                = new MarketDataSetTableAdapters.EmployeeTableAdapter();
-            adapter2.Fill(mds.Employee);
-            
+            er = mds.Employee.NewEmployeeRow();
+            newEmployeeGrid.DataContext = er;
         }
+
+        #region interact
+        private void Save_Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                mds.Employee.AddEmployeeRow(er);
+                MarketDataSetTableAdapters.EmployeeTableAdapter eta =
+                   new MarketDataSetTableAdapters.EmployeeTableAdapter();
+                eta.Update(mds.Employee);
+                MessageBox.Show("信息已保存");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("保存失败" + ex.Message);
+            }
+        }
+        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
+        {
+            mds.Employee.RemoveEmployeeRow(er);
+            this.Close();
+        }
+        #endregion
     }
 }

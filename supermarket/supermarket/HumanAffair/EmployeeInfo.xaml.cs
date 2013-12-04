@@ -26,6 +26,7 @@ namespace supermarket.HumanAffair
         MarketDataSet mds;
         #endregion
 
+        #region constructor
         public EmployeeInfo(MarketDataSet set)
         {
             InitializeComponent();
@@ -38,12 +39,11 @@ namespace supermarket.HumanAffair
             mds = new MarketDataSet();
             loadData();
         }
+        #endregion
+
+        #region helpFounction
         private void loadData()
         {
-            supermarket.MarketDataSetTableAdapters.DepartmentTableAdapter adapter1
-                = new MarketDataSetTableAdapters.DepartmentTableAdapter();
-            adapter1.Fill(mds.Department);
-
             supermarket.MarketDataSetTableAdapters.EmployeeTableAdapter adapter2
                 = new MarketDataSetTableAdapters.EmployeeTableAdapter();
             adapter2.Fill(mds.Employee);
@@ -53,5 +53,59 @@ namespace supermarket.HumanAffair
             //EmployeeInfoDataGrid.DataContext = new ObservableCollection<MarketDataSet.EmployeeRow>(mds.Employee);
             //EmployeeInfoDataGrid.ItemsSource = mds.Employee.DefaultView;                   
         }
+        #endregion
+
+        #region interact
+        private void Save_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (modifyEmployeeInfoGrid.DataContext != null)
+            {
+                MarketDataSetTableAdapters.EmployeeTableAdapter eta =
+                    new MarketDataSetTableAdapters.EmployeeTableAdapter();
+                try
+                {
+                    eta.Update(mds.Employee);
+                    MessageBox.Show("保存修改成功！");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("保存失败！" + ex.Message);
+                }
+            }
+        }
+
+        private void Dismiss_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (modifyEmployeeInfoGrid.DataContext != null)
+            {
+                MarketDataSetTableAdapters.EmployeeTableAdapter eta =
+                    new MarketDataSetTableAdapters.EmployeeTableAdapter();
+                supermarket.MarketDataSet.EmployeeRow er = 
+                    modifyEmployeeInfoGrid.DataContext as MarketDataSet.EmployeeRow;
+                mds.Employee.RemoveEmployeeRow(er);
+                try
+                {
+                    eta.Update(mds.Employee);
+                    EmployeeInfoDataGrid.ItemsSource = new ObservableCollection<MarketDataSet.EmployeeRow>(mds.Employee.ToList());
+                    MessageBox.Show("删除信息成功！");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("保存失败！" + ex.Message);
+                }
+            }
+        }
+        private void EmployeeInfoDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (EmployeeInfoDataGrid.SelectedItem != null)
+            {                                
+                modifyEmployeeInfoGrid.DataContext = EmployeeInfoDataGrid.SelectedItem;
+            }
+            else
+            {
+                modifyEmployeeInfoGrid.DataContext = null;
+            }
+        }
+        #endregion
     }
 }

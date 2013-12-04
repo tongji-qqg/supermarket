@@ -11154,6 +11154,8 @@ namespace supermarket {
             public System.DateTime BirthDate {
                 get {
                     try {
+                        if(this[this.tableEmployee.BirthDateColumn] is System.DBNull)
+                            return new System.DateTime();
                         return ((global::System.DateTime)(this[this.tableEmployee.BirthDateColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
@@ -11170,6 +11172,8 @@ namespace supermarket {
             public string Address {
                 get {
                     try {
+                        if (this[this.tableEmployee.AddressColumn] is System.DBNull)
+                            return "";
                         return ((string)(this[this.tableEmployee.AddressColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
@@ -11269,9 +11273,9 @@ namespace supermarket {
             public string Remark {
                 get {
                     try {
-                        if((this[this.tableEmployee.PhoneColumn] is System.DBNull))
+                        if ((this[this.tableEmployee.RemarkColumn] is System.DBNull))
                             return "";
-                        return ((string)((this[this.tableEmployee.PhoneColumn])));
+                        return ((string)((this[this.tableEmployee.RemarkColumn])));
                     }
                     catch (global::System.InvalidCastException e) {
                         //throw new global::System.Data.StrongTypingException("表“Employee”中列“Remark”的值为 DBNull。", e);
