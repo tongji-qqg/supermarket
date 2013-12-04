@@ -128,7 +128,7 @@
                     <Label Content="工作部门"  Grid.Row="6"  Grid.Column="0" 
                            HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
 
-                    <TextBox Text="{Binding Path=EmployeeID}" Grid.Row="0" Grid.Column="1"/>
+                    <Label Content="{Binding Path=EmployeeID}" Grid.Row="0" Grid.Column="1"/>
                     <TextBox Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"/>
                     <TextBox Text="{Binding Path=Sex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"/>
                     <DatePicker SelectedDate ="{Binding Path=BirthDate, StringFormat=yyyy-MM-dd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"/>

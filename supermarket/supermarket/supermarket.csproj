@@ -68,6 +68,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Inventory\GoodsInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\InInventory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\InventoryInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Inventory\NewGoodsInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -84,6 +100,18 @@
     </Compile>
     <Compile Include="HumanAffair\UsePermission.xaml.cs">
       <DependentUpon>UsePermission.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\GoodsInfo.xaml.cs">
+      <DependentUpon>GoodsInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\InInventory.xaml.cs">
+      <DependentUpon>InInventory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\InventoryInfo.xaml.cs">
+      <DependentUpon>InventoryInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory\NewGoodsInfo.xaml.cs">
+      <DependentUpon>NewGoodsInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

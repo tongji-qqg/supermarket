@@ -45,7 +45,6 @@
                         
                         AutoGenerateColumns="False"
                         SelectionMode="Single"
-                        SelectionChanged="EmployeeInfoDataGrid_SelectionChanged"
                         x:Name="EmployeeInfoDataGrid"
                         CanUserAddRows="False" >
                     <DataGrid.Columns>
