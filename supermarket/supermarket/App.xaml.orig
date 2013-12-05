@@ -1,0 +1,46 @@
+﻿<Application x:Class="supermarket.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:my="clr-namespace:supermarket"
+<<<<<<< HEAD
+             StartupUri="./Inventory/GoodsInfo.xaml"
+=======
+             StartupUri="./sale/MemberInfo.xaml"
+>>>>>>> sale1
+             xmlns:sex="clr-namespace:supermarket.HumanAffair"
+             xmlns:assembly="clr-namespace:System;assembly=mscorlib" >
+    <!--
+    项目推送地址
+    git@github.com:tongji-qqg/supermarket.git
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="style/TabControlStyle.xaml"/>
+                <ResourceDictionary Source="style/SysButtonStyle.xaml"/>
+                <ResourceDictionary Source="style/MenuItemStyle.xaml"/>
+                <ResourceDictionary Source="style/ButtonResource.xaml"/>
+                <ResourceDictionary Source="style/MyStyles.xaml"/>                
+            </ResourceDictionary.MergedDictionaries>
+
+            <my:MarketDataSet x:Key="marketDataSet" />
+            <CollectionViewSource x:Key="GoodsUnitViewSource" Source="{Binding Path=GoodsUnit, Source={StaticResource marketDataSet}}" />
+            <CollectionViewSource x:Key="GoodsTypeViewSource" Source="{Binding Path=GoodsType, Source={StaticResource marketDataSet}}" />
+            <CollectionViewSource x:Key="EmployeeViewSource" Source="{Binding Path=Employee, Source={StaticResource marketDataSet}}" />
+            <CollectionViewSource x:Key="DepartmentViewSource" Source="{Binding Path=Department, Source={StaticResource marketDataSet}}" />
+            <CollectionViewSource x:Key="VendorViewSource" Source="{Binding Path=Vendor, Source={StaticResource marketDataSet}}" />
+            <CollectionViewSource x:Key="GoodsViewSource" Source="{Binding Path=Goods, Source={StaticResource marketDataSet}}" />
+            <CollectionViewSource x:Key="MemberViewSource" Source="{Binding Path=Member, Source={StaticResource marketDataSet}}" />
+            <CollectionViewSource x:Key="InventoryViewSource" Source="{Binding Path=Inventory, Source={StaticResource marketDataSet}}" />
+
+            <ObjectDataProvider x:Key="keySex" MethodName="GetValues" ObjectType="{x:Type assembly:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type Type="sex:Sex"></x:Type>
+                    <!--引用后台的枚举类型，为字段‘性别’提供数据源。上面引用了命名空间Demo-->
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+            
+        </ResourceDictionary>        
+        
+    </Application.Resources>
+</Application>

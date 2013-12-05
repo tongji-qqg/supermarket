@@ -4,7 +4,7 @@
         xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
         xmlns:filter="clr-namespace:DataGridFilterLibrary;assembly=DataGridFilterLibrary"        
         xmlns:local="clr-namespace:supermarket"
-        Title="设定使用权限" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="417" Width="522">
+        Title="UsePermission" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="417" Width="522">
     <DockPanel>
 
         <ToolBar DockPanel.Dock="Top">
@@ -44,7 +44,11 @@
 		                       ResourceId=DataGridHeaderFilterControlStyle}}"
                         
                         AutoGenerateColumns="False"
+<<<<<<< HEAD
+                        SelectionMode="Single"
+=======
                         SelectionMode="Single"                        
+>>>>>>> sale1
                         x:Name="EmployeeInfoDataGrid"
                         CanUserAddRows="False" >
                     <DataGrid.Columns>
@@ -55,26 +59,26 @@
 
                         <DataGridTextColumn     Header="姓名" 
                             Binding="{Binding Path=Name,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                            filter:DataGridColumnExtensions.IsCaseSensitiveSearch="False"/>
+                            filter:DataGridColumnExtensions.IsCaseSensitiveSearch="True"/>
 
                         <DataGridCheckBoxColumn     Header="人事部" 
-                           Binding="{Binding Path=PermissionHR,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                           Binding="{Binding Path=PHumanAffair,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                            filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
 
                         <DataGridCheckBoxColumn     Header="仓库部" 
-                           Binding="{Binding Path=PermissionInventory,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                           Binding="{Binding Path=PInventory,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                            filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
 
                         <DataGridCheckBoxColumn    Header="财务部" 
-                           Binding="{Binding Path=PermissionFinance,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                           Binding="{Binding Path=PFinance,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                            filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
 
                         <DataGridCheckBoxColumn     Header="销售员" 
-                           Binding="{Binding Path=PermissionSaleman,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                           Binding="{Binding Path=PSale,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                            filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
 
                         <DataGridCheckBoxColumn     Header="销售管理" 
-                           Binding="{Binding Path=PermissionSaleManager,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                           Binding="{Binding Path=PSaleManager,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                            filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
                     </DataGrid.Columns>
                 </DataGrid>

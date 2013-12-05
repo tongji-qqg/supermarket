@@ -19,28 +19,33 @@ namespace supermarket.HumanAffair
     public partial class NewEmployee : Window
     {
         #region Data
-        MarketDataSet mds;
-        MarketDataSet.EmployeeRow er;
+        SupermarketDataSet sds;
+        SupermarketDataSet.EmployeeRow er;
         #endregion
 
-        public NewEmployee(MarketDataSet set)
+        public NewEmployee(SupermarketDataSet set)
         {
             InitializeComponent();
-            mds = set;
+            sds = set;
             loadData();
         }
 
         public NewEmployee()
         {
             InitializeComponent();
-            mds = new MarketDataSet();
+            sds = new SupermarketDataSet();
             loadData();
         }
 
         private void loadData()
         {
-            er = mds.Employee.NewEmployeeRow();
+            er = sds.Employee.NewEmployeeRow();
             newEmployeeGrid.DataContext = er;
+            EmployeeSexComboBox.ItemsSource = new SexProvider().DefaultView;
+
+            SupermarketDataSetTableAdapters.DepartmentTableAdapter dta =
+                new SupermarketDataSetTableAdapters.DepartmentTableAdapter();
+            dta.Fill(sds.Department);
         }
 
         #region interact
@@ -48,10 +53,11 @@ namespace supermarket.HumanAffair
         {
             try
             {
-                mds.Employee.AddEmployeeRow(er);
-                MarketDataSetTableAdapters.EmployeeTableAdapter eta =
-                   new MarketDataSetTableAdapters.EmployeeTableAdapter();
-                eta.Update(mds.Employee);
+                er.StartWorkDate = System.DateTime.Now;
+                sds.Employee.AddEmployeeRow(er);
+                SupermarketDataSetTableAdapters.EmployeeTableAdapter eta =
+                   new SupermarketDataSetTableAdapters.EmployeeTableAdapter();
+                eta.Update(sds.Employee);
                 MessageBox.Show("信息已保存");
             }
             catch (Exception ex)
@@ -61,7 +67,7 @@ namespace supermarket.HumanAffair
         }
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
-            mds.Employee.RemoveEmployeeRow(er);
+            sds.Employee.RemoveEmployeeRow(er);
             this.Close();
         }
         #endregion

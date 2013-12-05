@@ -20,21 +20,21 @@ namespace supermarket.Inventory
     public partial class GoodsInfo : Window
     {
         #region Data
-        MarketDataSet mds;
+        SupermarketDataSet sds;
         #endregion
 
         #region constructor
         public GoodsInfo()
         {
             InitializeComponent();
-            mds = new MarketDataSet();
+            sds = new SupermarketDataSet();
             loadData();
         }
 
-        public GoodsInfo(MarketDataSet set)
+        public GoodsInfo(SupermarketDataSet set)
         {
             InitializeComponent();
-            mds = set;
+            sds = set;
             loadData();
         }
         #endregion
@@ -42,14 +42,12 @@ namespace supermarket.Inventory
         #region helpFounction
         private void loadData()
         {
-            supermarket.MarketDataSetTableAdapters.GoodsTableAdapter gta =
-                new MarketDataSetTableAdapters.GoodsTableAdapter();
+            SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
+                new SupermarketDataSetTableAdapters.GoodsTableAdapter();
 
-            gta.Fill(mds.Goods);
+            gta.Fill(sds.Goods);
 
-            GoodsInfoDataGrid.ItemsSource = new ObservableCollection<MarketDataSet.GoodsRow>(mds.Goods.ToList());
-            //EmployeeInfoDataGrid.DataContext = new ObservableCollection<MarketDataSet.EmployeeRow>(mds.Employee);
-            //EmployeeInfoDataGrid.ItemsSource = mds.Employee.DefaultView;                   
+            GoodsInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.GoodsRow>(sds.Goods.ToList());                        
         }
         #endregion
         private void GoodsInfoDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

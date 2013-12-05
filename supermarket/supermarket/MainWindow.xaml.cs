@@ -21,8 +21,7 @@ namespace supermarket
     {
 
         #region Data Members
-        private MarketDataSet marketDataSet;
-        PromotionWindow promotionWindow;
+        private SupermarketDataSet supermarketDataSet;
         #endregion
 
 
@@ -34,40 +33,14 @@ namespace supermarket
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            marketDataSet = ((supermarket.MarketDataSet)(this.FindResource("marketDataSet")));
+            supermarketDataSet = ((supermarket.SupermarketDataSet)(this.FindResource("supermarketDataSet")));
         }
         #endregion
 
 
         #region Interaction
 
-        private void Promotion_Button_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-            if (button != null)
-            {                            
-                if(promotionWindow == null)
-                    promotionWindow = new PromotionWindow(PromotionEnum.None, marketDataSet);
-                string content = button.Content as string;
-                switch (content)
-                {
-                    case "价格调整":
-                        promotionWindow.setFounction(PromotionEnum.ChangePrice);
-                        promotionWindow.Show();
-                        break;
-                    case "限量购买":
-                        promotionWindow.setFounction(PromotionEnum.Limit);
-                        promotionWindow.Show();
-                        break;
-                    case "捆绑销售":
-                        promotionWindow.setFounction(PromotionEnum.Together);
-                        promotionWindow.Show();
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+       
 
 
 
@@ -81,16 +54,49 @@ namespace supermarket
                 switch (content)
                 {
                     case "招聘新员工":
-                        window = new supermarket.HumanAffair.EmployeeInfo(marketDataSet);
+                        window = new supermarket.HumanAffair.NewEmployee(supermarketDataSet);
                         break;
-                    case "员工信息":
-                        window = new supermarket.HumanAffair.EmployeeInfo(marketDataSet);
-                        break;
-                    case "职位调动":
+                    case "员工信息":                        
+                    case "职位调动":                        
+                    case "解聘员工":
+                        window = new supermarket.HumanAffair.EmployeeInfo(supermarketDataSet);                        
                         break;
                     case "系统使用权限":
+                        window = new supermarket.HumanAffair.UsePermission(supermarketDataSet);
                         break;
+                    default:
+                        break;
+                }
+
+                if (window != null)
+                    window.Show();
+            }
+        }
+
+
+        private void Sale_Button_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Inventory_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                string content = button.Content as string;
+                Window window = null;
+                switch (content)
+                {
+                    case "招聘新员工":
+                        window = new supermarket.HumanAffair.NewEmployee(supermarketDataSet);
+                        break;
+                    case "员工信息":
+                    case "职位调动":
                     case "解聘员工":
+                        window = new supermarket.HumanAffair.EmployeeInfo(supermarketDataSet);
+                        break;
+                    case "系统使用权限":
+                        window = new supermarket.HumanAffair.UsePermission(supermarketDataSet);
                         break;
                     default:
                         break;

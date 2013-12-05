@@ -13,9 +13,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 
 namespace supermarket.HumanAffair
-{
-
-    public enum Sex { 男, 女 };  //注意 写在命名空间内 ，不要写在类里，否则台前local:Sex找不到路径  
+{    
 
     /// <summary>
     /// EmployeeInfo.xaml 的交互逻辑
@@ -23,20 +21,20 @@ namespace supermarket.HumanAffair
     public partial class EmployeeInfo : Window
     {
         #region Data
-        MarketDataSet mds;
+        SupermarketDataSet sds;        
         #endregion
 
         #region constructor
-        public EmployeeInfo(MarketDataSet set)
+        public EmployeeInfo(SupermarketDataSet set)
         {
             InitializeComponent();
-            mds = set;
+            sds = set;
             loadData();
         }
         public EmployeeInfo()
         {
             InitializeComponent();
-            mds = new MarketDataSet();
+            sds = new SupermarketDataSet();
             loadData();
         }
         #endregion
@@ -44,14 +42,24 @@ namespace supermarket.HumanAffair
         #region helpFounction
         private void loadData()
         {
-            supermarket.MarketDataSetTableAdapters.EmployeeTableAdapter adapter2
-                = new MarketDataSetTableAdapters.EmployeeTableAdapter();
-            adapter2.Fill(mds.Employee);
+            SupermarketDataSetTableAdapters.EmployeeTableAdapter eta =
+                new SupermarketDataSetTableAdapters.EmployeeTableAdapter();
+            SupermarketDataSetTableAdapters.DepartmentTableAdapter dta =
+                new SupermarketDataSetTableAdapters.DepartmentTableAdapter();
+            eta.Fill(sds.Employee);
+            dta.Fill(sds.Department);
 
-            var v = mds.Employee.ToList();
-            EmployeeInfoDataGrid.ItemsSource = new ObservableCollection<MarketDataSet.EmployeeRow>(mds.Employee.ToList());
-            //EmployeeInfoDataGrid.DataContext = new ObservableCollection<MarketDataSet.EmployeeRow>(mds.Employee);
-            //EmployeeInfoDataGrid.ItemsSource = mds.Employee.DefaultView;                   
+            SupermarketDataSet.DepartmentDataTable tmpdt= new SupermarketDataSet.DepartmentDataTable();
+            dta.Fill(tmpdt);
+            DepartmentComboBox.ItemsSource = tmpdt.DefaultView;
+            EmployeeSexComboBox.ItemsSource = new SexProvider().DefaultView;
+
+            setItemSource();              
+        }
+        private void setItemSource()
+        {
+            EmployeeInfoDataGrid.ItemsSource = 
+                new ObservableCollection<SupermarketDataSet.EmployeeRow>(sds.Employee.ToList());
         }
         #endregion
 
@@ -60,11 +68,11 @@ namespace supermarket.HumanAffair
         {
             if (modifyEmployeeInfoGrid.DataContext != null)
             {
-                MarketDataSetTableAdapters.EmployeeTableAdapter eta =
-                    new MarketDataSetTableAdapters.EmployeeTableAdapter();
+                SupermarketDataSetTableAdapters.EmployeeTableAdapter eta =
+                    new SupermarketDataSetTableAdapters.EmployeeTableAdapter();
                 try
                 {
-                    eta.Update(mds.Employee);
+                    eta.Update(sds.Employee);
                     MessageBox.Show("保存修改成功！");
                 }
                 catch (Exception ex)
@@ -77,16 +85,18 @@ namespace supermarket.HumanAffair
         private void Dismiss_Button_Click(object sender, RoutedEventArgs e)
         {
             if (modifyEmployeeInfoGrid.DataContext != null)
-            {
-                MarketDataSetTableAdapters.EmployeeTableAdapter eta =
-                    new MarketDataSetTableAdapters.EmployeeTableAdapter();
-                supermarket.MarketDataSet.EmployeeRow er = 
-                    modifyEmployeeInfoGrid.DataContext as MarketDataSet.EmployeeRow;
-                mds.Employee.RemoveEmployeeRow(er);
+            {                                
                 try
                 {
-                    eta.Update(mds.Employee);
-                    EmployeeInfoDataGrid.ItemsSource = new ObservableCollection<MarketDataSet.EmployeeRow>(mds.Employee.ToList());
+                    SupermarketDataSet.EmployeeRow er =
+                    modifyEmployeeInfoGrid.DataContext as SupermarketDataSet.EmployeeRow;
+                    er.Delete();
+
+                    SupermarketDataSetTableAdapters.EmployeeTableAdapter eta =
+                        new SupermarketDataSetTableAdapters.EmployeeTableAdapter();
+
+                    eta.Update(sds.Employee);
+                    setItemSource();
                     MessageBox.Show("删除信息成功！");
                 }
                 catch (Exception ex)
@@ -107,5 +117,22 @@ namespace supermarket.HumanAffair
             }
         }
         #endregion
+    }
+
+    class SexProvider : System.Data.DataTable
+    {
+        public SexProvider()
+        {
+            this.Columns.Add("name");
+            this.Columns.Add("value");
+            System.Data.DataRow dr = this.NewRow();
+            dr[0] = "男";
+            dr[1] = 0;
+            this.Rows.Add(dr);
+            dr = this.NewRow();
+            dr[0] = "女";
+            dr[1] = 1;
+            this.Rows.Add(dr);
+        }
     }
 }

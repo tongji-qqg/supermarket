@@ -71,6 +71,11 @@
     <Compile Include="sale\SaleAnalysis.xaml.cs">
       <DependentUpon>SaleAnalysis.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SupermarketDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SupermarketDataSet.xsd</DependentUpon>
+    </Compile>
     <Page Include="HumanAffair\EmployeeInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -109,6 +114,7 @@
     </Compile>
     <Compile Include="HumanAffair\EmployeeInfo.xaml.cs">
       <DependentUpon>EmployeeInfo.xaml</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="HumanAffair\NewEmployee.xaml.cs">
       <DependentUpon>NewEmployee.xaml</DependentUpon>
@@ -235,6 +241,17 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="SupermarketDataSet.xsc">
+      <DependentUpon>SupermarketDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SupermarketDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SupermarketDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SupermarketDataSet.xss">
+      <DependentUpon>SupermarketDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="skin\Button\btbg.png" />

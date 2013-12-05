@@ -21,35 +21,35 @@ namespace supermarket.HumanAffair
     {
 
         #region Data
-        MarketDataSet mds;
+        SupermarketDataSet sds;
         #endregion
 
-        public UsePermission()
+        public UsePermission(SupermarketDataSet set)
         {
             InitializeComponent();
+            sds = set;
+            loadData();
         }
 
         #region helpFounction
         private void loadData()
         {
-            supermarket.MarketDataSetTableAdapters.EmployeeTableAdapter adapter2
-                = new MarketDataSetTableAdapters.EmployeeTableAdapter();
-            adapter2.Fill(mds.Employee);
+            SupermarketDataSetTableAdapters.EmployeeTableAdapter eta =
+                 new SupermarketDataSetTableAdapters.EmployeeTableAdapter();
 
-            var v = mds.Employee.ToList();
-            EmployeeInfoDataGrid.ItemsSource = new ObservableCollection<MarketDataSet.EmployeeRow>(mds.Employee.ToList());
-            //EmployeeInfoDataGrid.DataContext = new ObservableCollection<MarketDataSet.EmployeeRow>(mds.Employee);
-            //EmployeeInfoDataGrid.ItemsSource = mds.Employee.DefaultView;                   
+            eta.Fill(sds.Employee);
+            
+            EmployeeInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.EmployeeRow>(sds.Employee.ToList());                           
         }
         #endregion
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-            MarketDataSetTableAdapters.EmployeeTableAdapter eta =
-                new MarketDataSetTableAdapters.EmployeeTableAdapter();
+            SupermarketDataSetTableAdapters.EmployeeTableAdapter eta =
+                new SupermarketDataSetTableAdapters.EmployeeTableAdapter();
             try
             {
-                eta.Update(mds.Employee);
+                eta.Update(sds.Employee);
                 MessageBox.Show("保存修改成功！");
             }
             catch (Exception ex)

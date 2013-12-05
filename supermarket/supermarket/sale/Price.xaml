@@ -43,8 +43,7 @@
 		                       TypeInTargetAssembly={x:Type filter:DataGridHeaderFilterControl}, 
 		                       ResourceId=DataGridHeaderFilterControlStyle}}"
                         
-                        IsReadOnly="True"
-                        SelectionChanged="InventoryInfoDataGrid_SelectionChanged"
+                        IsReadOnly="True"                       
                         AutoGenerateColumns="False"                                                
                         x:Name="InventoryInfoDataGrid"
                         CanUserAddRows="False" >

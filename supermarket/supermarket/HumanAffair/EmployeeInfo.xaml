@@ -5,8 +5,12 @@
         xmlns:filter="clr-namespace:DataGridFilterLibrary;assembly=DataGridFilterLibrary"        
         xmlns:local="clr-namespace:supermarket"
         Title="员工信息管理" Height="404" Width="565" Margin="1">
+    
+    <Window.Resources>
+  
+    </Window.Resources>
     <DockPanel>
-
+        
         <ToolBar DockPanel.Dock="Top">
 
             <StackPanel Margin="5" Orientation="Vertical">
@@ -59,13 +63,10 @@
                             Binding="{Binding Path=Name,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                             filter:DataGridColumnExtensions.IsCaseSensitiveSearch="True"/>
 
-                       
-                        <DataGridTextColumn Header="性别" 
-                             Binding="{Binding Path=Sex,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
 
                         <DataGridTextColumn     Header="出生日期" Binding=
-                              "{Binding Path=BirthDate,Mode=OneWay, UpdateSourceTrigger=PropertyChanged, StringFormat=yyyy-MM-dd}"/>
+                              "{Binding Path=Birthday,Mode=OneWay, UpdateSourceTrigger=PropertyChanged, StringFormat=yyyy-MM-dd}"/>
 
 
                         <DataGridTextColumn     Header="手机" Binding=
@@ -77,12 +78,14 @@
 
 
                         <DataGridTextColumn     Header="入职日期" Binding=
-                              "{Binding Path=BirthDate,Mode=OneWay, UpdateSourceTrigger=PropertyChanged, StringFormat=yyyy-MM-dd}"/>
+                              "{Binding Path=StartWorkDate,Mode=OneWay, UpdateSourceTrigger=PropertyChanged, StringFormat=yyyy-MM-dd}"/>
 
+                        <DataGridComboBoxColumn Header="部门"                                                  
+                                SelectedValueBinding="{Binding Path=DepartmentID}"
+                                ItemsSource="{Binding Source={StaticResource DepartmentViewSource}, Mode=OneWay}"
+                                SelectedValuePath="DepartmentID"
+                                DisplayMemberPath="Name"/>
                         
-                        <DataGridTextColumn     Header="基础工资" Binding=
-                              "{Binding Path=EmployeeID,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
-
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
@@ -130,11 +133,21 @@
 
                     <Label Content="{Binding Path=EmployeeID}" Grid.Row="0" Grid.Column="1"/>
                     <TextBox Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"/>
-                    <TextBox Text="{Binding Path=Sex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"/>
-                    <DatePicker SelectedDate ="{Binding Path=BirthDate, StringFormat=yyyy-MM-dd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"/>
+                    
+                    <ComboBox x:Name="EmployeeSexComboBox"
+                              SelectedValue="{Binding Path=Sex, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                               DisplayMemberPath="name"
+                              SelectedValuePath="value"
+                              Grid.Row="2" Grid.Column="1"/>
+                    
+                    <DatePicker SelectedDate ="{Binding Path=Birthday, StringFormat=yyyy-MM-dd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"/>
                     <TextBox Text="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1"/>
                     <TextBox Text="{Binding Path=Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1"/>
-                    <TextBox Text="{Binding Path=Department}" Grid.Row="6" Grid.Column="1"/>
+                    <ComboBox x:Name="DepartmentComboBox"
+                              SelectedValue="{Binding Path=DepartmentID, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                DisplayMemberPath="Name"
+                              SelectedValuePath="DepartmentID"
+                        Grid.Row="6" Grid.Column="1"/>
 
                     <Label Content="备注信息"  Grid.Row="0"  Grid.Column="2" 
                            HorizontalAlignment="Center" Margin="0"  VerticalAlignment="Center" />

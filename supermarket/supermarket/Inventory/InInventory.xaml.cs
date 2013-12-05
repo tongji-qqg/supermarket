@@ -18,10 +18,6 @@ namespace supermarket.Inventory
     /// </summary>
     public partial class InInventory : Window
     {
-        public InInventory()
-        {
-            InitializeComponent();
-        }
 
          #region Data
         MarketDataSet mds;

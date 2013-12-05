@@ -40,12 +40,20 @@
                            HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
 
        
-        <TextBox Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"/>
-        <TextBox Text="{Binding Path=Sex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"/>
-        <DatePicker SelectedDate ="{Binding Path=BirthDate, StringFormat=yyyy-MM-dd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"/>
-        <TextBox Text="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1"/>
-        <TextBox Text="{Binding Path=Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1"/>
-        <TextBox Text="{Binding Path=Department}" Grid.Row="6" Grid.Column="1"/>
+        <TextBox Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />        
+        <ComboBox x:Name="EmployeeSexComboBox"
+                              SelectedValue="{Binding Path=Sex, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                               DisplayMemberPath="name"
+                              SelectedValuePath="value"
+                              Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+        <DatePicker SelectedDate ="{Binding Path=Birthday, StringFormat=yyyy-MM-dd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" />
+        <TextBox Text="{Binding Path=Phone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" />
+        <TextBox Text="{Binding Path=Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" />
+        <ComboBox ItemsSource="{Binding Source={StaticResource DepartmentViewSource}, Mode=OneWay}" 
+                  SelectedValue="{Binding Path=DepartmentID}"
+                  SelectedValuePath="DepartmentID" 
+                  DisplayMemberPath="Name"
+                  Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" />
 
         <Grid Grid.Row="8" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>

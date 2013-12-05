@@ -33,5 +33,16 @@ namespace supermarket.Properties {
                 return ((string)(this["MarketConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=Supermarket;Persist Security Info=True;User" +
+            " ID=bryce;Password=whoami")]
+        public string SupermarketConnectionString {
+            get {
+                return ((string)(this["SupermarketConnectionString"]));
+            }
+        }
     }
 }
