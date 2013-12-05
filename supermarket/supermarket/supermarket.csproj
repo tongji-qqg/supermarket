@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DynamicDataDisplay">
+      <HintPath>.\DynamicDataDisplay.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
@@ -59,6 +62,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="finance\ExpenseInfo.xaml.cs">
+      <DependentUpon>ExpenseInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="finance\NewExpense.xaml.cs">
+      <DependentUpon>NewExpense.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="finance\Profit.xaml.cs">
+      <DependentUpon>Profit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="finance\Salary.xaml.cs">
+      <DependentUpon>Salary.xaml</DependentUpon>
+    </Compile>
     <Compile Include="sale\MemberInfo.xaml.cs">
       <DependentUpon>MemberInfo.xaml</DependentUpon>
     </Compile>
@@ -70,9 +85,6 @@
     </Compile>
     <Compile Include="sale\POS.designer.cs">
       <DependentUpon>POS.cs</DependentUpon>
-    </Compile>
-    <Compile Include="sale\POS.xaml.cs">
-      <DependentUpon>POS.xaml</DependentUpon>
     </Compile>
     <Compile Include="sale\Price.xaml.cs">
       <DependentUpon>Price.xaml</DependentUpon>
@@ -86,6 +98,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SupermarketDataSet.xsd</DependentUpon>
     </Compile>
+    <Page Include="finance\ExpenseInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="finance\NewExpense.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="finance\Profit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="finance\Salary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HumanAffair\EmployeeInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,23 +176,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ProductionInformationWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="PromotionWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="sale\MemberInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="sale\NewMember.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="sale\POS.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,17 +222,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MarketDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MarketDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="ProductionInformationWindow.xaml.cs">
-      <DependentUpon>ProductionInformationWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PromotionWindow.xaml.cs">
-      <DependentUpon>PromotionWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -238,17 +243,6 @@
       <DependentUpon>POS.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="MarketDataSet.xsc">
-      <DependentUpon>MarketDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="MarketDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MarketDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="MarketDataSet.xss">
-      <DependentUpon>MarketDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -316,6 +310,7 @@
       <Name>DataGridFilterLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

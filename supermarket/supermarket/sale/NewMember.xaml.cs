@@ -56,6 +56,7 @@ namespace supermarket.sale
 
                 mta.Update(sds.Member);
                 MessageBox.Show("信息已保存");
+                this.Close();
             }
             catch (Exception ex)
             {

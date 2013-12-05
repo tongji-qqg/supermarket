@@ -59,6 +59,7 @@ namespace supermarket.HumanAffair
                    new SupermarketDataSetTableAdapters.EmployeeTableAdapter();
                 eta.Update(sds.Employee);
                 MessageBox.Show("信息已保存");
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -67,7 +68,6 @@ namespace supermarket.HumanAffair
         }
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
-            sds.Employee.RemoveEmployeeRow(er);
             this.Close();
         }
         #endregion

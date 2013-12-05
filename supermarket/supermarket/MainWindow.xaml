@@ -123,27 +123,25 @@
                         <ImageBrush ImageSource="skin/ico/ico_Examine.png"/>
                     </TabItem.Background>
                     <ItemsControl Style="{StaticResource TabItemGridItemsStyle}">
-                        <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
-                        
-                        <Border  Style="{StaticResource TabItemMiddleBorder1}" Grid.Column="1"/>
-                        <Border Style="{StaticResource TabItemMiddleBorder2}" Grid.Column="1"/>
-                        
-                        <Button Content="库存查看" Style="{StaticResource MyButton1}" Grid.Column="1"/>
-                        <Button Content="供应商" Style="{StaticResource MyButton2}" Grid.Column="1"/>
-                        <Button Content="销售信息" Style="{StaticResource MyButton3}" Grid.Column="1"/>
+                        <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>                        
                         
                         <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
-                             <Button Content="日常支出" Style="{DynamicResource Buttonlist}">
+                             <Button Content="日常支出" Style="{DynamicResource Buttonlist}" Click="Finance_Button_Click">
     								<Button.Background>
     									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
     								</Button.Background>
     						</Button>
-                            <Button Content="工资发放" Style="{DynamicResource Buttonlist}">
+                            <Button Content="日常支出查看" Style="{DynamicResource Buttonlist}" Click="Finance_Button_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                            <Button Content="工资发放管理" Style="{DynamicResource Buttonlist}" Click="Finance_Button_Click">
     								<Button.Background>
     									<ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
     								</Button.Background>
     					    </Button>
-                            <Button Content="利润报表" Style="{DynamicResource Buttonlist}">
+                            <Button Content="利润报表" Style="{DynamicResource Buttonlist}" Click="Finance_Button_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>

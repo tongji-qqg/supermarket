@@ -99,7 +99,7 @@ namespace supermarket
                         window = new supermarket.sale.Price(supermarketDataSet);
                         break;
                     case "销售分析":
-                        
+                        window = new supermarket.sale.SaleAnalysis(supermarketDataSet);
                         break;
                     default:
                         break;
@@ -109,6 +109,38 @@ namespace supermarket
                     window.Show();
             }
         }
+
+
+        private void Finance_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                string content = button.Content as string;
+                Window window = null;
+                switch (content)
+                {
+                    case "日常支出":
+                        window = new supermarket.finance.NewExpense(supermarketDataSet);
+                        break;
+                    case "日常支出查看":
+                        window = new supermarket.finance.ExpenseInfo(supermarketDataSet);
+                        break;
+                    case "工资发放管理":
+                        window = new supermarket.finance.Salary(supermarketDataSet);
+                        break;
+                    case "利润报表":
+                        window = new supermarket.finance.Profit(supermarketDataSet);
+                        break;                   
+                    default:
+                        break;
+                }
+
+                if (window != null)
+                    window.Show();
+            }
+        }
+
 
         private void Inventory_Button_Click(object sender, RoutedEventArgs e)
         {

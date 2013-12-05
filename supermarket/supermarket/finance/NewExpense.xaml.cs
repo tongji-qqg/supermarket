@@ -11,67 +11,56 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace supermarket.Inventory
+namespace supermarket.finance
 {
     /// <summary>
-    /// InInventory.xaml 的交互逻辑
+    /// NewExpense.xaml 的交互逻辑
     /// </summary>
-    public partial class InInventory : Window
+    public partial class NewExpense : Window
     {
-
-         #region Data
+        #region Data
         SupermarketDataSet sds;
-        SupermarketDataSet.InventoryRow ir;
+        SupermarketDataSet.ExpenseRow er;
         #endregion
 
-
-        public InInventory()
-        {
-            InitializeComponent();
-            sds = new SupermarketDataSet();
-            loadData();
-        }
-
-        public InInventory(SupermarketDataSet set)
+        #region constructor
+        public NewExpense(SupermarketDataSet set)
         {
             InitializeComponent();
             sds = set;
             loadData();
         }
 
+        public NewExpense()
+        {
+            InitializeComponent();
+            sds = new SupermarketDataSet();
+            loadData();
+        }
+        #endregion
         private void loadData()
         {
-            ir = sds.Inventory.NewInventoryRow();
-            InInventoryGrid.DataContext = ir;
-
-            SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
-                new SupermarketDataSetTableAdapters.GoodsTableAdapter();
-            gta.Fill(sds.Goods);
+            er = sds.Expense.NewExpenseRow();
+            newExpenseGrid.DataContext = er;            
         }
 
         #region interact
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ir.IsGoodsIDNull() || ir.IsGoodsNumNull() || ir.IsProductionDateNull() || ir.IsPurchasePriceNull())
-            {
-                MessageBox.Show("请填写完整信息！");
-                return;
-            }
             try
             {
-                sds.Inventory.AddInventoryRow(ir);
-
-                SupermarketDataSetTableAdapters.InventoryTableAdapter ita =
-                    new SupermarketDataSetTableAdapters.InventoryTableAdapter();
-
-                ita.Update(sds.Inventory);
+                er.Date = System.DateTime.Now;
+                er.EmployeeID = 0;
+                sds.Expense.AddExpenseRow(er);
+                SupermarketDataSetTableAdapters.ExpenseTableAdapter eta =
+                   new SupermarketDataSetTableAdapters.ExpenseTableAdapter();
+                eta.Update(sds.Expense);
                 MessageBox.Show("信息已保存");
                 this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("保存失败" + ex.Message);
-                loadData();
             }
         }
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
