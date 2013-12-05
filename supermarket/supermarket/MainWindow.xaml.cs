@@ -76,6 +76,38 @@ namespace supermarket
 
         private void Sale_Button_Click(object sender, RoutedEventArgs e)
         {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                string content = button.Content as string;
+                Window window = null;
+                switch (content)
+                {
+                    case "商品档案":
+                        break;
+                    case "收银":      
+                        Suppermarket_POS.POS  pos= new Suppermarket_POS.POS(1,"guoguo");            
+                        pos.Show();
+                        break;
+                    case "新加会员":
+                        window = new supermarket.sale.NewMember(supermarketDataSet);
+                        break;
+                    case "会员管理":
+                        window = new supermarket.sale.MemberInfo(supermarketDataSet);
+                        break;
+                    case "价格调整":
+                        window = new supermarket.sale.Price(supermarketDataSet);
+                        break;
+                    case "销售分析":
+                        
+                        break;
+                    default:
+                        break;
+                }
+
+                if (window != null)
+                    window.Show();
+            }
         }
 
         private void Inventory_Button_Click(object sender, RoutedEventArgs e)

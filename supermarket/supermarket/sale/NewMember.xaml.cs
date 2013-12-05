@@ -18,28 +18,29 @@ namespace supermarket.sale
     /// </summary>
     public partial class NewMember : Window
     {
-              #region Data
-        MarketDataSet mds;
-        MarketDataSet.MemberRow mr;
+         #region Data
+        SupermarketDataSet sds;
+        SupermarketDataSet.MemberRow mr;
         #endregion
 
-        public NewMember(MarketDataSet set)
+        public NewMember(SupermarketDataSet set)
         {
             InitializeComponent();
-            mds = set;
+            sds = set;
             loadData();
         }
 
         public NewMember()
         {
             InitializeComponent();
-            mds = new MarketDataSet();
+            sds = new SupermarketDataSet();
             loadData();
         }
 
         private void loadData()
         {
-            mr = mds.Member.NewMemberRow();
+            mr = sds.Member.NewMemberRow();
+            MemberSexComboBox.ItemsSource = new supermarket.HumanAffair.SexProvider().DefaultView;
             newMemberGrid.DataContext = mr;
         }
 
@@ -48,12 +49,12 @@ namespace supermarket.sale
         {
             try
             {
-                mds.Member.AddMemberRow(mr);
+                sds.Member.AddMemberRow(mr);
 
-                MarketDataSetTableAdapters.MemberTableAdapter mta =
-                    new MarketDataSetTableAdapters.MemberTableAdapter();
+                SupermarketDataSetTableAdapters.MemberTableAdapter mta =
+                    new SupermarketDataSetTableAdapters.MemberTableAdapter();
 
-                mta.Update(mds.Member);
+                mta.Update(sds.Member);
                 MessageBox.Show("信息已保存");
             }
             catch (Exception ex)
@@ -63,8 +64,7 @@ namespace supermarket.sale
             }
         }
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
-        {
-            mds.Member.RemoveMemberRow(mr);
+        {           
             this.Close();
         }
         #endregion

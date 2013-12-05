@@ -16,7 +16,7 @@
             <Separator/>
 
             <Button Command="{Binding Path=(filter:DataGridExtensions.ClearFilterCommand), 
-                                       ElementName=InventoryInfoDataGrid}">清除筛选条件
+                                       ElementName=SetPriceDataGrid}">清除筛选条件
             </Button>
         </ToolBar>
 
@@ -43,9 +43,10 @@
 		                       TypeInTargetAssembly={x:Type filter:DataGridHeaderFilterControl}, 
 		                       ResourceId=DataGridHeaderFilterControlStyle}}"
                         
-                        IsReadOnly="True"                       
+                        IsReadOnly="True" 
+                     SelectionChanged="InventoryInfoDataGrid_SelectionChanged"
                         AutoGenerateColumns="False"                                                
-                        x:Name="InventoryInfoDataGrid"
+                        x:Name="SetPriceDataGrid"
                         CanUserAddRows="False" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="库存编号" 
@@ -68,6 +69,21 @@
                            Binding="{Binding Path=ProductionDate,Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat='yyyy-MM-dd'}"
                             filter:DataGridColumnExtensions.DoNotGenerateFilterControl="False" />
 
+                        <DataGridTextColumn Header="售价" 
+                             Binding="{Binding Path=SalePrice,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                             filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
+
+                        <DataGridTextColumn Header="折扣(%)" 
+                             Binding="{Binding Path=Discount,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                             filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
+
+                        <DataGridTextColumn Header="会员价格" 
+                             Binding="{Binding Path=MemberPrice,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                             filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
+
+                        <DataGridTextColumn Header="会员折扣" 
+                             Binding="{Binding Path=MemberDiscount,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                             filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
@@ -80,6 +96,7 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
@@ -102,16 +119,10 @@
                     <Label Content="{Binding Path=StorageID}" Grid.Column="1" Grid.Row="0"
                            HorizontalAlignment="Left" Margin="0"  VerticalAlignment="Center" />
 
-                    <StackPanel Grid.Column="1" Grid.Row="1" >
-                        <UniformGrid Columns="3" Rows="0" Margin="1">
-                            <TextBlock Text="{Binding ElementName=salePriceSlider,Path=Minimum}" TextAlignment="Left" Foreground="Black"/>
-                            <TextBlock Text="{Binding ElementName=salePriceSlider,Path=Value}" TextAlignment="Center" Foreground="Black"/>
-                            <TextBlock Text="{Binding ElementName=salePriceSlider,Path=Maximum}" TextAlignment="Right" Foreground="Black"/>
-                        </UniformGrid>
-                        <Slider Value="1" Name="salePriceSlider"  Grid.Row="1" Grid.Column="1"
-                            Maximum="{Binding Path=PurchasePrice}" Minimum="1" 
-                            IsSnapToTickEnabled="True" TickPlacement="TopLeft"  />
-                    </StackPanel>
+                    <TextBox Name="SalePriceTextBox" KeyDown="SalePriceTextBox_KeyDown" 
+                             TextChanged="SalePriceTextBox_TextChanged"
+                             Text="{Binding Path=SalePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                             
+                             Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" />
 
                     <StackPanel Grid.Column="1" Grid.Row="2" >
                         <UniformGrid Columns="3" Rows="0" Margin="1">
@@ -120,8 +131,9 @@
                             <TextBlock Text="100%" TextAlignment="Right" Foreground="Black" HorizontalAlignment="Stretch" />
                             
                         </UniformGrid>
-                        <Slider Value="1" Name="discountPriceSlider"  Grid.Row="1" Grid.Column="1"
-                            Maximum="100" Minimum="1" 
+                        <Slider Name="discountPriceSlider"  Grid.Row="1" Grid.Column="1"
+                                Value="{Binding Path=Discount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Maximum="100" Minimum="0" 
                             IsSnapToTickEnabled="True" TickPlacement="TopLeft"  />
                     </StackPanel>
                     
@@ -136,23 +148,17 @@
                     <Label Content="会员优惠折扣"  Grid.Column="2" Grid.Row="2"
                            HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
 
-                    <Label Content="利润"  Grid.Column="2" Grid.Row="3"
+                    <Label Content="会员利润"  Grid.Column="2" Grid.Row="3"
                            HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
 
 <!--第四列-->
                     <Label Content="{Binding Path=StorageID}" Grid.Column="3" Grid.Row="0"
                            HorizontalAlignment="Left" Margin="0"  VerticalAlignment="Center" />
 
-                    <StackPanel Grid.Column="3" Grid.Row="1" >
-                        <UniformGrid Columns="3" Rows="0" Margin="1">
-                            <TextBlock Text="{Binding ElementName=MemberSalePriceSlider,Path=Minimum}" TextAlignment="Left" Foreground="Black"/>
-                            <TextBlock Text="{Binding ElementName=MemberSalePriceSlider,Path=Value}" TextAlignment="Center" Foreground="Black"/>
-                            <TextBlock Text="{Binding ElementName=MemberSalePriceSlider,Path=Maximum}" TextAlignment="Right" Foreground="Black"/>
-                        </UniformGrid>
-                        <Slider Value="1" Name="MemberSalePriceSlider"  Grid.Row="1" Grid.Column="1"
-                            Maximum="{Binding Path=PurchasePrice}" Minimum="1" 
-                            IsSnapToTickEnabled="True" TickPlacement="TopLeft"  />
-                    </StackPanel>
+                    <TextBox x:Name="MemberPrice" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" 
+                             KeyDown="MemberPrice_KeyDown" TextChanged="MemberPrice_TextChanged" 
+                            
+                             Text="{Binding Path=MemberPrice}"/>                    
 
                     <StackPanel Grid.Column="3" Grid.Row="2" >
                         <UniformGrid Columns="3" Rows="0" Margin="1">
@@ -161,12 +167,24 @@
                             <TextBlock Text="100%" TextAlignment="Right" Foreground="Black" HorizontalAlignment="Stretch" />
                             
                         </UniformGrid>
-                        <Slider Value="1" Name="MemberdiscountPriceSlider"  Grid.Row="1" Grid.Column="1"
-                            Maximum="100" Minimum="1" 
+                        <Slider Value="{Binding Path=MemberDiscount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                Name="MemberdiscountPriceSlider"  Grid.Row="1" Grid.Column="1"
+                            Maximum="100" Minimum="0" 
                             IsSnapToTickEnabled="True" TickPlacement="TopLeft"  />
                     </StackPanel>
                     
-                    <Label x:Name="Memberprofit" Grid.Column="3" Grid.Row="3"/>
+                    <Label x:Name="memberProfit" Grid.Column="3" Grid.Row="3"/>
+<!--第五列-->
+                    <Border Grid.Row="0" Grid.Column="4" Grid.RowSpan="4" BorderBrush="SteelBlue" BorderThickness="1" CornerRadius="5" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Button Content="保存" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Save_Button_Click" />
+                            <Button Content="计算利润" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Cal_Button_Click" />
+                        </Grid>
+                    </Border>
                 </Grid>
             </Border>
         </Grid>

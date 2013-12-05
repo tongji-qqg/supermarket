@@ -977,6 +977,8 @@ namespace supermarket {
             
             private global::System.Data.DataColumn columnPermissionSaleManager;
             
+            private global::System.Data.DataColumn columnRemark;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public EmployeeDataTable() {
@@ -1148,6 +1150,14 @@ namespace supermarket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RemarkColumn {
+                get {
+                    return this.columnRemark;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1199,7 +1209,8 @@ namespace supermarket {
                         bool PermissionFinance, 
                         bool PermissionInventory, 
                         bool PermissionSaleman, 
-                        bool PermissionSaleManager) {
+                        bool PermissionSaleManager, 
+                        string Remark) {
                 EmployeeRow rowEmployeeRow = ((EmployeeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1218,7 +1229,8 @@ namespace supermarket {
                         PermissionFinance,
                         PermissionInventory,
                         PermissionSaleman,
-                        PermissionSaleManager};
+                        PermissionSaleManager,
+                        Remark};
                 rowEmployeeRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEmployeeRow);
                 return rowEmployeeRow;
@@ -1265,6 +1277,7 @@ namespace supermarket {
                 this.columnPermissionInventory = base.Columns["PermissionInventory"];
                 this.columnPermissionSaleman = base.Columns["PermissionSaleman"];
                 this.columnPermissionSaleManager = base.Columns["PermissionSaleManager"];
+                this.columnRemark = base.Columns["Remark"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1304,6 +1317,8 @@ namespace supermarket {
                 base.Columns.Add(this.columnPermissionSaleman);
                 this.columnPermissionSaleManager = new global::System.Data.DataColumn("PermissionSaleManager", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPermissionSaleManager);
+                this.columnRemark = new global::System.Data.DataColumn("Remark", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRemark);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnEmployeeID}, true));
                 this.columnEmployeeID.AutoIncrement = true;
@@ -1317,6 +1332,7 @@ namespace supermarket {
                 this.columnEducation.MaxLength = 50;
                 this.columnPassword.MaxLength = 50;
                 this.columnPhone.MaxLength = 50;
+                this.columnRemark.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3834,7 +3850,7 @@ namespace supermarket {
             
             private global::System.Data.DataColumn columnSalesDate;
             
-            private global::System.Data.DataColumn columnMermberID;
+            private global::System.Data.DataColumn columnMemberID;
             
             private global::System.Data.DataColumn columnRemark;
             
@@ -3921,9 +3937,9 @@ namespace supermarket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MermberIDColumn {
+            public global::System.Data.DataColumn MemberIDColumn {
                 get {
-                    return this.columnMermberID;
+                    return this.columnMemberID;
                 }
             }
             
@@ -3972,7 +3988,7 @@ namespace supermarket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SalesOrderRow AddSalesOrderRow(int EmployeeID, double TotalPrice, double ActualPay, double Change, System.DateTime SalesDate, int MermberID, string Remark) {
+            public SalesOrderRow AddSalesOrderRow(int EmployeeID, double TotalPrice, double ActualPay, double Change, System.DateTime SalesDate, int MemberID, string Remark) {
                 SalesOrderRow rowSalesOrderRow = ((SalesOrderRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3981,7 +3997,7 @@ namespace supermarket {
                         ActualPay,
                         Change,
                         SalesDate,
-                        MermberID,
+                        MemberID,
                         Remark};
                 rowSalesOrderRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSalesOrderRow);
@@ -4018,7 +4034,7 @@ namespace supermarket {
                 this.columnActualPay = base.Columns["ActualPay"];
                 this.columnChange = base.Columns["Change"];
                 this.columnSalesDate = base.Columns["SalesDate"];
-                this.columnMermberID = base.Columns["MermberID"];
+                this.columnMemberID = base.Columns["MemberID"];
                 this.columnRemark = base.Columns["Remark"];
             }
             
@@ -4037,8 +4053,8 @@ namespace supermarket {
                 base.Columns.Add(this.columnChange);
                 this.columnSalesDate = new global::System.Data.DataColumn("SalesDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSalesDate);
-                this.columnMermberID = new global::System.Data.DataColumn("MermberID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMermberID);
+                this.columnMemberID = new global::System.Data.DataColumn("MemberID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMemberID);
                 this.columnRemark = new global::System.Data.DataColumn("Remark", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRemark);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -4597,6 +4613,22 @@ namespace supermarket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Remark {
+                get {
+                    try {
+                        return ((string)(this[this.tableEmployee.RemarkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“Employee”中列“Remark”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableEmployee.RemarkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableEmployee.NameColumn);
             }
@@ -4785,6 +4817,18 @@ namespace supermarket {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPermissionSaleManagerNull() {
                 this[this.tableEmployee.PermissionSaleManagerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRemarkNull() {
+                return this.IsNull(this.tableEmployee.RemarkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRemarkNull() {
+                this[this.tableEmployee.RemarkColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6235,17 +6279,17 @@ namespace supermarket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int MermberID {
+            public int MemberID {
                 get {
                     try {
-                        return ((int)(this[this.tableSalesOrder.MermberIDColumn]));
+                        return ((int)(this[this.tableSalesOrder.MemberIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("表“SalesOrder”中列“MermberID”的值为 DBNull。", e);
+                        throw new global::System.Data.StrongTypingException("表“SalesOrder”中列“MemberID”的值为 DBNull。", e);
                     }
                 }
                 set {
-                    this[this.tableSalesOrder.MermberIDColumn] = value;
+                    this[this.tableSalesOrder.MemberIDColumn] = value;
                 }
             }
             
@@ -6327,14 +6371,14 @@ namespace supermarket {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMermberIDNull() {
-                return this.IsNull(this.tableSalesOrder.MermberIDColumn);
+            public bool IsMemberIDNull() {
+                return this.IsNull(this.tableSalesOrder.MemberIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMermberIDNull() {
-                this[this.tableSalesOrder.MermberIDColumn] = global::System.Convert.DBNull;
+            public void SetMemberIDNull() {
+                this[this.tableSalesOrder.MemberIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7271,6 +7315,7 @@ SELECT DepartmentID, Name, HeadID, Description, Remark FROM Department WHERE (De
             tableMapping.ColumnMappings.Add("PermissionInventory", "PermissionInventory");
             tableMapping.ColumnMappings.Add("PermissionSaleman", "PermissionSaleman");
             tableMapping.ColumnMappings.Add("PermissionSaleManager", "PermissionSaleManager");
+            tableMapping.ColumnMappings.Add("Remark", "Remark");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -7293,7 +7338,8 @@ SELECT DepartmentID, Name, HeadID, Description, Remark FROM Department WHERE (De
                 "PermissionInventory)) AND ((@IsNull_PermissionSaleman = 1 AND [PermissionSaleman" +
                 "] IS NULL) OR ([PermissionSaleman] = @Original_PermissionSaleman)) AND ((@IsNull" +
                 "_PermissionSaleManager = 1 AND [PermissionSaleManager] IS NULL) OR ([PermissionS" +
-                "aleManager] = @Original_PermissionSaleManager)))";
+                "aleManager] = @Original_PermissionSaleManager)) AND ((@IsNull_Remark = 1 AND [Re" +
+                "mark] IS NULL) OR ([Remark] = @Original_Remark)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -7326,10 +7372,12 @@ SELECT DepartmentID, Name, HeadID, Description, Remark FROM Department WHERE (De
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PermissionSaleman", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PermissionSaleman", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PermissionSaleManager", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PermissionSaleManager", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PermissionSaleManager", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PermissionSaleManager", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Remark", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Remark", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Employee] ([Name], [Sex], [Birthday], [Address], [Education], [Password], [Photo], [Phone], [DepartmentID], [State], [StartWorkDate], [PermissionHR], [PermissionFinance], [PermissionInventory], [PermissionSaleman], [PermissionSaleManager]) VALUES (@Name, @Sex, @Birthday, @Address, @Education, @Password, @Photo, @Phone, @DepartmentID, @State, @StartWorkDate, @PermissionHR, @PermissionFinance, @PermissionInventory, @PermissionSaleman, @PermissionSaleManager);
-SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Phone, DepartmentID, State, StartWorkDate, PermissionHR, PermissionFinance, PermissionInventory, PermissionSaleman, PermissionSaleManager FROM Employee WHERE (EmployeeID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Employee] ([Name], [Sex], [Birthday], [Address], [Education], [Password], [Photo], [Phone], [DepartmentID], [State], [StartWorkDate], [PermissionHR], [PermissionFinance], [PermissionInventory], [PermissionSaleman], [PermissionSaleManager], [Remark]) VALUES (@Name, @Sex, @Birthday, @Address, @Education, @Password, @Photo, @Phone, @DepartmentID, @State, @StartWorkDate, @PermissionHR, @PermissionFinance, @PermissionInventory, @PermissionSaleman, @PermissionSaleManager, @Remark);
+SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Phone, DepartmentID, State, StartWorkDate, PermissionHR, PermissionFinance, PermissionInventory, PermissionSaleman, PermissionSaleManager, Remark FROM Employee WHERE (EmployeeID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sex", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7347,6 +7395,7 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PermissionInventory", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PermissionInventory", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PermissionSaleman", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PermissionSaleman", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PermissionSaleManager", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PermissionSaleManager", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Remark", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Employee] SET [Name] = @Name, [Sex] = @Sex, [Birthday] = @Birthday," +
@@ -7355,29 +7404,30 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
                 "StartWorkDate] = @StartWorkDate, [PermissionHR] = @PermissionHR, [PermissionFina" +
                 "nce] = @PermissionFinance, [PermissionInventory] = @PermissionInventory, [Permis" +
                 "sionSaleman] = @PermissionSaleman, [PermissionSaleManager] = @PermissionSaleMana" +
-                "ger WHERE (([EmployeeID] = @Original_EmployeeID) AND ((@IsNull_Name = 1 AND [Nam" +
-                "e] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Sex = 1 AND [Sex] IS NUL" +
-                "L) OR ([Sex] = @Original_Sex)) AND ((@IsNull_Birthday = 1 AND [Birthday] IS NULL" +
-                ") OR ([Birthday] = @Original_Birthday)) AND ((@IsNull_Address = 1 AND [Address] " +
-                "IS NULL) OR ([Address] = @Original_Address)) AND ((@IsNull_Education = 1 AND [Ed" +
-                "ucation] IS NULL) OR ([Education] = @Original_Education)) AND ((@IsNull_Password" +
-                " = 1 AND [Password] IS NULL) OR ([Password] = @Original_Password)) AND ((@IsNull" +
-                "_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)) AND ((@IsNull_De" +
-                "partmentID = 1 AND [DepartmentID] IS NULL) OR ([DepartmentID] = @Original_Depart" +
-                "mentID)) AND ((@IsNull_State = 1 AND [State] IS NULL) OR ([State] = @Original_St" +
-                "ate)) AND ((@IsNull_StartWorkDate = 1 AND [StartWorkDate] IS NULL) OR ([StartWor" +
-                "kDate] = @Original_StartWorkDate)) AND ((@IsNull_PermissionHR = 1 AND [Permissio" +
-                "nHR] IS NULL) OR ([PermissionHR] = @Original_PermissionHR)) AND ((@IsNull_Permis" +
-                "sionFinance = 1 AND [PermissionFinance] IS NULL) OR ([PermissionFinance] = @Orig" +
-                "inal_PermissionFinance)) AND ((@IsNull_PermissionInventory = 1 AND [PermissionIn" +
-                "ventory] IS NULL) OR ([PermissionInventory] = @Original_PermissionInventory)) AN" +
-                "D ((@IsNull_PermissionSaleman = 1 AND [PermissionSaleman] IS NULL) OR ([Permissi" +
-                "onSaleman] = @Original_PermissionSaleman)) AND ((@IsNull_PermissionSaleManager =" +
-                " 1 AND [PermissionSaleManager] IS NULL) OR ([PermissionSaleManager] = @Original_" +
-                "PermissionSaleManager)));\r\nSELECT EmployeeID, Name, Sex, Birthday, Address, Educ" +
-                "ation, Password, Photo, Phone, DepartmentID, State, StartWorkDate, PermissionHR," +
-                " PermissionFinance, PermissionInventory, PermissionSaleman, PermissionSaleManage" +
-                "r FROM Employee WHERE (EmployeeID = @EmployeeID)";
+                "ger, [Remark] = @Remark WHERE (([EmployeeID] = @Original_EmployeeID) AND ((@IsNu" +
+                "ll_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)) AND ((@IsNull_Sex " +
+                "= 1 AND [Sex] IS NULL) OR ([Sex] = @Original_Sex)) AND ((@IsNull_Birthday = 1 AN" +
+                "D [Birthday] IS NULL) OR ([Birthday] = @Original_Birthday)) AND ((@IsNull_Addres" +
+                "s = 1 AND [Address] IS NULL) OR ([Address] = @Original_Address)) AND ((@IsNull_E" +
+                "ducation = 1 AND [Education] IS NULL) OR ([Education] = @Original_Education)) AN" +
+                "D ((@IsNull_Password = 1 AND [Password] IS NULL) OR ([Password] = @Original_Pass" +
+                "word)) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phon" +
+                "e)) AND ((@IsNull_DepartmentID = 1 AND [DepartmentID] IS NULL) OR ([DepartmentID" +
+                "] = @Original_DepartmentID)) AND ((@IsNull_State = 1 AND [State] IS NULL) OR ([S" +
+                "tate] = @Original_State)) AND ((@IsNull_StartWorkDate = 1 AND [StartWorkDate] IS" +
+                " NULL) OR ([StartWorkDate] = @Original_StartWorkDate)) AND ((@IsNull_PermissionH" +
+                "R = 1 AND [PermissionHR] IS NULL) OR ([PermissionHR] = @Original_PermissionHR)) " +
+                "AND ((@IsNull_PermissionFinance = 1 AND [PermissionFinance] IS NULL) OR ([Permis" +
+                "sionFinance] = @Original_PermissionFinance)) AND ((@IsNull_PermissionInventory =" +
+                " 1 AND [PermissionInventory] IS NULL) OR ([PermissionInventory] = @Original_Perm" +
+                "issionInventory)) AND ((@IsNull_PermissionSaleman = 1 AND [PermissionSaleman] IS" +
+                " NULL) OR ([PermissionSaleman] = @Original_PermissionSaleman)) AND ((@IsNull_Per" +
+                "missionSaleManager = 1 AND [PermissionSaleManager] IS NULL) OR ([PermissionSaleM" +
+                "anager] = @Original_PermissionSaleManager)) AND ((@IsNull_Remark = 1 AND [Remark" +
+                "] IS NULL) OR ([Remark] = @Original_Remark)));\r\nSELECT EmployeeID, Name, Sex, Bi" +
+                "rthday, Address, Education, Password, Photo, Phone, DepartmentID, State, StartWo" +
+                "rkDate, PermissionHR, PermissionFinance, PermissionInventory, PermissionSaleman," +
+                " PermissionSaleManager, Remark FROM Employee WHERE (EmployeeID = @EmployeeID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Sex", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Sex", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7395,6 +7445,7 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PermissionInventory", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PermissionInventory", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PermissionSaleman", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PermissionSaleman", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PermissionSaleManager", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PermissionSaleManager", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Remark", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -7426,6 +7477,8 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PermissionSaleman", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PermissionSaleman", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PermissionSaleManager", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PermissionSaleManager", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PermissionSaleManager", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PermissionSaleManager", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Remark", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Remark", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -7444,7 +7497,7 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Phon" +
                 "e, DepartmentID, State, StartWorkDate, PermissionHR, PermissionFinance, Permissi" +
-                "onInventory, PermissionSaleman, PermissionSaleManager FROM dbo.Employee";
+                "onInventory, PermissionSaleman, PermissionSaleManager, Remark FROM dbo.Employee";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7521,7 +7574,8 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
                     global::System.Nullable<bool> Original_PermissionFinance, 
                     global::System.Nullable<bool> Original_PermissionInventory, 
                     global::System.Nullable<bool> Original_PermissionSaleman, 
-                    global::System.Nullable<bool> Original_PermissionSaleManager) {
+                    global::System.Nullable<bool> Original_PermissionSaleManager, 
+                    string Original_Remark) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_EmployeeID));
             if ((Original_Name == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -7643,6 +7697,14 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
                 this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
+            if ((Original_Remark == null)) {
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[32].Value = ((string)(Original_Remark));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7679,7 +7741,8 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
                     global::System.Nullable<bool> PermissionFinance, 
                     global::System.Nullable<bool> PermissionInventory, 
                     global::System.Nullable<bool> PermissionSaleman, 
-                    global::System.Nullable<bool> PermissionSaleManager) {
+                    global::System.Nullable<bool> PermissionSaleManager, 
+                    string Remark) {
             if ((Name == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -7776,6 +7839,12 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
             else {
                 this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
+            if ((Remark == null)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(Remark));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7813,6 +7882,7 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
                     global::System.Nullable<bool> PermissionInventory, 
                     global::System.Nullable<bool> PermissionSaleman, 
                     global::System.Nullable<bool> PermissionSaleManager, 
+                    string Remark, 
                     int Original_EmployeeID, 
                     string Original_Name, 
                     global::System.Nullable<int> Original_Sex, 
@@ -7829,6 +7899,7 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
                     global::System.Nullable<bool> Original_PermissionInventory, 
                     global::System.Nullable<bool> Original_PermissionSaleman, 
                     global::System.Nullable<bool> Original_PermissionSaleManager, 
+                    string Original_Remark, 
                     int EmployeeID) {
             if ((Name == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -7926,128 +7997,142 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
             else {
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_EmployeeID));
-            if ((Original_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            if ((Remark == null)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Remark));
+            }
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_EmployeeID));
+            if ((Original_Name == null)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_Name));
             }
             if ((Original_Sex.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_Sex.Value));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_Sex.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             if ((Original_Birthday.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((System.DateTime)(Original_Birthday.Value));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((System.DateTime)(Original_Birthday.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             if ((Original_Address == null)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_Address));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_Address));
             }
             if ((Original_Education == null)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_Education));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_Education));
             }
             if ((Original_Password == null)) {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_Password));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_Password));
             }
             if ((Original_Phone == null)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_Phone));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_Phone));
             }
             if ((Original_DepartmentID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((int)(Original_DepartmentID.Value));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((int)(Original_DepartmentID.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             if ((Original_State.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(Original_State.Value));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((int)(Original_State.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             if ((Original_StartWorkDate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((System.DateTime)(Original_StartWorkDate.Value));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((System.DateTime)(Original_StartWorkDate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
             if ((Original_PermissionHR.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((bool)(Original_PermissionHR.Value));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((bool)(Original_PermissionHR.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
             if ((Original_PermissionFinance.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((bool)(Original_PermissionFinance.Value));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((bool)(Original_PermissionFinance.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
             if ((Original_PermissionInventory.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((bool)(Original_PermissionInventory.Value));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((bool)(Original_PermissionInventory.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
             if ((Original_PermissionSaleman.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((bool)(Original_PermissionSaleman.Value));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((bool)(Original_PermissionSaleman.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
             }
             if ((Original_PermissionSaleManager.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((bool)(Original_PermissionSaleManager.Value));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((bool)(Original_PermissionSaleManager.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[47].Value = ((int)(EmployeeID));
+            if ((Original_Remark == null)) {
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((string)(Original_Remark));
+            }
+            this.Adapter.UpdateCommand.Parameters[50].Value = ((int)(EmployeeID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8085,6 +8170,7 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
                     global::System.Nullable<bool> PermissionInventory, 
                     global::System.Nullable<bool> PermissionSaleman, 
                     global::System.Nullable<bool> PermissionSaleManager, 
+                    string Remark, 
                     int Original_EmployeeID, 
                     string Original_Name, 
                     global::System.Nullable<int> Original_Sex, 
@@ -8100,8 +8186,9 @@ SELECT EmployeeID, Name, Sex, Birthday, Address, Education, Password, Photo, Pho
                     global::System.Nullable<bool> Original_PermissionFinance, 
                     global::System.Nullable<bool> Original_PermissionInventory, 
                     global::System.Nullable<bool> Original_PermissionSaleman, 
-                    global::System.Nullable<bool> Original_PermissionSaleManager) {
-            return this.Update(Name, Sex, Birthday, Address, Education, Password, Photo, Phone, DepartmentID, State, StartWorkDate, PermissionHR, PermissionFinance, PermissionInventory, PermissionSaleman, PermissionSaleManager, Original_EmployeeID, Original_Name, Original_Sex, Original_Birthday, Original_Address, Original_Education, Original_Password, Original_Phone, Original_DepartmentID, Original_State, Original_StartWorkDate, Original_PermissionHR, Original_PermissionFinance, Original_PermissionInventory, Original_PermissionSaleman, Original_PermissionSaleManager, Original_EmployeeID);
+                    global::System.Nullable<bool> Original_PermissionSaleManager, 
+                    string Original_Remark) {
+            return this.Update(Name, Sex, Birthday, Address, Education, Password, Photo, Phone, DepartmentID, State, StartWorkDate, PermissionHR, PermissionFinance, PermissionInventory, PermissionSaleman, PermissionSaleManager, Remark, Original_EmployeeID, Original_Name, Original_Sex, Original_Birthday, Original_Address, Original_Education, Original_Password, Original_Phone, Original_DepartmentID, Original_State, Original_StartWorkDate, Original_PermissionHR, Original_PermissionFinance, Original_PermissionInventory, Original_PermissionSaleman, Original_PermissionSaleManager, Original_Remark, Original_EmployeeID);
         }
     }
     
@@ -11566,12 +11653,12 @@ SELECT SalesInfoID, SalesID, StorageID, Discount, GoodsNum, SubPrice, Remark FRO
             tableMapping.ColumnMappings.Add("ActualPay", "ActualPay");
             tableMapping.ColumnMappings.Add("Change", "Change");
             tableMapping.ColumnMappings.Add("SalesDate", "SalesDate");
-            tableMapping.ColumnMappings.Add("MermberID", "MermberID");
+            tableMapping.ColumnMappings.Add("MemberID", "MemberID");
             tableMapping.ColumnMappings.Add("Remark", "Remark");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[SalesOrder] WHERE (([SalesID] = @Original_SalesID) AND ((@IsNull_EmployeeID = 1 AND [EmployeeID] IS NULL) OR ([EmployeeID] = @Original_EmployeeID)) AND ((@IsNull_TotalPrice = 1 AND [TotalPrice] IS NULL) OR ([TotalPrice] = @Original_TotalPrice)) AND ((@IsNull_ActualPay = 1 AND [ActualPay] IS NULL) OR ([ActualPay] = @Original_ActualPay)) AND ((@IsNull_Change = 1 AND [Change] IS NULL) OR ([Change] = @Original_Change)) AND ((@IsNull_SalesDate = 1 AND [SalesDate] IS NULL) OR ([SalesDate] = @Original_SalesDate)) AND ((@IsNull_MermberID = 1 AND [MermberID] IS NULL) OR ([MermberID] = @Original_MermberID)) AND ((@IsNull_Remark = 1 AND [Remark] IS NULL) OR ([Remark] = @Original_Remark)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[SalesOrder] WHERE (([SalesID] = @Original_SalesID) AND ((@IsNull_EmployeeID = 1 AND [EmployeeID] IS NULL) OR ([EmployeeID] = @Original_EmployeeID)) AND ((@IsNull_TotalPrice = 1 AND [TotalPrice] IS NULL) OR ([TotalPrice] = @Original_TotalPrice)) AND ((@IsNull_ActualPay = 1 AND [ActualPay] IS NULL) OR ([ActualPay] = @Original_ActualPay)) AND ((@IsNull_Change = 1 AND [Change] IS NULL) OR ([Change] = @Original_Change)) AND ((@IsNull_SalesDate = 1 AND [SalesDate] IS NULL) OR ([SalesDate] = @Original_SalesDate)) AND ((@IsNull_MemberID = 1 AND [MemberID] IS NULL) OR ([MemberID] = @Original_MemberID)) AND ((@IsNull_Remark = 1 AND [Remark] IS NULL) OR ([Remark] = @Original_Remark)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SalesID", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalesID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -11584,33 +11671,33 @@ SELECT SalesInfoID, SalesID, StorageID, Discount, GoodsNum, SubPrice, Remark FRO
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Change", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Change", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SalesDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalesDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SalesDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalesDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MermberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MermberID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MermberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MermberID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MemberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MemberID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MemberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MemberID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Remark", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Remark", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[SalesOrder] ([EmployeeID], [TotalPrice], [ActualPay], [Change], [SalesDate], [MermberID], [Remark]) VALUES (@EmployeeID, @TotalPrice, @ActualPay, @Change, @SalesDate, @MermberID, @Remark);
-SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID, Remark FROM SalesOrder WHERE (SalesID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[SalesOrder] ([EmployeeID], [TotalPrice], [ActualPay], [Change], [SalesDate], [MemberID], [Remark]) VALUES (@EmployeeID, @TotalPrice, @ActualPay, @Change, @SalesDate, @MemberID, @Remark);
+SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MemberID, Remark FROM SalesOrder WHERE (SalesID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ActualPay", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ActualPay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Change", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Change", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalesDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalesDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MermberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MermberID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MemberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MemberID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Remark", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[SalesOrder] SET [EmployeeID] = @EmployeeID, [TotalPrice] = @TotalPrice, [ActualPay] = @ActualPay, [Change] = @Change, [SalesDate] = @SalesDate, [MermberID] = @MermberID, [Remark] = @Remark WHERE (([SalesID] = @Original_SalesID) AND ((@IsNull_EmployeeID = 1 AND [EmployeeID] IS NULL) OR ([EmployeeID] = @Original_EmployeeID)) AND ((@IsNull_TotalPrice = 1 AND [TotalPrice] IS NULL) OR ([TotalPrice] = @Original_TotalPrice)) AND ((@IsNull_ActualPay = 1 AND [ActualPay] IS NULL) OR ([ActualPay] = @Original_ActualPay)) AND ((@IsNull_Change = 1 AND [Change] IS NULL) OR ([Change] = @Original_Change)) AND ((@IsNull_SalesDate = 1 AND [SalesDate] IS NULL) OR ([SalesDate] = @Original_SalesDate)) AND ((@IsNull_MermberID = 1 AND [MermberID] IS NULL) OR ([MermberID] = @Original_MermberID)) AND ((@IsNull_Remark = 1 AND [Remark] IS NULL) OR ([Remark] = @Original_Remark)));
-SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID, Remark FROM SalesOrder WHERE (SalesID = @SalesID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[SalesOrder] SET [EmployeeID] = @EmployeeID, [TotalPrice] = @TotalPrice, [ActualPay] = @ActualPay, [Change] = @Change, [SalesDate] = @SalesDate, [MemberID] = @MemberID, [Remark] = @Remark WHERE (([SalesID] = @Original_SalesID) AND ((@IsNull_EmployeeID = 1 AND [EmployeeID] IS NULL) OR ([EmployeeID] = @Original_EmployeeID)) AND ((@IsNull_TotalPrice = 1 AND [TotalPrice] IS NULL) OR ([TotalPrice] = @Original_TotalPrice)) AND ((@IsNull_ActualPay = 1 AND [ActualPay] IS NULL) OR ([ActualPay] = @Original_ActualPay)) AND ((@IsNull_Change = 1 AND [Change] IS NULL) OR ([Change] = @Original_Change)) AND ((@IsNull_SalesDate = 1 AND [SalesDate] IS NULL) OR ([SalesDate] = @Original_SalesDate)) AND ((@IsNull_MemberID = 1 AND [MemberID] IS NULL) OR ([MemberID] = @Original_MemberID)) AND ((@IsNull_Remark = 1 AND [Remark] IS NULL) OR ([Remark] = @Original_Remark)));
+SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MemberID, Remark FROM SalesOrder WHERE (SalesID = @SalesID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TotalPrice", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TotalPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ActualPay", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ActualPay", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Change", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Change", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalesDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalesDate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MermberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MermberID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MemberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MemberID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Remark", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SalesID", global::System.Data.SqlDbType.BigInt, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalesID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EmployeeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EmployeeID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -11623,8 +11710,8 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID,
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Change", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Change", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SalesDate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalesDate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SalesDate", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SalesDate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MermberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MermberID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MermberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MermberID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MemberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MemberID", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MemberID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MemberID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Remark", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Remark", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SalesID", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "SalesID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -11643,8 +11730,8 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID,
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID, " +
-                "Remark FROM dbo.SalesOrder";
+            this._commandCollection[0].CommandText = "SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MemberID, R" +
+                "emark FROM dbo.SalesOrder";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -11705,7 +11792,7 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(long Original_SalesID, global::System.Nullable<int> Original_EmployeeID, global::System.Nullable<double> Original_TotalPrice, global::System.Nullable<double> Original_ActualPay, global::System.Nullable<double> Original_Change, global::System.Nullable<global::System.DateTime> Original_SalesDate, global::System.Nullable<int> Original_MermberID, string Original_Remark) {
+        public virtual int Delete(long Original_SalesID, global::System.Nullable<int> Original_EmployeeID, global::System.Nullable<double> Original_TotalPrice, global::System.Nullable<double> Original_ActualPay, global::System.Nullable<double> Original_Change, global::System.Nullable<global::System.DateTime> Original_SalesDate, global::System.Nullable<int> Original_MemberID, string Original_Remark) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((long)(Original_SalesID));
             if ((Original_EmployeeID.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -11747,9 +11834,9 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID,
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_MermberID.HasValue == true)) {
+            if ((Original_MemberID.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((int)(Original_MermberID.Value));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((int)(Original_MemberID.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
@@ -11783,7 +11870,7 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> EmployeeID, global::System.Nullable<double> TotalPrice, global::System.Nullable<double> ActualPay, global::System.Nullable<double> Change, global::System.Nullable<global::System.DateTime> SalesDate, global::System.Nullable<int> MermberID, string Remark) {
+        public virtual int Insert(global::System.Nullable<int> EmployeeID, global::System.Nullable<double> TotalPrice, global::System.Nullable<double> ActualPay, global::System.Nullable<double> Change, global::System.Nullable<global::System.DateTime> SalesDate, global::System.Nullable<int> MemberID, string Remark) {
             if ((EmployeeID.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((int)(EmployeeID.Value));
             }
@@ -11814,8 +11901,8 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID,
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((MermberID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(MermberID.Value));
+            if ((MemberID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(MemberID.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
@@ -11852,7 +11939,7 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID,
                     global::System.Nullable<double> ActualPay, 
                     global::System.Nullable<double> Change, 
                     global::System.Nullable<global::System.DateTime> SalesDate, 
-                    global::System.Nullable<int> MermberID, 
+                    global::System.Nullable<int> MemberID, 
                     string Remark, 
                     long Original_SalesID, 
                     global::System.Nullable<int> Original_EmployeeID, 
@@ -11860,7 +11947,7 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID,
                     global::System.Nullable<double> Original_ActualPay, 
                     global::System.Nullable<double> Original_Change, 
                     global::System.Nullable<global::System.DateTime> Original_SalesDate, 
-                    global::System.Nullable<int> Original_MermberID, 
+                    global::System.Nullable<int> Original_MemberID, 
                     string Original_Remark, 
                     long SalesID) {
             if ((EmployeeID.HasValue == true)) {
@@ -11893,8 +11980,8 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID,
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((MermberID.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(MermberID.Value));
+            if ((MemberID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(MemberID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
@@ -11946,9 +12033,9 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID,
                 this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            if ((Original_MermberID.HasValue == true)) {
+            if ((Original_MemberID.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_MermberID.Value));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_MemberID.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
@@ -11983,8 +12070,8 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> EmployeeID, global::System.Nullable<double> TotalPrice, global::System.Nullable<double> ActualPay, global::System.Nullable<double> Change, global::System.Nullable<global::System.DateTime> SalesDate, global::System.Nullable<int> MermberID, string Remark, long Original_SalesID, global::System.Nullable<int> Original_EmployeeID, global::System.Nullable<double> Original_TotalPrice, global::System.Nullable<double> Original_ActualPay, global::System.Nullable<double> Original_Change, global::System.Nullable<global::System.DateTime> Original_SalesDate, global::System.Nullable<int> Original_MermberID, string Original_Remark) {
-            return this.Update(EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MermberID, Remark, Original_SalesID, Original_EmployeeID, Original_TotalPrice, Original_ActualPay, Original_Change, Original_SalesDate, Original_MermberID, Original_Remark, Original_SalesID);
+        public virtual int Update(global::System.Nullable<int> EmployeeID, global::System.Nullable<double> TotalPrice, global::System.Nullable<double> ActualPay, global::System.Nullable<double> Change, global::System.Nullable<global::System.DateTime> SalesDate, global::System.Nullable<int> MemberID, string Remark, long Original_SalesID, global::System.Nullable<int> Original_EmployeeID, global::System.Nullable<double> Original_TotalPrice, global::System.Nullable<double> Original_ActualPay, global::System.Nullable<double> Original_Change, global::System.Nullable<global::System.DateTime> Original_SalesDate, global::System.Nullable<int> Original_MemberID, string Original_Remark) {
+            return this.Update(EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MemberID, Remark, Original_SalesID, Original_EmployeeID, Original_TotalPrice, Original_ActualPay, Original_Change, Original_SalesDate, Original_MemberID, Original_Remark, Original_SalesID);
         }
     }
     

@@ -65,7 +65,7 @@
 
 
                         <DataGridTextColumn     Header="出生日期" Binding=
-                              "{Binding Path=MemberBirth,Mode=OneWay, UpdateSourceTrigger=PropertyChanged, StringFormat=yyyy-MM-dd}"/>
+                              "{Binding Path=MemberBirthday,Mode=OneWay, UpdateSourceTrigger=PropertyChanged, StringFormat=yyyy-MM-dd}"/>
 
 
                         <DataGridTextColumn     Header="手机" Binding=
@@ -77,7 +77,7 @@
 
 
                         <DataGridTextColumn     Header="积分" Binding=
-                              "{Binding Path=MemberPoint,Mode=OneWay, UpdateSourceTrigger=PropertyChanged, StringFormat=yyyy-MM-dd}"/>
+                              "{Binding Path=MemberPoint,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
 
 
                    </DataGrid.Columns>
@@ -121,13 +121,19 @@
                            HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
 
 
-                    <TextBox Text="{Binding Path=MemberID}" Grid.Row="0" Grid.Column="1"/>
-                    <TextBox Text="{Binding Path=MemberName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"/>
-                    <TextBox Text="{Binding Path=MemberSex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"/>
-                    <DatePicker SelectedDate ="{Binding Path=MemberBirth, StringFormat=yyyy-MM-dd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"/>
-                    <TextBox Text="{Binding Path=MemberPhone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1"/>
+                    <Label Content="{Binding Path=MemberID}" Grid.Row="0" Grid.Column="1"/>
+                    <TextBox Text="{Binding Path=MemberName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />                   
+
+                    <ComboBox x:Name="MemberSexComboBox"
+                              SelectedValue="{Binding Path=MemberSex, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                               DisplayMemberPath="name"
+                              SelectedValuePath="value"
+                              Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
+                    
+                    <DatePicker SelectedDate ="{Binding Path=MemberBirthday, StringFormat=yyyy-MM-dd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" />
+                    <TextBox Text="{Binding Path=MemberPhone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" />
                     <TextBox Text="{Binding Path=MemberAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1"/>
-                    <TextBox Text="{Binding Path=MemberPoint}" Grid.Row="6" Grid.Column="1"/>
+                    <TextBox Text="{Binding Path=MemberPoint}" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" />
 
                     <Label Content="备注信息"  Grid.Row="0"  Grid.Column="2" 
                            HorizontalAlignment="Center" Margin="0"  VerticalAlignment="Center" />

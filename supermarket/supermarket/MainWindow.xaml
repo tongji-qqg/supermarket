@@ -84,34 +84,32 @@
                     </TabItem.Background>
                     <ItemsControl Style="{StaticResource TabItemGridItemsStyle}">
                         <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
+                        <Button Content="商品档案" Style="{StaticResource MyButton1}" Grid.Column="1" Click="Sale_Button_Click"/>
                         
                         <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
-                            <Button Content="收银" Style="{DynamicResource Buttonlist}">
+                            <Button Content="收银" Style="{DynamicResource Buttonlist}" Click="Sale_Button_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button Content="会员管理" Style="{DynamicResource Buttonlist}">
+                            <Button Content="新加会员" Style="{DynamicResource Buttonlist}" Click="Sale_Button_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button Content="商品档案" Style="{DynamicResource Buttonlist}">
+                            <Button Content="会员管理" Style="{DynamicResource Buttonlist}" Click="Sale_Button_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button Content="价格调整" Style="{DynamicResource Buttonlist}">
+                            
+                            <Button Content="价格调整" Style="{DynamicResource Buttonlist}" Click="Sale_Button_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button Content="会员优惠" Style="{DynamicResource Buttonlist}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
-                                </Button.Background>
-                            </Button>
-                            <Button Content="销售分析" Style="{DynamicResource Buttonlist}">
+                            
+                            <Button Content="销售分析" Style="{DynamicResource Buttonlist}" Click="Sale_Button_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/360AntiVirus.png" Stretch="Uniform"/>
                                 </Button.Background>

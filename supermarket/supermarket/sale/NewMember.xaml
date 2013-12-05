@@ -37,9 +37,15 @@
 
 
 
-        <TextBox Text="{Binding Path=MemberName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"/>
-        <TextBox Text="{Binding Path=MemberSex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"/>
-        <DatePicker SelectedDate ="{Binding Path=MemberBirth,StringFormat=yyyy-MM-dd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"/>
+        <TextBox Text="{Binding Path=MemberName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"/>        
+
+        <ComboBox x:Name="MemberSexComboBox"
+                              SelectedValue="{Binding Path=MemberSex, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                               DisplayMemberPath="name"
+                              SelectedValuePath="value"
+                              Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
+        
+        <DatePicker SelectedDate ="{Binding Path=MemberBirthday,StringFormat=yyyy-MM-dd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1"/>
         <TextBox Text="{Binding Path=MemberPhone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1"/>
         <TextBox Text="{Binding Path=MemberAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1"/>
       

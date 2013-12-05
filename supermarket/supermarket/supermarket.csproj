@@ -36,9 +36,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -62,6 +65,12 @@
     <Compile Include="sale\NewMember.xaml.cs">
       <DependentUpon>NewMember.xaml</DependentUpon>
     </Compile>
+    <Compile Include="sale\POS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sale\POS.designer.cs">
+      <DependentUpon>POS.cs</DependentUpon>
+    </Compile>
     <Compile Include="sale\POS.xaml.cs">
       <DependentUpon>POS.xaml</DependentUpon>
     </Compile>
@@ -71,6 +80,7 @@
     <Compile Include="sale\SaleAnalysis.xaml.cs">
       <DependentUpon>SaleAnalysis.xaml</DependentUpon>
     </Compile>
+    <Compile Include="sale\SqlConnector.cs" />
     <Compile Include="SupermarketDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -223,6 +233,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sale\POS.resx">
+      <DependentUpon>POS.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="MarketDataSet.xsc">

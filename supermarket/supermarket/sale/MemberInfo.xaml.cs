@@ -20,20 +20,20 @@ namespace supermarket.sale
     public partial class MemberInfo : Window
     {
          #region Data
-        MarketDataSet mds;
+        SupermarketDataSet sds;
         #endregion
 
         #region constructor
-        public MemberInfo(MarketDataSet set)
+        public MemberInfo(SupermarketDataSet set)
         {
             InitializeComponent();
-            mds = set;
+            sds = set;
             loadData();
         }
         public MemberInfo()
         {
             InitializeComponent();
-            mds = new MarketDataSet();
+            sds = new SupermarketDataSet();
             loadData();
         }
         #endregion
@@ -41,16 +41,17 @@ namespace supermarket.sale
         #region helpFounction
         private void loadData()
         {
-            MarketDataSetTableAdapters.MemberTableAdapter mta =
-                   new MarketDataSetTableAdapters.MemberTableAdapter();
-            mta.Fill(mds.Member);            
+            SupermarketDataSetTableAdapters.MemberTableAdapter mta =
+                   new SupermarketDataSetTableAdapters.MemberTableAdapter();
+            mta.Fill(sds.Member);
 
+            MemberSexComboBox.ItemsSource = new supermarket.HumanAffair.SexProvider().DefaultView;
             setItemSource();
         }
 
         private void setItemSource()
         {
-            MemberInfoDataGrid.ItemsSource = new ObservableCollection<MarketDataSet.MemberRow>(mds.Member.ToList());
+            MemberInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.MemberRow>(sds.Member.ToList());
         }
         #endregion
 
@@ -59,11 +60,11 @@ namespace supermarket.sale
         {
             if (modifyMemberInfoGrid.DataContext != null)
             {
-                MarketDataSetTableAdapters.MemberTableAdapter mta =
-                    new MarketDataSetTableAdapters.MemberTableAdapter();
+                SupermarketDataSetTableAdapters.MemberTableAdapter mta =
+                    new SupermarketDataSetTableAdapters.MemberTableAdapter();
                 try
                 {
-                    mta.Update(mds.Member);
+                    mta.Update(sds.Member);
                     MessageBox.Show("保存修改成功！");
                 }
                 catch (Exception ex)
@@ -77,15 +78,15 @@ namespace supermarket.sale
         {
             if (modifyMemberInfoGrid.DataContext != null)
             {
-                MarketDataSetTableAdapters.MemberTableAdapter mta = new MarketDataSetTableAdapters.MemberTableAdapter();
-
-                supermarket.MarketDataSet.MemberRow mr =
-                    modifyMemberInfoGrid.DataContext as MarketDataSet.MemberRow;
-
-                mds.Member.RemoveMemberRow(mr);
+                SupermarketDataSetTableAdapters.MemberTableAdapter mta = new SupermarketDataSetTableAdapters.MemberTableAdapter();                
+                
                 try
                 {
-                    mta.Update(mds.Member);
+                    SupermarketDataSet.MemberRow mr =
+                    modifyMemberInfoGrid.DataContext as SupermarketDataSet.MemberRow;
+                    mr.Delete();
+
+                    mta.Update(sds.Member);
                     setItemSource();
                     MessageBox.Show("删除信息成功！");
                 }
