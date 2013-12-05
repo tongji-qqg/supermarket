@@ -87,16 +87,21 @@ namespace supermarket
                 Window window = null;
                 switch (content)
                 {
-                    case "招聘新员工":
-                        window = new supermarket.HumanAffair.NewEmployee(supermarketDataSet);
+                    case "添加新商品":
+                        window = new supermarket.Inventory.NewGoodsInfo(supermarketDataSet);
                         break;
-                    case "员工信息":
-                    case "职位调动":
-                    case "解聘员工":
-                        window = new supermarket.HumanAffair.EmployeeInfo(supermarketDataSet);
+                    case "管理商品档案":
+                        window = new supermarket.Inventory.GoodsInfo(supermarketDataSet);
                         break;
-                    case "系统使用权限":
-                        window = new supermarket.HumanAffair.UsePermission(supermarketDataSet);
+                    case "商品入库":
+                        window = new supermarket.Inventory.InInventory(supermarketDataSet);
+                        break;
+                    case "商品出库":
+
+                    case "库存查询":
+                        
+                    case "过期管理":
+                        window = new supermarket.Inventory.InventoryInfo(supermarketDataSet);
                         break;
                     default:
                         break;

@@ -20,42 +20,51 @@ namespace supermarket.Inventory
     {
 
          #region Data
-        MarketDataSet mds;
-        MarketDataSet.InventoryRow ir;
+        SupermarketDataSet sds;
+        SupermarketDataSet.InventoryRow ir;
         #endregion
 
 
         public InInventory()
         {
             InitializeComponent();
-            mds = new MarketDataSet();
+            sds = new SupermarketDataSet();
             loadData();
         }
 
-        public InInventory(MarketDataSet set)
+        public InInventory(SupermarketDataSet set)
         {
             InitializeComponent();
-            mds = set;
+            sds = set;
             loadData();
         }
 
         private void loadData()
         {
-            ir = mds.Inventory.NewInventoryRow();
+            ir = sds.Inventory.NewInventoryRow();
             InInventoryGrid.DataContext = ir;
+
+            SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
+                new SupermarketDataSetTableAdapters.GoodsTableAdapter();
+            gta.Fill(sds.Goods);
         }
 
         #region interact
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (ir.IsGoodsIDNull() || ir.IsGoodsNumNull() || ir.IsProductionDateNull() || ir.IsPurchasePriceNull())
+            {
+                MessageBox.Show("请填写完整信息！");
+                return;
+            }
             try
             {
-                mds.Inventory.AddInventoryRow(ir);
+                sds.Inventory.AddInventoryRow(ir);
 
-                MarketDataSetTableAdapters.InventoryTableAdapter ita =
-                    new MarketDataSetTableAdapters.InventoryTableAdapter();
+                SupermarketDataSetTableAdapters.InventoryTableAdapter ita =
+                    new SupermarketDataSetTableAdapters.InventoryTableAdapter();
 
-                ita.Update(mds.Inventory);
+                ita.Update(sds.Inventory);
                 MessageBox.Show("信息已保存");
             }
             catch (Exception ex)
@@ -66,7 +75,7 @@ namespace supermarket.Inventory
         }
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
-            mds.Inventory.RemoveInventoryRow(ir);
+            sds.Inventory.RemoveInventoryRow(ir);
             this.Close();
         }
         #endregion

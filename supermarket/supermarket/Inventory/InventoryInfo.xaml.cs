@@ -20,21 +20,21 @@ namespace supermarket.Inventory
     public partial class InventoryInfo : Window
     {
         #region Data
-        MarketDataSet mds;
+        SupermarketDataSet sds;
         #endregion
 
         #region constructor
         public InventoryInfo()
         {
             InitializeComponent();
-            mds = new MarketDataSet();
+            sds = new SupermarketDataSet();
             loadData();
         }
 
-        public InventoryInfo(MarketDataSet set)
+        public InventoryInfo(SupermarketDataSet set)
         {
             InitializeComponent();
-            mds = set;
+            sds = set;
             loadData();
         }
         #endregion 
@@ -42,14 +42,12 @@ namespace supermarket.Inventory
         #region helpFounction
         private void loadData()
         {
-            supermarket.MarketDataSetTableAdapters.InventoryTableAdapter ita =
-                new MarketDataSetTableAdapters.InventoryTableAdapter();
+            SupermarketDataSetTableAdapters.InventoryTableAdapter ita =
+                new SupermarketDataSetTableAdapters.InventoryTableAdapter();
 
-            ita.Fill(mds.Inventory);
+            ita.Fill(sds.Inventory);
 
-            InventoryInfoDataGrid.ItemsSource = new ObservableCollection<MarketDataSet.InventoryRow>(mds.Inventory.ToList());
-            //EmployeeInfoDataGrid.DataContext = new ObservableCollection<MarketDataSet.EmployeeRow>(mds.Employee);
-            //EmployeeInfoDataGrid.ItemsSource = mds.Employee.DefaultView;                   
+            InventoryInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.InventoryRow>(sds.Inventory.ToList());                     
         }
         #endregion
 
@@ -69,8 +67,8 @@ namespace supermarket.Inventory
         {
             if (InventoryInfoDataGrid.SelectedItem != null)
             {
-                supermarket.MarketDataSet.InventoryRow ir =
-                    InventoryInfoDataGrid.SelectedItem as supermarket.MarketDataSet.InventoryRow;
+                SupermarketDataSet.InventoryRow ir =
+                    InventoryInfoDataGrid.SelectedItem as SupermarketDataSet.InventoryRow;
                 if (ir != null)
                 {
                     int outNumber =  (int)OutInventoryNumberSlider.Value;
@@ -80,15 +78,15 @@ namespace supermarket.Inventory
                     }
                     else 
                     {
-                        mds.Inventory.RemoveInventoryRow(ir);
+                        ir.Delete();
                     }
-                    supermarket.MarketDataSetTableAdapters.InventoryTableAdapter ita =
-                        new MarketDataSetTableAdapters.InventoryTableAdapter();
+                    SupermarketDataSetTableAdapters.InventoryTableAdapter ita =
+                        new SupermarketDataSetTableAdapters.InventoryTableAdapter();
                     try
                     {
-                        ita.Update(mds.Inventory);
+                        ita.Update(sds.Inventory);
                         MessageBox.Show("出库成功");
-                        InventoryInfoDataGrid.ItemsSource = new ObservableCollection<MarketDataSet.InventoryRow>(mds.Inventory.ToList());
+                        InventoryInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.InventoryRow>(sds.Inventory.ToList());
                     }
                     catch (Exception ex)
                     {

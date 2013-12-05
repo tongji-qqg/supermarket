@@ -18,7 +18,7 @@
         <Label Content="进库详单" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
 
-        <Label Content="商品编号"  Grid.Row="1"  Grid.Column="0" 
+        <Label Content="商品名"  Grid.Row="1"  Grid.Column="0" 
                            HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
 
         <Label Content="生产日期"  Grid.Row="2"  Grid.Column="0" 
@@ -29,9 +29,13 @@
 
         <Label Content="购入价格"  Grid.Row="4"  Grid.Column="0" 
                            HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
-        
-        <TextBox Text="{Binding Path=GoodsName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
-        <TextBox Text="{Binding Path=GoodsType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
+               
+        <ComboBox  ItemsSource="{Binding Source={StaticResource GoodsViewSource}, Mode=OneWay}"
+                              SelectedValue="{Binding Path=GoodsID, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                               DisplayMemberPath="GoodsName"
+                              SelectedValuePath="GoodsID"
+                        Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
+        <DatePicker  SelectedDate="{Binding Path=ProductionDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
 
         <Grid Grid.Column="1" Grid.Row="3">
             <Grid.ColumnDefinitions>
@@ -40,18 +44,19 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" >
                 <UniformGrid Columns="3" Rows="0" Margin="1">
-                    <TextBlock Text="{Binding ElementName=DurabilityPeriodSlider,Path=Minimum}" TextAlignment="Left" Foreground="Black"/>
-                    <TextBlock Text="{Binding ElementName=DurabilityPeriodSlider,Path=Value}" TextAlignment="Center" Foreground="Black"/>
-                    <TextBlock Text="{Binding ElementName=DurabilityPeriodSlider,Path=Maximum}" TextAlignment="Right" Foreground="Black"/>
+                    <TextBlock Text="{Binding ElementName=GoodsNumSlider,Path=Minimum}" TextAlignment="Left" Foreground="Black"/>
+                    <TextBlock Text="{Binding ElementName=GoodsNumSlider,Path=Value}" TextAlignment="Center" Foreground="Black"/>
+                    <TextBlock Text="{Binding ElementName=GoodsNumSlider,Path=Maximum}" TextAlignment="Right" Foreground="Black"/>
                 </UniformGrid>
-                <Slider Value="{Binding Path=DurabilityPeriod,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                                    Name="DurabilityPeriodSlider"  Grid.Row="1" Grid.Column="1"
+                <Slider Value="{Binding Path=GoodsNum,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                    Name="GoodsNumSlider"  Grid.Row="1" Grid.Column="1"
                                     Maximum="3600" Minimum="1" 
                                     IsSnapToTickEnabled="True" TickPlacement="TopLeft"  />
             </StackPanel>
-            <TextBox Grid.Column="1" Text="{Binding ElementName=DurabilityPeriodSlider, Path=Value, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Grid.Column="1" Text="{Binding ElementName=GoodsNumSlider, Path=Value, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
 
+        <TextBox Text="{Binding Path=PurchasePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" />
         <Grid Grid.Row="8" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />

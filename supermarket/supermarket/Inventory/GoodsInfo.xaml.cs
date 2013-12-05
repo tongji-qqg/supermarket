@@ -64,10 +64,10 @@ namespace supermarket.Inventory
 
         private void save()
         {
-            supermarket.MarketDataSetTableAdapters.GoodsTableAdapter gta =
-                           new MarketDataSetTableAdapters.GoodsTableAdapter();
+            SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
+                           new SupermarketDataSetTableAdapters.GoodsTableAdapter();
             
-            gta.Update(mds.Goods);            
+            gta.Update(sds.Goods);            
         }
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
@@ -76,7 +76,7 @@ namespace supermarket.Inventory
             {
                 save();
                 MessageBox.Show("保存成功");
-                GoodsInfoDataGrid.ItemsSource = new ObservableCollection<MarketDataSet.GoodsRow>(mds.Goods.ToList());
+                GoodsInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.GoodsRow>(sds.Goods.ToList());
             }
             catch (Exception ex)
             {
@@ -88,18 +88,18 @@ namespace supermarket.Inventory
         {
             if (modifyGoodsInfoGrid.DataContext != null)
             {
-                supermarket.MarketDataSetTableAdapters.GoodsTableAdapter gta =
-                                   new MarketDataSetTableAdapters.GoodsTableAdapter();
-
-                supermarket.MarketDataSet.GoodsRow gr =
-                    modifyGoodsInfoGrid.DataContext as MarketDataSet.GoodsRow;
-
-                mds.Goods.RemoveGoodsRow(gr);
-                
+                SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
+                                   new SupermarketDataSetTableAdapters.GoodsTableAdapter();
+                               
                 try
                 {
-                    gta.Update(mds.Goods);
-                    GoodsInfoDataGrid.ItemsSource = new ObservableCollection<MarketDataSet.GoodsRow>(mds.Goods.ToList());
+                    SupermarketDataSet.GoodsRow gr =
+                    modifyGoodsInfoGrid.DataContext as SupermarketDataSet.GoodsRow;
+
+                    gr.Delete();
+
+                    gta.Update(sds.Goods);
+                    GoodsInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.GoodsRow>(sds.Goods.ToList());
                     MessageBox.Show("删除信息成功！");
                 }
                 catch (Exception ex)

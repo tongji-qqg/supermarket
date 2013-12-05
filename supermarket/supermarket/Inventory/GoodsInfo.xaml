@@ -80,7 +80,6 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
-                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -100,9 +99,9 @@
                     <Label Content="保质时长"  Grid.Row="3"  Grid.Column="0" 
                            HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
    
-                    <Label Content="{Binding Path=GoodsID}" Grid.Row="0" Grid.Column="1"/>
-                    <TextBox Text="{Binding Path=GodosName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1"/>
-                    <TextBox Text="{Binding Path=GoodsType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"/>
+                    <Label Content="{Binding Path=GoodsID}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" />
+                    <TextBox Text="{Binding Path=GoodsName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" />
+                    <TextBox Text="{Binding Path=GoodsType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
 
                     <Grid Grid.Column="1" Grid.Row="3">
                         <Grid.ColumnDefinitions>
@@ -127,10 +126,8 @@
                            HorizontalAlignment="Center" Margin="0"  VerticalAlignment="Center" />
                     <TextBox Text="{Binding Path=Remark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3" Margin="3" />
 
-                    <Label Content="照片"  Grid.Row="0"  Grid.Column="3" 
-                           HorizontalAlignment="Center" Margin="0"  VerticalAlignment="Center" />
-                    <TextBox Text="{Binding Path=Photo}" Grid.Row="1" Grid.Column="3" Grid.RowSpan="3" Margin="3" />
-                    <Border Grid.Row="0" Grid.Column="4" Grid.RowSpan="4" BorderBrush="SteelBlue" BorderThickness="1" CornerRadius="5" >
+                  
+                    <Border Grid.Row="0" Grid.Column="3" Grid.RowSpan="4" BorderBrush="SteelBlue" BorderThickness="1" CornerRadius="5" >
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition />

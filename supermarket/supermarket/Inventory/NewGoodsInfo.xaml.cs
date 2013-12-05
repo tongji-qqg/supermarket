@@ -19,28 +19,28 @@ namespace supermarket.Inventory
     public partial class NewGoodsInfo : Window
     {
         #region Data
-        MarketDataSet mds;
-        MarketDataSet.GoodsRow gr;
+        SupermarketDataSet sds;
+        SupermarketDataSet.GoodsRow gr;
         #endregion
 
 
         public NewGoodsInfo()
         {
             InitializeComponent();
-            mds = new MarketDataSet();
+            sds = new SupermarketDataSet();
             loadData();
         }
 
-        public NewGoodsInfo(MarketDataSet set)
+        public NewGoodsInfo(SupermarketDataSet set)
         {
             InitializeComponent();
-            mds = set;
+            sds = set;
             loadData();
         }
 
         private void loadData()
         {
-            gr = mds.Goods.NewGoodsRow();
+            gr = sds.Goods.NewGoodsRow();
             newGoodsInfoGrid.DataContext = gr;
         }
 
@@ -49,11 +49,11 @@ namespace supermarket.Inventory
         {
             try
             {
-                mds.Goods.AddGoodsRow(gr);
+                sds.Goods.AddGoodsRow(gr);
 
-                MarketDataSetTableAdapters.GoodsTableAdapter gta =
-                    new MarketDataSetTableAdapters.GoodsTableAdapter();
-                gta.Update(mds.Goods);
+                SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
+                    new SupermarketDataSetTableAdapters.GoodsTableAdapter();
+                gta.Update(sds.Goods);
                 MessageBox.Show("信息已保存");
             }
             catch (Exception ex)
@@ -64,7 +64,7 @@ namespace supermarket.Inventory
         }
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
-            mds.Goods.RemoveGoodsRow(gr);
+            sds.Goods.RemoveGoodsRow(gr);
             this.Close();
         }
         #endregion
