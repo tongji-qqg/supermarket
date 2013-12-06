@@ -16,7 +16,7 @@ namespace supermarket
 {
     class MainController
     {
-        public MainController()
+        private MainController()
         {
             financeController = new finance.FinanceController();
             humanAffairController = new HumanAffair.HumanAffairController();
@@ -29,7 +29,24 @@ namespace supermarket
         supermarket.HumanAffair.HumanAffairController humanAffairController;
         supermarket.Inventory.InventoryController inventoryController;
         supermarket.sale.SaleController saleController;
+        static private MainController mc = new MainController();
+
+        
         #endregion 
+
+        #region function
+        static public MainController getMainController()
+        {
+            return mc;
+        }
+
+        public void startMainWindow(SupermarketDataSet.EmployeeRow er)
+        {
+            MainWindow mainWin = new MainWindow( er);
+            Application.Current.MainWindow = mainWin;
+            mainWin.Show();                            
+        }
+        #endregion
 
         #region interaction
         public void HumanAffair_Button_Click(object sender, SupermarketDataSet set)
@@ -67,6 +84,7 @@ namespace supermarket
                 switch (content)
                 {
                     case "商品档案":
+                        inventoryController.showGoodsInfo(set);
                         break;
                     case "收银":
                         saleController.showPos(1, "guoguo");

@@ -103,6 +103,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SupermarketDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="system\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="system\SystemController.cs" />
     <Page Include="finance\ExpenseInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -225,6 +229,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="system\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="system\LoginWindowStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -248,6 +260,7 @@
       <DependentUpon>POS.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Images\Thumbs.db" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -315,7 +328,41 @@
       <Name>DataGridFilterLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\20120513055821795_easyicon_cn_48.ico" />
+    <Resource Include="Images\20120513062941907_easyicon_cn_64.png" />
+    <Resource Include="Images\60007.bmp" />
+    <Resource Include="Images\a.png" />
+    <Resource Include="Images\bg.png" />
+    <Resource Include="Images\bg1.png" />
+    <Resource Include="Images\bg2.png" />
+    <Resource Include="Images\bg3.png" />
+    <Resource Include="Images\bg4.png" />
+    <Resource Include="Images\close0.png" />
+    <Resource Include="Images\close1.png" />
+    <Resource Include="Images\cloud.png" />
+    <Resource Include="Images\fullbox_desk_clear.png" />
+    <Resource Include="Images\fullbox_function_exam.png" />
+    <Resource Include="Images\fullbox_in.png" />
+    <Resource Include="Images\fullbox_member.png" />
+    <Resource Include="Images\fullbox_member1.png" />
+    <Resource Include="Images\fullbox_netspeed.png" />
+    <Resource Include="Images\fullbox_real_protect.png" />
+    <Resource Include="Images\fullbox_reg_clean.png" />
+    <Resource Include="Images\fullbox_strap_accelerate.png" />
+    <Resource Include="Images\fullbox_stuff.png" />
+    <Resource Include="Images\fullbox_time_protect.png" />
+    <Resource Include="Images\loginbody.png" />
+    <Resource Include="Images\logo32.ico" />
+    <Resource Include="Images\mini0.png" />
+    <Resource Include="Images\mini1.png" />
+    <Resource Include="Images\sun2.png" />
+    <Resource Include="Images\yezi2.png" />
+    <Resource Include="Images\yezi3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="skin\ico\fullbox_reg_clean.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

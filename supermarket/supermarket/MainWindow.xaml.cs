@@ -22,19 +22,74 @@ namespace supermarket
 
         #region Data Members
         private SupermarketDataSet supermarketDataSet;
-        private MainController mainCont = new MainController();
+        private MainController mainCont;
+        SupermarketDataSet.EmployeeRow employee;
+        Thickness[] tabMargins = {
+             new Thickness(5,0,0,0),
+             new Thickness(80,0,0,0),
+             new Thickness(155,0,0,0),
+             new Thickness(230,0,0,0),
+             new Thickness(305,0,0,0)
+        };
         #endregion
 
 
-        #region Constructor, Window_loaded
-        public MainWindow()
+        #region Constructor, Window_loaded，init
+        public MainWindow(SupermarketDataSet.EmployeeRow er)
         {
             InitializeComponent();
+            mainCont = MainController.getMainController();
+            employee = er;
+            accessCont(er);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             supermarketDataSet = ((supermarket.SupermarketDataSet)(this.FindResource("supermarketDataSet")));
+        }
+
+        private void accessCont(SupermarketDataSet.EmployeeRow er)
+        {
+            int count = 0;
+            if (er.PermissionInventory)
+            {
+                TabItemStock.Margin = tabMargins[count];
+                count++;
+            }
+            else 
+            {
+                TabItemStock.Visibility = Visibility.Collapsed;
+            }
+
+            if (er.PermissionSaleman || er.PermissionSaleManager)
+            {
+                TabItemSale.Margin = tabMargins[count];
+                count++;
+            }
+            else
+            {
+                TabItemSale.Visibility = Visibility.Collapsed;
+            }
+
+            if (er.PermissionFinance)
+            {
+                TabItemFinance.Margin = tabMargins[count++];
+            }
+            else
+            {
+                TabItemFinance.Visibility = Visibility.Collapsed;
+            }
+
+            if (er.PermissionHR)
+            {
+                TabItemHA.Margin = tabMargins[count++];
+            }
+            else
+            {
+                TabItemHA.Visibility = Visibility.Collapsed;
+            }
+
+            TabItemSys.Margin = tabMargins[count++];
         }
         #endregion
 

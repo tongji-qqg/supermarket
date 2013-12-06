@@ -75,7 +75,7 @@ namespace supermarket.sale
         #region interaction
         private void OptimizationHourClicked(object sender, RoutedEventArgs e)
         {
-            string name = OptimizationComboBox.Text;
+            string name = OptimizationComboBox.SelectedValue as string;
             if (name == null)
                 return;
             ShowCategoryNumChart(showSalesType.hour, name);
