@@ -1,0 +1,192 @@
+﻿<Window x:Class="supermarket.sale.Price"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
+        xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+        xmlns:filter="clr-namespace:DataGridFilterLibrary;assembly=DataGridFilterLibrary"        
+        xmlns:local="clr-namespace:supermarket"
+        Title="价格调整" Height="404" Width="565" Margin="1">
+    <DockPanel>
+
+        <ToolBar DockPanel.Dock="Top">
+
+            <StackPanel Margin="5" Orientation="Vertical">
+                <CheckBox IsChecked="False" Name="ShowHideFilterCheckBox">显示筛选条件</CheckBox>
+            </StackPanel>
+
+            <Separator/>
+
+            <Button Command="{Binding Path=(filter:DataGridExtensions.ClearFilterCommand), 
+                                       ElementName=SetPriceDataGrid}">清除筛选条件
+            </Button>
+        </ToolBar>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto" MinHeight="100"/>
+            </Grid.RowDefinitions>
+
+
+
+            <Border BorderBrush="SteelBlue" BorderThickness="1" CornerRadius="5"  Grid.Row="0" >
+                <DataGrid
+                       filter:DataGridExtensions.UseBackgroundWorkerForFiltering="True"
+                        
+                       filter:DataGridExtensions.IsClearButtonVisible="False"
+                        
+
+                        filter:DataGridExtensions.IsFilterVisible="{Binding 
+                                                                  Path=IsChecked,
+                                                                  ElementName=ShowHideFilterCheckBox, Mode=TwoWay}"
+                       
+                       ColumnHeaderStyle="{StaticResource {ComponentResourceKey 
+		                       TypeInTargetAssembly={x:Type filter:DataGridHeaderFilterControl}, 
+		                       ResourceId=DataGridHeaderFilterControlStyle}}"
+                        
+                        IsReadOnly="True" 
+                     SelectionChanged="InventoryInfoDataGrid_SelectionChanged"
+                        AutoGenerateColumns="False"                                                
+                        x:Name="SetPriceDataGrid"
+                        CanUserAddRows="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="库存编号" 
+                             Binding="{Binding Path=StorageID,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                             filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
+
+                        <DataGridTextColumn Header="商品编号" 
+                             Binding="{Binding Path=GoodsID,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                              filter:DataGridColumnExtensions.DoNotGenerateFilterControl="False" />
+
+                        <DataGridTextColumn Header="商品数量" 
+                             Binding="{Binding Path=GoodsNum,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                              filter:DataGridColumnExtensions.DoNotGenerateFilterControl="False" />
+
+                        <DataGridTextColumn Header="购入价格" 
+                             Binding="{Binding Path=PurchasePrice,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                             filter:DataGridColumnExtensions.DoNotGenerateFilterControl="False" />
+
+                        <DataGridTextColumn Header="生产日期" 
+                           Binding="{Binding Path=ProductionDate,Mode=OneWay, UpdateSourceTrigger=PropertyChanged,StringFormat='yyyy-MM-dd'}"
+                            filter:DataGridColumnExtensions.DoNotGenerateFilterControl="False" />
+
+                        <DataGridTextColumn Header="售价" 
+                             Binding="{Binding Path=SalePrice,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                             filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
+
+                        <DataGridTextColumn Header="折扣(%)" 
+                             Binding="{Binding Path=Discount,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                             filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
+
+                        <DataGridTextColumn Header="会员价格" 
+                             Binding="{Binding Path=MemberPrice,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                             filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
+
+                        <DataGridTextColumn Header="会员折扣" 
+                             Binding="{Binding Path=MemberDiscount,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                             filter:DataGridColumnExtensions.DoNotGenerateFilterControl="True" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+            <Border BorderBrush="SteelBlue" BorderThickness="1" CornerRadius="5" Grid.Row="1" Margin="0,5,0,0">
+                <Grid x:Name="SelectedInventoryEntry">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+<!--第一列-->
+                    <Label Content="库存编号"  Grid.Column="0" Grid.Row="0"
+                           HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
+
+                    <Label Content="定价"  Grid.Column="0" Grid.Row="1"
+                           HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
+
+                    <Label Content="折扣"  Grid.Column="0" Grid.Row="2"
+                           HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
+
+                    <Label Content="利润"  Grid.Column="0" Grid.Row="3"
+                           HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
+
+<!--第二列-->
+                    <Label Content="{Binding Path=StorageID}" Grid.Column="1" Grid.Row="0"
+                           HorizontalAlignment="Left" Margin="0"  VerticalAlignment="Center" />
+
+                    <TextBox Name="SalePriceTextBox" KeyDown="SalePriceTextBox_KeyDown" 
+                             TextChanged="SalePriceTextBox_TextChanged"
+                             Text="{Binding Path=SalePrice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                             
+                             Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" />
+
+                    <StackPanel Grid.Column="1" Grid.Row="2" >
+                        <UniformGrid Columns="3" Rows="0" Margin="1">
+                            <TextBlock Text="{Binding ElementName=discountPriceSlider,Path=Minimum}" TextAlignment="Left" Foreground="Black"/>
+                            <TextBlock Text="{Binding ElementName=discountPriceSlider,Path=Value}" TextAlignment="Center" Foreground="Black"/>
+                            <TextBlock Text="100%" TextAlignment="Right" Foreground="Black" HorizontalAlignment="Stretch" />
+                            
+                        </UniformGrid>
+                        <Slider Name="discountPriceSlider"  Grid.Row="1" Grid.Column="1"
+                                Value="{Binding Path=Discount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Maximum="100" Minimum="0" 
+                            IsSnapToTickEnabled="True" TickPlacement="TopLeft"  />
+                    </StackPanel>
+                    
+                    <Label x:Name="profit" Grid.Column="1" Grid.Row="3"/>
+<!--第三列-->
+                    <Label Content="库存编号"  Grid.Column="2" Grid.Row="0"
+                           HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
+
+                    <Label Content="会员优惠价"  Grid.Column="2" Grid.Row="1"
+                           HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
+
+                    <Label Content="会员优惠折扣"  Grid.Column="2" Grid.Row="2"
+                           HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
+
+                    <Label Content="会员利润"  Grid.Column="2" Grid.Row="3"
+                           HorizontalAlignment="Right" Margin="0"  VerticalAlignment="Center" />
+
+<!--第四列-->
+                    <Label Content="{Binding Path=StorageID}" Grid.Column="3" Grid.Row="0"
+                           HorizontalAlignment="Left" Margin="0"  VerticalAlignment="Center" />
+
+                    <TextBox x:Name="MemberPrice" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" 
+                             KeyDown="MemberPrice_KeyDown" TextChanged="MemberPrice_TextChanged" 
+                            
+                             Text="{Binding Path=MemberPrice}"/>                    
+
+                    <StackPanel Grid.Column="3" Grid.Row="2" >
+                        <UniformGrid Columns="3" Rows="0" Margin="1">
+                            <TextBlock Text="{Binding ElementName=MemberdiscountPriceSlider,Path=Minimum}" TextAlignment="Left" Foreground="Black"/>
+                            <TextBlock Text="{Binding ElementName=MemberdiscountPriceSlider,Path=Value}" TextAlignment="Center" Foreground="Black"/>
+                            <TextBlock Text="100%" TextAlignment="Right" Foreground="Black" HorizontalAlignment="Stretch" />
+                            
+                        </UniformGrid>
+                        <Slider Value="{Binding Path=MemberDiscount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                Name="MemberdiscountPriceSlider"  Grid.Row="1" Grid.Column="1"
+                            Maximum="100" Minimum="0" 
+                            IsSnapToTickEnabled="True" TickPlacement="TopLeft"  />
+                    </StackPanel>
+                    
+                    <Label x:Name="memberProfit" Grid.Column="3" Grid.Row="3"/>
+<!--第五列-->
+                    <Border Grid.Row="0" Grid.Column="4" Grid.RowSpan="4" BorderBrush="SteelBlue" BorderThickness="1" CornerRadius="5" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Button Content="保存" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Save_Button_Click" />
+                            <Button Content="计算利润" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Cal_Button_Click" />
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>
