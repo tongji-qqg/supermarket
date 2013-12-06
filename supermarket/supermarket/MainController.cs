@@ -22,6 +22,7 @@ namespace supermarket
             humanAffairController = new HumanAffair.HumanAffairController();
             inventoryController = new Inventory.InventoryController();
             saleController = new sale.SaleController();
+            systemController = new system.SystemController();
         }
 
         #region data
@@ -29,6 +30,7 @@ namespace supermarket
         supermarket.HumanAffair.HumanAffairController humanAffairController;
         supermarket.Inventory.InventoryController inventoryController;
         supermarket.sale.SaleController saleController;
+        supermarket.system.SystemController systemController;
         static private MainController mc = new MainController();
 
         
@@ -169,6 +171,40 @@ namespace supermarket
                     window.Show();
             }
         }
+
+        public void System_Button_Click(object sender, SupermarketDataSet set)
+        {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                string content = button.Content as string;
+                Window window = null;
+                switch (content)
+                {
+                    case "修改密码":
+                        {
+                            systemController.showChangePassword(set);
+                            break; 
+                        }
+                  
+                    case "切换账号":
+                        {
+                            systemController.showChangeUser(set);
+                            break; 
+                        }
+                    default: 
+                        { 
+                        break; 
+                        }
+
+                }
+
+                if (window != null)
+                    window.Show();
+            }
+        }
+
+
         #endregion
     }
 }

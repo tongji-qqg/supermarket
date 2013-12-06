@@ -6,10 +6,15 @@ using System.Windows;
 
 namespace supermarket.system
 {
+
+
     class SystemController
     {
+        public static int employeeID = -1;
         public static int  tryTimes = 0;
         private bool flag = false;
+        private Window ChangePasswordWin;
+        private Window ChangeUserWin;
 
         public int getTryTimes()
         {
@@ -48,6 +53,7 @@ namespace supermarket.system
                 }
                 else if (er.Password == pwd)
                 {
+                   
                     flag = true;
                 }
                 else
@@ -62,9 +68,47 @@ namespace supermarket.system
                 throw new Exception(ex.Message);
             }
             if (flag)
+            {
+                employeeID = id;
                 return er;
+            }
             else
                 return null;
         }
+
+
+        public void showChangePassword(SupermarketDataSet set)
+        {
+            if (!showIfWindowAlive(ChangePasswordWin))
+            {
+                ChangePasswordWin = new supermarket.system.ChangePasswordWindow();
+                ChangePasswordWin.Show();
+            }
+        }
+
+        public void showChangeUser(SupermarketDataSet set)
+        {
+            if (!showIfWindowAlive(ChangeUserWin))
+            {
+                ChangeUserWin = new supermarket.system.LoginWindow();
+                ChangeUserWin.Show();
+            }
+        }
+
+        private bool showIfWindowAlive(Window w)
+        {
+            if (w != null && w.IsVisible)
+            {
+                w.Activate();
+                return true;
+            }
+            else
+                return false;
+        }
+    
+    
     }
+
+
+    
 }

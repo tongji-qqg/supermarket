@@ -18,7 +18,14 @@ namespace supermarket.system
     /// <summary>
     /// LoginWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginWindow : Window
+    /// 
+
+    interface login
+    {
+        int TestButtonDown(object sender, RoutedEventArgs e);
+    }
+
+    public partial class LoginWindow : Window,login
     {
         public LoginWindow()
         {
@@ -128,5 +135,26 @@ namespace supermarket.system
             App.Current.Shutdown();
         }
         #endregion
+
+        int login.TestButtonDown(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                LoginInButtonDown(sender, e);
+            }
+            catch
+            {
+
+            }
+
+            return 1;
+        }
+
+        public int loginTest()
+        {
+            return 1;
+        }
+
+
     }
 }
