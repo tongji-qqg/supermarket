@@ -47,6 +47,11 @@ namespace supermarket.Inventory
         #region interact
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (gr.IsGoodsNameNull() || gr.IsDurabilityPeriodNull())
+            {
+                MessageBox.Show("请输入完整信息!");
+                return;
+            }
             try
             {
                 sds.Goods.AddGoodsRow(gr);
@@ -63,8 +68,7 @@ namespace supermarket.Inventory
             }
         }
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
-        {
-            sds.Goods.RemoveGoodsRow(gr);
+        {            
             this.Close();
         }
         #endregion

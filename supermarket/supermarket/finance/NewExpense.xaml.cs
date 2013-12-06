@@ -47,6 +47,11 @@ namespace supermarket.finance
         #region interact
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (er.IsMoneyNull() || er.IsReasonNull())
+            {
+                MessageBox.Show("请输入完整信息！");
+                return;
+            }
             try
             {
                 er.Date = System.DateTime.Now;

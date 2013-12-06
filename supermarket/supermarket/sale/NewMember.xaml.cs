@@ -47,6 +47,11 @@ namespace supermarket.sale
         #region interact
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (mr.IsMemberNameNull() || mr.IsMemberSexNull())
+            {
+                MessageBox.Show("请输入完整信息！");
+                return;
+            }
             try
             {
                 sds.Member.AddMemberRow(mr);

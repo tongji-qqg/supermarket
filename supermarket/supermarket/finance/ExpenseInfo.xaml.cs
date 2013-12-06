@@ -48,5 +48,6 @@ namespace supermarket.finance
                new ObservableCollection<SupermarketDataSet.ExpenseRow>(sds.Expense.ToList());
         }
         #endregion
+
     }
 }

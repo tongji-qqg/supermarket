@@ -51,6 +51,11 @@ namespace supermarket.HumanAffair
         #region interact
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (er.IsNameNull() || er.IsDepartmentIDNull())
+            {
+                MessageBox.Show("请输入完整信息！");
+                return;
+            }
             try
             {
                 er.StartWorkDate = System.DateTime.Now;

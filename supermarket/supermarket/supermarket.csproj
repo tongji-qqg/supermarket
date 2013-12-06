@@ -65,6 +65,7 @@
     <Compile Include="finance\ExpenseInfo.xaml.cs">
       <DependentUpon>ExpenseInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="finance\FinanceController.cs" />
     <Compile Include="finance\NewExpense.xaml.cs">
       <DependentUpon>NewExpense.xaml</DependentUpon>
     </Compile>
@@ -74,6 +75,9 @@
     <Compile Include="finance\Salary.xaml.cs">
       <DependentUpon>Salary.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HumanAffair\HumanAffairController.cs" />
+    <Compile Include="Inventory\InventoryController.cs" />
+    <Compile Include="MainController.cs" />
     <Compile Include="sale\MemberInfo.xaml.cs">
       <DependentUpon>MemberInfo.xaml</DependentUpon>
     </Compile>
@@ -92,6 +96,7 @@
     <Compile Include="sale\SaleAnalysis.xaml.cs">
       <DependentUpon>SaleAnalysis.xaml</DependentUpon>
     </Compile>
+    <Compile Include="sale\SaleController.cs" />
     <Compile Include="sale\SqlConnector.cs" />
     <Compile Include="SupermarketDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

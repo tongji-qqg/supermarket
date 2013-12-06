@@ -22,6 +22,7 @@ namespace supermarket
 
         #region Data Members
         private SupermarketDataSet supermarketDataSet;
+        private MainController mainCont = new MainController();
         #endregion
 
 
@@ -46,134 +47,25 @@ namespace supermarket
 
         private void HumanAffair_Button_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            if (button != null)
-            {               
-                string content = button.Content as string;
-                Window window = null;
-                switch (content)
-                {
-                    case "招聘新员工":
-                        window = new supermarket.HumanAffair.NewEmployee(supermarketDataSet);
-                        break;
-                    case "员工信息":                        
-                    case "职位调动":                        
-                    case "解聘员工":
-                        window = new supermarket.HumanAffair.EmployeeInfo(supermarketDataSet);                        
-                        break;
-                    case "系统使用权限":
-                        window = new supermarket.HumanAffair.UsePermission(supermarketDataSet);
-                        break;
-                    default:
-                        break;
-                }
-
-                if (window != null)
-                    window.Show();
-            }
+            mainCont.HumanAffair_Button_Click(sender, supermarketDataSet);
         }
 
 
         private void Sale_Button_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            if (button != null)
-            {
-                string content = button.Content as string;
-                Window window = null;
-                switch (content)
-                {
-                    case "商品档案":
-                        break;
-                    case "收银":      
-                        Suppermarket_POS.POS  pos= new Suppermarket_POS.POS(1,"guoguo");            
-                        pos.Show();
-                        break;
-                    case "新加会员":
-                        window = new supermarket.sale.NewMember(supermarketDataSet);
-                        break;
-                    case "会员管理":
-                        window = new supermarket.sale.MemberInfo(supermarketDataSet);
-                        break;
-                    case "价格调整":
-                        window = new supermarket.sale.Price(supermarketDataSet);
-                        break;
-                    case "销售分析":
-                        window = new supermarket.sale.SaleAnalysis(supermarketDataSet);
-                        break;
-                    default:
-                        break;
-                }
-
-                if (window != null)
-                    window.Show();
-            }
+            mainCont.Sale_Button_Click(sender, supermarketDataSet);
         }
 
 
         private void Finance_Button_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            if (button != null)
-            {
-                string content = button.Content as string;
-                Window window = null;
-                switch (content)
-                {
-                    case "日常支出":
-                        window = new supermarket.finance.NewExpense(supermarketDataSet);
-                        break;
-                    case "日常支出查看":
-                        window = new supermarket.finance.ExpenseInfo(supermarketDataSet);
-                        break;
-                    case "工资发放管理":
-                        window = new supermarket.finance.Salary(supermarketDataSet);
-                        break;
-                    case "利润报表":
-                        window = new supermarket.finance.Profit(supermarketDataSet);
-                        break;                   
-                    default:
-                        break;
-                }
-
-                if (window != null)
-                    window.Show();
-            }
+            mainCont.Finance_Button_Click(sender, supermarketDataSet);
         }
 
 
         private void Inventory_Button_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            if (button != null)
-            {
-                string content = button.Content as string;
-                Window window = null;
-                switch (content)
-                {
-                    case "添加新商品":
-                        window = new supermarket.Inventory.NewGoodsInfo(supermarketDataSet);
-                        break;
-                    case "管理商品档案":
-                        window = new supermarket.Inventory.GoodsInfo(supermarketDataSet);
-                        break;
-                    case "商品入库":
-                        window = new supermarket.Inventory.InInventory(supermarketDataSet);
-                        break;
-                    case "商品出库":
-
-                    case "库存查询":
-                        
-                    case "过期管理":
-                        window = new supermarket.Inventory.InventoryInfo(supermarketDataSet);
-                        break;
-                    default:
-                        break;
-                }
-
-                if (window != null)
-                    window.Show();
-            }
+            mainCont.Inventory_Button_Click(sender, supermarketDataSet);
         }
         #endregion
 
