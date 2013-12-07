@@ -5,12 +5,24 @@
         Height="610" Width="860" 
         AllowsTransparency="True" 
         WindowStyle="None" 
+        xmlns:my="clr-namespace:supermarket"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Closing="Window_Closing"
         Loaded="Window_Loaded"
         Background="{x:Null}" 
     >
     <Window.Resources>
+          <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="style/TabControlStyle.xaml"/>
+            <ResourceDictionary Source="style/SysButtonStyle.xaml"/>
+            <ResourceDictionary Source="style/MenuItemStyle.xaml"/>
+            <ResourceDictionary Source="style/ButtonResource.xaml"/>
+            <ResourceDictionary Source="style/MyStyles.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+            <my:SupermarketDataSet x:Key="supermarketDataSet" />
+        </ResourceDictionary>
+        
     </Window.Resources>
 
     <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Margin="10">

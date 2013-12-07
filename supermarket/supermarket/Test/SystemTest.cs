@@ -42,11 +42,10 @@ namespace supermarket.Test
                    SystemController controller = new SystemController();
 
                    SupermarketDataSet.EmployeeRow er
-                       = controller.processLogin(1, "888888");    
-                   MainWindow testWindow = new MainWindow(er);
-                   SupermarketDataSet sds = ((supermarket.SupermarketDataSet)(testWindow.FindResource("supermarketDataSet")));
-
-                   controller.changePassword("888888", "999999", sds);
+                       = controller.processLogin(1, "888888");
+                   //supermarket.Inventory.GoodsInfo gi = new Inventory.GoodsInfo();
+                   //AvalonDataBindingTraceTester.TestDataBindingsForObject(gi);
+                   //AvalonTestRunner.RunDataBindingTests(gi);                                     
                 });
         }
 
