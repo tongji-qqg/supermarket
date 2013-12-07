@@ -55,9 +55,12 @@ namespace supermarket
         private void accessCont(SupermarketDataSet.EmployeeRow er)
         {
             int count = 0;
+            TabItem ti = null;
             if (er.PermissionInventory)
             {
                 TabItemStock.Margin = tabMargins[count];
+                if (count == 0)
+                    ti = TabItemStock;
                 count++;
             }
             else 
@@ -68,6 +71,8 @@ namespace supermarket
             if (er.PermissionSaleman || er.PermissionSaleManager)
             {
                 TabItemSale.Margin = tabMargins[count];
+                if (count == 0)
+                    ti = TabItemSale;
                 count++;
             }
             else
@@ -77,7 +82,10 @@ namespace supermarket
 
             if (er.PermissionFinance)
             {
-                TabItemFinance.Margin = tabMargins[count++];
+                TabItemFinance.Margin = tabMargins[count];
+                if (count == 0)
+                    ti = TabItemFinance;
+                count++;
             }
             else
             {
@@ -86,7 +94,10 @@ namespace supermarket
 
             if (er.PermissionHR)
             {
-                TabItemHA.Margin = tabMargins[count++];
+                TabItemHA.Margin = tabMargins[count];
+                if (count == 0)
+                    ti = TabItemHA;
+                count++;
             }
             else
             {
@@ -94,6 +105,10 @@ namespace supermarket
             }
 
             TabItemSys.Margin = tabMargins[count++];
+            if (count == 0)
+                ti = TabItemSys;
+
+            ti.Focus();
         }
         #endregion
 
@@ -180,7 +195,7 @@ namespace supermarket
         public static string ConnectFailed = "连接数据库失败！";
         public static string InfoNotComplete = "请输入完整信息！";
         public static string InfoFormatError = "数据格式错误！";
-        public static string InfoSaved = "信息以保存!";
+        public static string InfoSaved = "信息已保存!";
         public static string SaveFailed = "保存失败！";
         public static string DeleteSucceed = "删除成功！";
         public static string DeleteFailed = "删除失败！";

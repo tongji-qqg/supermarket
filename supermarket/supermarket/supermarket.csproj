@@ -120,6 +120,10 @@
     </Compile>
     <Compile Include="sale\SaleController.cs" />
     <Compile Include="sale\SqlConnector.cs" />
+    <Compile Include="SupermarketDataSet.cs">
+      <DependentUpon>SupermarketDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SupermarketDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -94,7 +94,7 @@ namespace supermarket
                 Window window = null;
                 switch (content)
                 {
-                    case "商品档案":
+                    case "查看商品档案":
                         inventoryController.showGoodsInfo(set);
                         break;
                     case "收银":

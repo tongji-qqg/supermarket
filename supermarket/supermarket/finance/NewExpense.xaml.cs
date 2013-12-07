@@ -56,6 +56,7 @@ namespace supermarket.finance
             {
                 er.Date = System.DateTime.Now;
                 er.EmployeeID = 0;
+
                 sds.Expense.AddExpenseRow(er);
                 SupermarketDataSetTableAdapters.ExpenseTableAdapter eta =
                    new SupermarketDataSetTableAdapters.ExpenseTableAdapter();

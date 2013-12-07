@@ -12,16 +12,7 @@
         Background="{x:Null}" 
     >
     <Window.Resources>
-          <ResourceDictionary>
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="style/TabControlStyle.xaml"/>
-            <ResourceDictionary Source="style/SysButtonStyle.xaml"/>
-            <ResourceDictionary Source="style/MenuItemStyle.xaml"/>
-            <ResourceDictionary Source="style/ButtonResource.xaml"/>
-            <ResourceDictionary Source="style/MyStyles.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
-            <my:SupermarketDataSet x:Key="supermarketDataSet" />
-        </ResourceDictionary>
+
         
     </Window.Resources>
 

@@ -339,9 +339,9 @@ namespace Suppermarket_POS
             /*商品库存数量减少*/
             if (isMember)
             {
-                DataRow member = memberConnector.DataTable.Rows.Find(Convert.ToInt64(textBoxMemberID.Text));
-                member["MemberPoint"] = (int)member["MemberPoint"] + Convert.ToDouble(total);
-                textBoxMemberScore.Text = member["MemberPoint"].ToString();
+                //DataRow member = memberConnector.DataTable.Rows.Find(Convert.ToInt64(textBoxMemberID.Text));
+                //member["MemberPoint"] = (int)member["MemberPoint"] + Convert.ToDouble(total);
+                //textBoxMemberScore.Text = member["MemberPoint"].ToString();
             }
             //更新数据库
             salesOrderConnector.Update();
