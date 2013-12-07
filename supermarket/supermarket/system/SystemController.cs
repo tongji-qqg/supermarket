@@ -76,6 +76,18 @@ namespace supermarket.system
                 return null;
         }
 
+        public SupermarketDataSet.EmployeeRow changePassword(string oldPwd,string newPwd,SupermarketDataSet sds)
+        {
+            sds.Employee.FindByEmployeeID(SystemController.employeeID)["Password"] = newPwd;
+
+            SupermarketDataSetTableAdapters.EmployeeTableAdapter eta =
+                 new SupermarketDataSetTableAdapters.EmployeeTableAdapter();
+
+            eta.Update(sds.Employee);
+
+            return sds.Employee.FindByEmployeeID(SystemController.employeeID);
+        }
+
 
         public void showChangePassword(SupermarketDataSet set)
         {

@@ -21,6 +21,7 @@ namespace supermarket.system
         #region  Data
         SupermarketDataSet sds;
         SupermarketDataSet.EmployeeRow er;
+        SystemController systemcontroller = new SystemController();
         #endregion
 
         #region constructors
@@ -67,14 +68,7 @@ namespace supermarket.system
             {
                 try
                 {
-                    
-                    sds.Employee.FindByEmployeeID(SystemController.employeeID)["Password"] = NewPassword.Password;
-
-                    SupermarketDataSetTableAdapters.EmployeeTableAdapter eta =
-                        new SupermarketDataSetTableAdapters.EmployeeTableAdapter();
-
-                    eta.Update(sds.Employee);
-
+                    systemcontroller.changePassword(OldPassword.Password, NewPassword.Password, sds);
                     this.Close();
                 }
                 catch
@@ -95,5 +89,17 @@ namespace supermarket.system
             this.Close();
         }
 
+        public void test(string oldPwd,string newPwd)
+        {
+            InitializeComponent();
+            sds = new SupermarketDataSet();
+            loadData();
+
+            OldPassword.Password = oldPwd;
+            NewPassword.Password = newPwd;
+
+            ConfirmButton_Click(this, new RoutedEventArgs());
+
+        }
     }
 }

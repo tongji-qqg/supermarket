@@ -20,12 +20,7 @@ namespace supermarket.system
     /// </summary>
     /// 
 
-    interface login
-    {
-        int TestButtonDown(object sender, RoutedEventArgs e);
-    }
-
-    public partial class LoginWindow : Window,login
+    public partial class LoginWindow : Window
     {
         public LoginWindow()
         {
@@ -100,7 +95,7 @@ namespace supermarket.system
             else this.WindowState = System.Windows.WindowState.Minimized; ;
         }
         #endregion
-
+        
         #region login
         private void LoginInButtonDown(object sender, RoutedEventArgs e)
         {
@@ -136,23 +131,9 @@ namespace supermarket.system
         }
         #endregion
 
-        int login.TestButtonDown(object sender, RoutedEventArgs e)
+        public void loginTest()
         {
-            try
-            {
-                LoginInButtonDown(sender, e);
-            }
-            catch
-            {
-
-            }
-
-            return 1;
-        }
-
-        public int loginTest()
-        {
-            return 1;
+            
         }
 
 
