@@ -40,7 +40,6 @@
       <HintPath>.\DynamicDataDisplay.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -133,7 +132,6 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="system\SystemController.cs" />
-    <Compile Include="Test\SystemTest.cs" />
     <Page Include="finance\ExpenseInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -333,10 +331,6 @@
     <Resource Include="skin\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AvalonUnitTesting\AvalonUnitTesting.csproj">
-      <Project>{0071B386-1F4D-45D4-9D1B-4B11385B5E1C}</Project>
-      <Name>AvalonUnitTesting</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataGridFilterLibrary\DataGridFilterLibrary.csproj">
       <Project>{512FD53F-9AD1-46A1-A961-9FABDFAD50C5}</Project>
       <Name>DataGridFilterLibrary</Name>
