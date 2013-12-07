@@ -28,15 +28,15 @@ namespace Suppermarket_POS
         public POS(long id, string name)
         {
             InitializeComponent();
-            //初始化条目数、是否会员、收银员信息
+            //initialize number of items、details of cashiers、define whether he is a member
             rowNum = 0;
             isMember = false;
             employeeID = id;
             employeeName = name;
-            //界面显示收银员姓名、工号显示
+            //show cashier's name and ID
             textBoxEmployeeID.Text = employeeID.ToString();
             textBoxCashier.Text = employeeName;
-            //画viewTable"
+            //construct viewTable
             viewTable = new DataTable();
             viewTable.Columns.Add("序号",typeof(int));
             viewTable.Columns.Add("商品编号", typeof(string));
@@ -44,20 +44,20 @@ namespace Suppermarket_POS
             viewTable.Columns.Add("单价", typeof(string));
             viewTable.Columns.Add("数量", typeof(int));
             viewTable.Columns.Add("小计", typeof(string));
-            //数据库表的连接
+            //connect to database
             goodsConnector = new SqlConnector("select * from Goods");
             salesOrderConnector = new SqlConnector("select * from SalesOrder");
             salesInfoConnector = new SqlConnector("select * from SalesInfo");
             inventoryConnector = new SqlConnector("select * from Inventory");
             memberConnector = new SqlConnector("select * from Member");
             
-            //生成新的订单、获取订单号
+            //generate new order, get ID of the order 
             newOrder = salesOrderConnector.DataTable.NewRow();
             salesOrderConnector.DataTable.Rows.Add(newOrder);
             salesOrderConnector.Update();
             newOrder["employeeID"] = employeeID;
             salesID = (long)newOrder["SalesID"];
-            //dataGridView的初始设定
+            //initialize dataGridView
             dataGridView1.DataSource = viewTable;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.Columns[0].FillWeight = 8;
@@ -72,11 +72,10 @@ namespace Suppermarket_POS
             dataGridView1.Columns[3].ReadOnly = true;
             dataGridView1.Columns[4].ReadOnly = true;
             dataGridView1.Columns[5].ReadOnly = true;
-            //编辑时事件
             //dataGridView1.CellParsing += new DataGridViewCellParsingEventHandler(dataGridView1_CellParsing);
-            //添加单元格编辑结束触发事件
+            //generate a cell edit to terminate the event
             dataGridView1.CellEndEdit += new DataGridViewCellEventHandler(dataGridView1_CellEndEdit);
-            //添加窗口关闭触发事件
+            //generate a new window to close  the event
             this.FormClosing += new FormClosingEventHandler(POS_FormClosing);
             this.KeyPreview = true;
             /*this.KeyPress += new KeyPressEventHandler(POS_KeyPress);
@@ -87,7 +86,7 @@ namespace Suppermarket_POS
             this.WindowState = FormWindowState.Maximized;
         }
         
-        //添加商品
+        //add a product
         private void AddProduct()
         {
             long storageID = -1;
@@ -144,18 +143,18 @@ namespace Suppermarket_POS
 
             int numAfterAdd = num;
 
-            //若已经有该商品,合并项目
+            //if there exists the product, it combines
             if (existedRow.GetLength(0) != 0)
             {
                 numAfterAdd = (int)existedRow[0]["数量"] + num;
                 
-                //显示出来的商品数量、小计增加
+                //increase the number and the price of product
                 existedRow[0]["数量"] = (int)existedRow[0]["数量"] + num;
                 existedRow[0]["小计"] = (Convert.ToDouble(
                     existedRow[0]["单价"]) * (int)existedRow[0]["数量"]).ToString("f2");
 
 
-                //详单数量、小计修改
+                //revise the number and the price of product
                 DataRow[] existedInfo = salesInfoConnector.DataTable.Select(
                     "SalesID = " + salesID.ToString() + " and StorageID = " + storageID.ToString());
                 existedInfo[0]["GoodsNum"] = existedRow[0]["数量"];
@@ -163,7 +162,7 @@ namespace Suppermarket_POS
             }
             else
             {
-                //折扣率
+                //discount rate
                 Double discount = 100;
                 double salePrice = Convert.ToDouble(goodsInventory["PurchasePrice"]);
                 try
@@ -174,7 +173,7 @@ namespace Suppermarket_POS
                 double memberPrice = 0;
                 int memberDiscount = 100;
 
-                //要显示的一行商品信息
+                //detail of the product chosen
                 DataRow dr = viewTable.NewRow();
                 dr["序号"] = ++rowNum;
                 dr["商品编号"] = storageID;
@@ -220,7 +219,7 @@ namespace Suppermarket_POS
                 }
                 dr["数量"] = num;
                 dr["小计"] = (Convert.ToDouble(dr["单价"]) * num).ToString("f2");
-                //在数据表里为这份订单添加一行salesInfo
+                //put salesInfo into table for the order
                 DataRow newInfo = salesInfoConnector.DataTable.NewRow();
                 newInfo["SalesID"] = salesID;
                 newInfo["StorageID"] = storageID;
@@ -228,16 +227,16 @@ namespace Suppermarket_POS
                 newInfo["SubPrice"] = dr["小计"];
                 salesInfoConnector.DataTable.Rows.Add(newInfo);
 
-                //添加该行商品并修改总价、数量
+                //add the product and revise the number and total price
                 viewTable.Rows.Add(dr);
             }
-            //更新datatable里商品库存数量
+            //update the number of stock in datatable
             goodsInventory["GoodsNum"] = (int)goodsInventory["GoodsNum"] - num;            
-            //更新总价，还原默认数量
+            //update the total price and recovery initial number
             UpdateTotal();
             textBoxNum.Text = "1";
         }
-        //确认会员
+        //confirm if he is a member
         private void GetMember()
         {
             if (isMember)
@@ -266,13 +265,12 @@ namespace Suppermarket_POS
                 textBoxMemberID.ReadOnly = true;
                 buttonGetMember.Visible = false;
 
-                //保留到“分”
+                //save the price to cent
                 string discountedTotal = (Convert.ToDouble(textBoxTotal.Text) * 0.9).ToString("f2");
-                //小数点后2位的形式显示
                 //textBoxDiscountedTotal.Text = Convert.ToDouble(discountedTotal).ToString("f2");
             }
         }        
-        //取消交易
+        //cancel the trade
         private void CancelOrder()
         {
             if (MessageBox.Show(
@@ -285,16 +283,16 @@ namespace Suppermarket_POS
                 OrderFinishedForm();
             }
         }       
-        //确认交易
+        //confirm the order
         private void ConfirmOrder()
         {
-            //是否有商品
+            //check if there exists the product
             if (rowNum == 0)
             {
                 MessageBox.Show("没有商品售出！");
                 return;
             }
-            //是否会员，确认最终总价，积分累积
+            //check if he is a member，get the final price
             string total = textBoxTotal.Text;
             /*
             if (isMember)
@@ -306,10 +304,10 @@ namespace Suppermarket_POS
                 total = textBoxTotal.Text;
             }
              * */
-            //新订单属性赋值
+            //set values to attributes of a new order
             newOrder["TotalPrice"] = total;
             newOrder["SalesDate"] = DateTime.Now;
-            //应收、实收、找零
+            //exchange
             MessageBox.Show("应收：" + total);
             double actualPay;
             try
@@ -329,31 +327,31 @@ namespace Suppermarket_POS
                 return;
             }
             textBoxActualPay.Text = actualPay.ToString("f2");
-            //找零保留到“角”
+            //save price to jiao
             string change = (actualPay - Convert.ToDouble(total)).ToString("f1");
             change = Convert.ToDouble(change).ToString("f2");
             MessageBox.Show("找零: " + change, "找零");
             textBoxChange.Text = change;
             newOrder["ActualPay"] = actualPay;
             newOrder["Change"] = change;
-            /*商品库存数量减少*/
+            /*decrease the number of stock*/
             if (isMember)
             {
                 DataRow member = memberConnector.DataTable.Rows.Find(Convert.ToInt64(textBoxMemberID.Text));
                 member["MemberPoint"] = (int)member["MemberPoint"] + Convert.ToDouble(total);
                 textBoxMemberScore.Text = member["MemberPoint"].ToString();
             }
-            //更新数据库
+            //update database
             salesOrderConnector.Update();
             salesInfoConnector.Update();
             inventoryConnector.Update();
             goodsConnector.Update();
             memberConnector.Update();
             MessageBox.Show("交易成功！");
-            //结束、只能查看交易
+            //finish the trade
             OrderFinishedForm();
         }        
-        //新建交易
+        //generate a new order
         private void NewOrder()
         {
             if (salesID != -1)
@@ -370,7 +368,7 @@ namespace Suppermarket_POS
             salesID = (long)newOrder["SalesID"];
             ResetForm();
         }      
-        //删除条目
+        //delete item
         private void DeleteItem()
         {
             int count = dataGridView1.SelectedRows.Count;
@@ -398,7 +396,7 @@ namespace Suppermarket_POS
 
                             DataRow goodsInventory = inventoryConnector.DataTable.Rows.Find(storageID);
                             DataRow goods = goodsConnector.DataTable.Rows.Find(goodsInventory["GoodsID"]);
-                            //更新商品库存
+                            //update the stock information
                             int num = (int)dataGridView1.Rows[i].Cells["数量"].Value;
                             goodsInventory["GoodsNum"] = (int)goodsInventory["GoodsNum"] + num;
                    
@@ -410,7 +408,6 @@ namespace Suppermarket_POS
                                 viewTable.Rows[j]["序号"] = j + 1;
                             salesInfoConnector.DataTable.Rows.Remove(infoRows[0]);
 
-                            //删除之后之后的行往上移，继续从当前行开始遍历
                             i--;
                         }
                     }
@@ -419,7 +416,7 @@ namespace Suppermarket_POS
                 }
             }
         }        
-        //编辑选中条目数量
+        //edit the number ofitems chosen
         private void ChangeNum()
         {
             try
@@ -433,7 +430,7 @@ namespace Suppermarket_POS
                 MessageBox.Show("没有选中条目！", ex.Message);
             }
         }
-        //打印小票
+        //print receipts
         private void Print()
         {
             string str;
@@ -475,18 +472,17 @@ namespace Suppermarket_POS
             Receipt.Show();
 
         }        
-        //总价更新时，更新会员价
+        //update the discount after updating the total price
         private void textBoxTotal_TextChanged(object sender, EventArgs e)
         {
             if (isMember)
             {
-                //优惠保留到“分”
+                //save the price to cent
                 string discountedTotal = (Convert.ToDouble(textBoxTotal.Text) * 0.9).ToString("f2");
-                //小数点后2位的形式显示
                 //textBoxDiscountedTotal.Text = Convert.ToDouble(discountedTotal).ToString("f2");
             }
         }     
-        //在dataGridView修改数量后，更新到dataTable
+        //update dataTable after revising the number in dataGridView
         private void dataGridView1_CellEndEdit(object sender, EventArgs e)
         {
             int numAfterEdit = 0;
@@ -508,14 +504,14 @@ namespace Suppermarket_POS
                 dataGridView1.Columns[4].ReadOnly = true;
                 return;
             }
-            //是否为捆绑商品（。。看名称有没有乘号。。。）
+            //check if those products have been combined
             string name = dataGridView1.CurrentRow.Cells["商品名称"].Value.ToString();
                        
 
             long storageID = Convert.ToInt64(
                 (dataGridView1.CurrentRow.Cells["商品编号"].Value.ToString()));
             
-            //非绑定商品，修改数量
+            //revise the number
             string subtotal = (Convert.ToDouble(
                 (dataGridView1.CurrentRow.Cells["单价"].Value.ToString())) * numAfterEdit).ToString("f2");
             DataRow[] changeInfo = salesInfoConnector.DataTable.Select(
@@ -524,14 +520,14 @@ namespace Suppermarket_POS
             DataRow goods = goodsConnector.DataTable.Rows.Find(goodsInventory["GoodsID"]);
             int numBeforeEdit = Convert.ToInt32(changeInfo[0]["GoodsNum"]);*/
 
-            //修改详单的数量、小计           
+            //revise the number and total price of the order 
             changeInfo[0]["GoodsNum"] = numAfterEdit;
             changeInfo[0]["SubTotalPrice"] = subtotal;
             dataGridView1.CurrentRow.Cells["小计"].Value = subtotal;
-            /*修改库存、商品数量
+            /*revise the number of stock and products
             goodsInventory["GoodsNum"] = (int)goodsInventory["GoodsNum"] + numBeforeEdit - numAfterEdit;
             goods["GoodsNum"] = (int)goods["GoodsNum"] + numBeforeEdit - numAfterEdit;*/
-            //修改总价
+            //revise the total price
             UpdateTotal();   
             dataGridView1.Columns[4].ReadOnly = true;
             MessageBox.Show("商品数量已更改！");         
@@ -539,7 +535,7 @@ namespace Suppermarket_POS
         
 
          
-        //总价更新
+        //update the total price
         private void UpdateTotal()
         {
             double total = 0;
@@ -551,7 +547,7 @@ namespace Suppermarket_POS
                 }
             textBoxTotal.Text = total.ToString("f2");
         }
-        //重置界面
+        //reset the form
         private void ResetForm()
         {
             viewTable.Clear();
@@ -579,7 +575,7 @@ namespace Suppermarket_POS
             buttonGetMember.Visible = true;
             
         }
-        //订单完成后界面改变
+        //change the view after finishing the order
         private void OrderFinishedForm()
         {
             salesID = -1;
@@ -594,7 +590,7 @@ namespace Suppermarket_POS
             buttonDelete.Enabled = false;
             buttonChangeNum.Enabled = false;
         }
-        //关闭窗口事件
+        //event of closing the window
         private void POS_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (salesID == -1)
@@ -615,47 +611,47 @@ namespace Suppermarket_POS
             }
 
         }
-        //添加商品 button
+        //button of adding a new product
         private void buttonAddProduct_Click(object sender, EventArgs e)
         {
             AddProduct();
         }
-        //确认会员 button
+        //button of checking if he is a member
         private void buttonGetMember_Click(object sender, EventArgs e)
         {
             GetMember();
         }
-        //取消交易 button
+        //button of canceling trade
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             CancelOrder();
         }
-        //确认交易 button
+        //button of confirming trade
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             ConfirmOrder();
         }
-        //新建交易 button
+        //button of generating new orders
         private void buttonNewOrder_Click(object sender, EventArgs e)
         {
             NewOrder();
         }
-        //编辑选中条目数量 button
+        //button of editing the number of items chosen
         private void buttonChangeNum_Click(object sender, EventArgs e)
         {
             ChangeNum();
         }
-        //删除条目 button
+        //button of deleting items
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             DeleteItem();
         }
-        //打印小票 button
+        //button of printing receipts
         private void buttonPrint_Click(object sender, EventArgs e)
         {
             Print();
         }
-        //关闭窗口 button
+        //button of closing the window
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.Close();

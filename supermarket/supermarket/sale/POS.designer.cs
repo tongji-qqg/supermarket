@@ -74,8 +74,8 @@
             // 
             // textBoxGoodsID
             // 
-            this.textBoxGoodsID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxGoodsID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxGoodsID.Font = new System.Drawing.Font("宋体", 15F);
             this.textBoxGoodsID.Location = new System.Drawing.Point(121, 37);
             this.textBoxGoodsID.Name = "textBoxGoodsID";
@@ -136,9 +136,9 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeight = 40;
             this.dataGridView1.Location = new System.Drawing.Point(-7, 86);
@@ -149,8 +149,8 @@
             // 
             // labelNum
             // 
-            this.labelNum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelNum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelNum.AutoSize = true;
             this.labelNum.Font = new System.Drawing.Font("宋体", 15F);
             this.labelNum.Location = new System.Drawing.Point(6, 83);
@@ -303,8 +303,8 @@
             // 
             // groupBoxGoods
             // 
-            this.groupBoxGoods.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxGoods.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxGoods.BackColor = System.Drawing.SystemColors.Control;
             this.groupBoxGoods.Controls.Add(this.textBoxNum);
             this.groupBoxGoods.Controls.Add(this.labelNum);
@@ -434,8 +434,8 @@
             // 
             // labelTitle
             // 
-            this.labelTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTitle.Font = new System.Drawing.Font("宋体", 18F);
             this.labelTitle.Location = new System.Drawing.Point(267, 9);
             this.labelTitle.Name = "labelTitle";
@@ -516,6 +516,7 @@
             this.Controls.Add(this.labelEmployeeID);
             this.Name = "POS";
             this.Text = "Suppermarket_POS";
+            this.Load += new System.EventHandler(this.POS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBoxMember.ResumeLayout(false);
             this.groupBoxMember.PerformLayout();
