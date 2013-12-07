@@ -73,11 +73,11 @@ namespace supermarket.HumanAffair
                 try
                 {
                     eta.Update(sds.Employee);
-                    MessageBox.Show("保存修改成功！");
+                    MessageBox.Show(ErrorCode.InfoSaved);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("保存失败！" + ex.Message);
+                    MessageBox.Show(ErrorCode.SaveFailed + ex.Message);
                 }
             }
         }
@@ -97,14 +97,38 @@ namespace supermarket.HumanAffair
 
                     eta.Update(sds.Employee);
                     setItemSource();
-                    MessageBox.Show("删除信息成功！");
+                    MessageBox.Show(ErrorCode.DeleteSucceed);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("保存失败！" + ex.Message);
+                    MessageBox.Show(ErrorCode.DeleteFailed+ ex.Message);
                 }
             }
         }
+
+        private void ResetPWD_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (modifyEmployeeInfoGrid.DataContext != null)
+            {
+                try
+                {
+                    SupermarketDataSet.EmployeeRow er =
+                    modifyEmployeeInfoGrid.DataContext as SupermarketDataSet.EmployeeRow;
+                    er.Password = "888888";
+
+                    SupermarketDataSetTableAdapters.EmployeeTableAdapter eta =
+                        new SupermarketDataSetTableAdapters.EmployeeTableAdapter();
+
+                    eta.Update(sds.Employee);                    
+                    MessageBox.Show("密码重置成功");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ErrorCode.DeleteFailed + ex.Message);
+                }
+            }
+        }
+
         private void EmployeeInfoDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (EmployeeInfoDataGrid.SelectedItem != null)

@@ -44,8 +44,11 @@ namespace supermarket.finance
         {
             SupermarketDataSetTableAdapters.EmployeeTableAdapter eta =
                 new SupermarketDataSetTableAdapters.EmployeeTableAdapter();
-            eta.Fill(sds.Employee);
-
+            try
+            {
+                eta.Fill(sds.Employee);
+            }
+            catch { MessageBox.Show(ErrorCode.ConnectFailed); }
             source = new ObservableCollection<SalaryBean>();
 
             foreach (SupermarketDataSet.EmployeeRow er in sds.Employee)
@@ -107,14 +110,14 @@ namespace supermarket.finance
                     new SupermarketDataSetTableAdapters.EmployeePayTableAdapter();
                 epta.Update(sds.EmployeePay);
 
-                MessageBox.Show("记录成功！");
+                MessageBox.Show(ErrorCode.InfoSaved);
                 this.Close();
             }
             catch (Exception ex)
             {
                 sds.EmployeePay.RejectChanges();
                 sds.Payment.RejectChanges();
-                System.Windows.Forms.MessageBox.Show("数据格式错误！"+ex.Message);
+                System.Windows.Forms.MessageBox.Show(ErrorCode.InfoFormatError+ex.Message);
                 return;
             }
         }

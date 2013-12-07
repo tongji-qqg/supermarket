@@ -45,7 +45,11 @@ namespace supermarket.Inventory
             SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
                 new SupermarketDataSetTableAdapters.GoodsTableAdapter();
 
-            gta.Fill(sds.Goods);
+            try
+            {
+                gta.Fill(sds.Goods);
+            }
+            catch { MessageBox.Show(ErrorCode.ConnectFailed); return; }
 
             GoodsInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.GoodsRow>(sds.Goods.ToList());                        
         }
@@ -67,7 +71,7 @@ namespace supermarket.Inventory
             SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
                            new SupermarketDataSetTableAdapters.GoodsTableAdapter();
             
-            gta.Update(sds.Goods);            
+                gta.Update(sds.Goods);                      
         }
 
         private void Save_Button_Click(object sender, RoutedEventArgs e)
@@ -75,12 +79,12 @@ namespace supermarket.Inventory
             try
             {
                 save();
-                MessageBox.Show("保存成功");
+                MessageBox.Show(ErrorCode.InfoSaved);
                 GoodsInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.GoodsRow>(sds.Goods.ToList());
             }
             catch (Exception ex)
             {
-                MessageBox.Show("保存失败" + ex.Message);
+                MessageBox.Show(ErrorCode.SaveFailed + ex.Message);
             }
         }
 
@@ -100,11 +104,11 @@ namespace supermarket.Inventory
 
                     gta.Update(sds.Goods);
                     GoodsInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.GoodsRow>(sds.Goods.ToList());
-                    MessageBox.Show("删除信息成功！");
+                    MessageBox.Show(ErrorCode.DeleteSucceed);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("删除失败！" + ex.Message);
+                    MessageBox.Show(ErrorCode.DeleteFailed + ex.Message);
                 }
             }
         }

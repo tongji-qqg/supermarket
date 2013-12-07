@@ -46,6 +46,14 @@ namespace supermarket
             Application.Current.MainWindow = mainWin;
             mainWin.Show();                            
         }
+
+        public void closeAllChildWin()
+        {
+            financeController.closeAllChildWin();
+            humanAffairController.closeAllChildWin();
+            inventoryController.closeAllChildWin();
+            saleController.closeAllChildWin();
+        }
         #endregion
 
         #region interaction

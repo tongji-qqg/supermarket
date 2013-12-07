@@ -42,12 +42,15 @@ namespace supermarket.Inventory
         #region helpFounction
         private void loadData()
         {
-            SupermarketDataSetTableAdapters.InventoryTableAdapter ita =
-                new SupermarketDataSetTableAdapters.InventoryTableAdapter();
-
-            ita.Fill(sds.Inventory);
-
-            InventoryInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.InventoryRow>(sds.Inventory.ToList());                     
+            SupermarketDataSetTableAdapters.RealInventoryTableAdapter rita = 
+                new SupermarketDataSetTableAdapters.RealInventoryTableAdapter();
+            try
+            {
+                rita.Fill(sds.RealInventory);
+            }
+            catch { MessageBox.Show(ErrorCode.ConnectFailed); return; }
+            
+            InventoryInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.RealInventoryRow>(sds.RealInventory.ToList());                     
         }
         #endregion
 
@@ -67,10 +70,23 @@ namespace supermarket.Inventory
         {
             if (InventoryInfoDataGrid.SelectedItem != null)
             {
-                SupermarketDataSet.InventoryRow ir =
-                    InventoryInfoDataGrid.SelectedItem as SupermarketDataSet.InventoryRow;
-                if (ir != null)
+                SupermarketDataSet.RealInventoryRow rir =
+                    InventoryInfoDataGrid.SelectedItem as SupermarketDataSet.RealInventoryRow;
+
+                SupermarketDataSetTableAdapters.InventoryTableAdapter ita =
+                        new SupermarketDataSetTableAdapters.InventoryTableAdapter();
+
+                try
                 {
+                    ita.Fill(sds.Inventory);
+                }
+                catch { MessageBox.Show(ErrorCode.ConnectFailed); return; }
+
+                SupermarketDataSet.InventoryRow ir;
+                
+                if (rir != null)
+                {
+                     ir = sds.Inventory.FindByStorageID(rir.StorageID);
                     int outNumber =  (int)OutInventoryNumberSlider.Value;
                     if (ir.GoodsNum > outNumber)
                     {
@@ -78,15 +94,14 @@ namespace supermarket.Inventory
                     }
                     else 
                     {
-                        ir.Delete();
+                        ir.Out = true;
                     }
-                    SupermarketDataSetTableAdapters.InventoryTableAdapter ita =
-                        new SupermarketDataSetTableAdapters.InventoryTableAdapter();
+                    
                     try
                     {
                         ita.Update(sds.Inventory);
                         MessageBox.Show("出库成功");
-                        InventoryInfoDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.InventoryRow>(sds.Inventory.ToList());
+                        loadData();
                     }
                     catch (Exception ex)
                     {

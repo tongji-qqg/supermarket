@@ -42,14 +42,17 @@ namespace supermarket.sale
         #region helpfounction
         private void loadData()
         {
-            SupermarketDataSetTableAdapters.InventoryTableAdapter ita =
-                new SupermarketDataSetTableAdapters.InventoryTableAdapter();
-            ita.Fill(sds.Inventory);
+            try
+            {
+                SupermarketDataSetTableAdapters.InventoryTableAdapter ita =
+                    new SupermarketDataSetTableAdapters.InventoryTableAdapter();
+                ita.Fill(sds.Inventory);
 
-            SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
-                new SupermarketDataSetTableAdapters.GoodsTableAdapter();
-            gta.Fill(sds.Goods);
-
+                SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
+                    new SupermarketDataSetTableAdapters.GoodsTableAdapter();
+                gta.Fill(sds.Goods);
+            }
+            catch { MessageBox.Show("连接数据库失败！"); return; }
             SetPriceDataGrid.ItemsSource = new ObservableCollection<SupermarketDataSet.InventoryRow>(sds.Inventory.ToList());                     
         }
 

@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 
 namespace supermarket
 {
+
+
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
@@ -46,6 +48,8 @@ namespace supermarket
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             supermarketDataSet = ((supermarket.SupermarketDataSet)(this.FindResource("supermarketDataSet")));
+            EmployeeIDTextBlock.Text = employee.EmployeeID.ToString();
+            EmployeeNameTextBlock.Text = employee.Name;
         }
 
         private void accessCont(SupermarketDataSet.EmployeeRow er)
@@ -155,6 +159,22 @@ namespace supermarket
             Menu.IsOpen = true;
         }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mainCont.closeAllChildWin();
+        }
         #endregion
     }
+
+
+    public sealed class ErrorCode
+    {
+        public static string ConnectFailed = "连接数据库失败！";
+        public static string InfoNotComplete = "请输入完整信息！";
+        public static string InfoFormatError = "数据格式错误！";
+        public static string InfoSaved = "信息以保存!";
+        public static string SaveFailed = "保存失败！";
+        public static string DeleteSucceed = "删除成功！";
+        public static string DeleteFailed = "删除失败！";
+    } 
 }

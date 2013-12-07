@@ -53,7 +53,7 @@ namespace supermarket.HumanAffair
         {
             if (er.IsNameNull() || er.IsDepartmentIDNull())
             {
-                MessageBox.Show("请输入完整信息！");
+                MessageBox.Show(ErrorCode.InfoNotComplete);
                 return;
             }
             try
@@ -63,12 +63,12 @@ namespace supermarket.HumanAffair
                 SupermarketDataSetTableAdapters.EmployeeTableAdapter eta =
                    new SupermarketDataSetTableAdapters.EmployeeTableAdapter();
                 eta.Update(sds.Employee);
-                MessageBox.Show("信息已保存");
+                MessageBox.Show(ErrorCode.InfoSaved);
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("保存失败" + ex.Message);
+                MessageBox.Show(ErrorCode.SaveFailed + ex.Message);
             }
         }
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)

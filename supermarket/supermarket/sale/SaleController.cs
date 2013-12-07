@@ -30,6 +30,17 @@ namespace supermarket.sale
         #endregion
 
         #region 
+        public void closeAllChildWin()
+        {
+            closeIfWindowAlive(memberInfoWin);
+            closeIfWindowAlive(newMemberWin);
+            closeIfWindowAlive(PriceWin);
+            closeIfWindowAlive(saleAnalysisWin);
+            if(pos != null && !pos.IsDisposed)
+            {
+                pos.Close();
+            }
+        }
         public void showPos(long id, string name)
         {
             if (pos != null && !pos.IsDisposed)
@@ -83,6 +94,12 @@ namespace supermarket.sale
             }
             else
                 return false;
+        }
+
+        private void closeIfWindowAlive(Window w)
+        {
+            if (w != null && w.IsVisible)
+                w.Close();
         }
         #endregion
     }

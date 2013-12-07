@@ -29,6 +29,14 @@ namespace supermarket.HumanAffair
         #endregion
 
         #region function
+
+        public void closeAllChildWin()
+        {
+            closeIfWindowAlive(employeeInfoWin);
+            closeIfWindowAlive(newEmployeeeWin);
+            closeIfWindowAlive(usePermissionWin);
+        }
+
         public void showEmployeeInfo(SupermarketDataSet set)
         {
             if (!showIfWindowAlive(employeeInfoWin))
@@ -62,6 +70,12 @@ namespace supermarket.HumanAffair
             }
             else
                 return false;
+        }
+
+        private void closeIfWindowAlive(Window w)
+        {
+            if (w != null && w.IsVisible)
+                w.Close();
         }
         #endregion
     }

@@ -50,11 +50,11 @@ namespace supermarket.HumanAffair
             try
             {
                 eta.Update(sds.Employee);
-                MessageBox.Show("保存修改成功！");
+                MessageBox.Show(ErrorCode.InfoSaved);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("保存失败！" + ex.Message);
+                MessageBox.Show(ErrorCode.SaveFailed + ex.Message);
             }
         }
     }

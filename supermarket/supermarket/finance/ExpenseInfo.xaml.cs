@@ -42,10 +42,14 @@ namespace supermarket.finance
         {
             SupermarketDataSetTableAdapters.ExpenseTableAdapter eta =
                 new SupermarketDataSetTableAdapters.ExpenseTableAdapter();
-            eta.Fill(sds.Expense);
+            try
+            {
+                eta.Fill(sds.Expense);
 
-            ExpenseInfoDataGrid.ItemsSource =
-               new ObservableCollection<SupermarketDataSet.ExpenseRow>(sds.Expense.ToList());
+                ExpenseInfoDataGrid.ItemsSource =
+                   new ObservableCollection<SupermarketDataSet.ExpenseRow>(sds.Expense.ToList());
+            }
+            catch { MessageBox.Show(ErrorCode.ConnectFailed); }
         }
         #endregion
 

@@ -6,6 +6,7 @@
         AllowsTransparency="True" 
         WindowStyle="None" 
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Closing="Window_Closing"
         Loaded="Window_Loaded"
         Background="{x:Null}" 
     >
@@ -192,7 +193,12 @@
                     </TabItem.Background>
                     <ItemsControl Style="{StaticResource TabItemGridItemsStyle}">
                         <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
-
+                        <UniformGrid Rows="1" Columns="4"  Grid.Column="1">
+                            <TextBlock Text="员工编号：" HorizontalAlignment="Right" FontSize="16"/>
+                            <TextBlock x:Name="EmployeeIDTextBlock" HorizontalAlignment="Left" FontSize="16"/>
+                            <TextBlock Text="员工姓名：" HorizontalAlignment="Right" FontSize="16"/>
+                            <TextBlock x:Name="EmployeeNameTextBlock" HorizontalAlignment="Left" FontSize="16"/>
+                        </UniformGrid>
                         <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
                             <Button Content="修改密码" Style="{DynamicResource Buttonlist}">
     								<Button.Background>
@@ -215,6 +221,7 @@
             </TabControl>
             
             <Rectangle Margin="0" Stroke="Black" HorizontalAlignment="Right" Width="151.5" Grid.Row="1" StrokeThickness="0">                
+                
             </Rectangle>
             
             <Button Content="x" HorizontalAlignment="Right" Margin="0,0,2.625,8" Style="{DynamicResource SysButtonStyle}" Width="44.315" Name="closeButton" Click="closeButton_Click" />

@@ -30,6 +30,13 @@ namespace supermarket.finance
         #endregion
 
         #region function
+        public void closeAllChildWin()
+        {
+            closeIfWindowAlive(expenseInfoWin);
+            closeIfWindowAlive(newExpenseWin);
+            closeIfWindowAlive(profinWin);
+            closeIfWindowAlive(salaryWin);
+        }
         public void showExpenseInfo(SupermarketDataSet set)
         {
             if(!showIfWindowAlive(expenseInfoWin))
@@ -71,6 +78,11 @@ namespace supermarket.finance
             }
             else
                 return false;
+        }
+        private void closeIfWindowAlive(Window w)
+        {
+            if (w != null && w.IsVisible)
+                w.Close();
         }
         #endregion
     }

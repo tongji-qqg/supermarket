@@ -49,12 +49,16 @@ namespace supermarket.sale
             SupermarketDataSetTableAdapters.CategoryDaySaleNumTableAdapter da = new SupermarketDataSetTableAdapters.CategoryDaySaleNumTableAdapter();
             SupermarketDataSetTableAdapters.CategoryHourSaleNumTableAdapter ha = new SupermarketDataSetTableAdapters.CategoryHourSaleNumTableAdapter();
             SupermarketDataSetTableAdapters.CategoryMonthSaleNumTableAdapter ma = new SupermarketDataSetTableAdapters.CategoryMonthSaleNumTableAdapter();
-            da.Fill(sds.CategoryDaySaleNum);
-            ha.Fill(sds.CategoryHourSaleNum);
-            ma.Fill(sds.CategoryMonthSaleNum);            
             SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
                 new SupermarketDataSetTableAdapters.GoodsTableAdapter();
-            gta.Fill(sds.Goods);
+            try
+            {
+                da.Fill(sds.CategoryDaySaleNum);
+                ha.Fill(sds.CategoryHourSaleNum);
+                ma.Fill(sds.CategoryMonthSaleNum);
+                gta.Fill(sds.Goods);
+            }
+            catch { MessageBox.Show("数据库连接失败！"); }
         }
 
         private void loadData()

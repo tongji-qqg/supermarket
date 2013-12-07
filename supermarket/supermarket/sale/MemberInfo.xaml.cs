@@ -43,7 +43,12 @@ namespace supermarket.sale
         {
             SupermarketDataSetTableAdapters.MemberTableAdapter mta =
                    new SupermarketDataSetTableAdapters.MemberTableAdapter();
-            mta.Fill(sds.Member);
+
+            try
+            {
+                mta.Fill(sds.Member);
+            }
+            catch { MessageBox.Show("数据库连接失败！"); return; }
 
             MemberSexComboBox.ItemsSource = new supermarket.HumanAffair.SexProvider().DefaultView;
             setItemSource();

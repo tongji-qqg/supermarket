@@ -50,13 +50,17 @@ namespace supermarket.finance
             SupermarketDataSetTableAdapters.MonthSaleIncomeTableAdapter ma = new SupermarketDataSetTableAdapters.MonthSaleIncomeTableAdapter();
             SupermarketDataSetTableAdapters.YearSaleIncomeTableAdapter ya = new SupermarketDataSetTableAdapters.YearSaleIncomeTableAdapter();
             SupermarketDataSetTableAdapters.CategoryIncomeTableAdapter ca = new SupermarketDataSetTableAdapters.CategoryIncomeTableAdapter();
-            da.Fill(sds.DaySaleIncome);
-            ma.Fill(sds.MonthSaleIncome);
-            ya.Fill(sds.YearSaleIncome);
-            ca.Fill(sds.CategoryIncome);
-            
-            plotter.AddLineGraph(SalesIncomedataSource, Colors.Green, 2, "销售额");
-            plotter.AddLineGraph(SalesProfitdataSource, Colors.Yellow, 2, "利润");
+            try
+            {
+                da.Fill(sds.DaySaleIncome);
+                ma.Fill(sds.MonthSaleIncome);
+                ya.Fill(sds.YearSaleIncome);
+                ca.Fill(sds.CategoryIncome);
+
+                plotter.AddLineGraph(SalesIncomedataSource, Colors.Green, 2, "销售额");
+                plotter.AddLineGraph(SalesProfitdataSource, Colors.Yellow, 2, "利润");
+            }
+            catch { MessageBox.Show(ErrorCode.ConnectFailed); }
         }
 
         private void loadData()

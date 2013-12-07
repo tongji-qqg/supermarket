@@ -29,6 +29,14 @@ namespace supermarket.Inventory
         #endregion
 
         #region function
+        public void closeAllChildWin()
+        {
+            closeIfWindowAlive(GoodsInfoWin);
+            closeIfWindowAlive(newGoodsInfoWin);
+            closeIfWindowAlive(inventoryInfoWin);
+            closeIfWindowAlive(inInventoryWin);
+        }
+
         public void showGoodsInfo(SupermarketDataSet set)
         {
             if (!showIfWindowAlive(GoodsInfoWin))
@@ -70,6 +78,11 @@ namespace supermarket.Inventory
             }
             else
                 return false;
+        }
+        private void closeIfWindowAlive(Window w)
+        {
+            if (w != null && w.IsVisible)
+                w.Close();
         }
         #endregion
     }

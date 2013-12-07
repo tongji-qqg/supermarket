@@ -49,7 +49,7 @@ namespace supermarket.Inventory
         {
             if (gr.IsGoodsNameNull() || gr.IsDurabilityPeriodNull())
             {
-                MessageBox.Show("请输入完整信息!");
+                MessageBox.Show(ErrorCode.InfoNotComplete);
                 return;
             }
             try
@@ -59,11 +59,11 @@ namespace supermarket.Inventory
                 SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
                     new SupermarketDataSetTableAdapters.GoodsTableAdapter();
                 gta.Update(sds.Goods);
-                MessageBox.Show("信息已保存");
+                MessageBox.Show(ErrorCode.InfoSaved);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("保存失败" + ex.Message);
+                MessageBox.Show(ErrorCode.SaveFailed + ex.Message);
                 loadData();
             }
         }

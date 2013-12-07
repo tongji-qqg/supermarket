@@ -24,7 +24,7 @@ namespace supermarket.Inventory
         SupermarketDataSet.InventoryRow ir;
         #endregion
 
-
+        #region constructor
         public InInventory()
         {
             InitializeComponent();
@@ -38,7 +38,9 @@ namespace supermarket.Inventory
             sds = set;
             loadData();
         }
+        #endregion
 
+        #region help function
         private void loadData()
         {
             ir = sds.Inventory.NewInventoryRow();
@@ -46,15 +48,20 @@ namespace supermarket.Inventory
 
             SupermarketDataSetTableAdapters.GoodsTableAdapter gta =
                 new SupermarketDataSetTableAdapters.GoodsTableAdapter();
-            gta.Fill(sds.Goods);
+            try
+            {
+                gta.Fill(sds.Goods);
+            }
+            catch { MessageBox.Show("连接数据库失败！"); return; }
         }
+        #endregion
 
         #region interact
         private void Save_Button_Click(object sender, RoutedEventArgs e)
         {
             if (ir.IsGoodsIDNull() || ir.IsGoodsNumNull() || ir.IsProductionDateNull() || ir.IsPurchasePriceNull())
             {
-                MessageBox.Show("请填写完整信息！");
+                MessageBox.Show(ErrorCode.InfoNotComplete);
                 return;
             }
             try
@@ -65,12 +72,12 @@ namespace supermarket.Inventory
                     new SupermarketDataSetTableAdapters.InventoryTableAdapter();
 
                 ita.Update(sds.Inventory);
-                MessageBox.Show("信息已保存");
+                MessageBox.Show(ErrorCode.InfoSaved);
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("保存失败" + ex.Message);
+                MessageBox.Show(ErrorCode.SaveFailed + ex.Message);
                 loadData();
             }
         }

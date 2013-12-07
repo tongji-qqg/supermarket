@@ -978,6 +978,32 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MemberID, 
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RealInventoryTableAdapter" GeneratorDataComponentClassName="RealInventoryTableAdapter" Name="RealInventory" UserDataComponentName="RealInventoryTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SupermarketConnectionString (Settings)" DbObjectName="Supermarket.dbo.RealInventory" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT StorageID, GoodsID, ProductionDate, GoodsNum, PurchasePrice, SalePrice, Discount, MemberPrice, MemberDiscount, Remark, Out FROM dbo.RealInventory</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="StorageID" DataSetColumn="StorageID" />
+              <Mapping SourceColumn="GoodsID" DataSetColumn="GoodsID" />
+              <Mapping SourceColumn="ProductionDate" DataSetColumn="ProductionDate" />
+              <Mapping SourceColumn="GoodsNum" DataSetColumn="GoodsNum" />
+              <Mapping SourceColumn="PurchasePrice" DataSetColumn="PurchasePrice" />
+              <Mapping SourceColumn="SalePrice" DataSetColumn="SalePrice" />
+              <Mapping SourceColumn="Discount" DataSetColumn="Discount" />
+              <Mapping SourceColumn="MemberPrice" DataSetColumn="MemberPrice" />
+              <Mapping SourceColumn="MemberDiscount" DataSetColumn="MemberDiscount" />
+              <Mapping SourceColumn="Remark" DataSetColumn="Remark" />
+              <Mapping SourceColumn="Out" DataSetColumn="Out" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SaleDetailViewTableAdapter" GeneratorDataComponentClassName="SaleDetailViewTableAdapter" Name="SaleDetailView" UserDataComponentName="SaleDetailViewTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="SupermarketConnectionString (Settings)" DbObjectName="Supermarket.dbo.SaleDetailView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
@@ -1382,6 +1408,29 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MemberID, 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="RealInventory" msprop:Generator_TableClassName="RealInventoryDataTable" msprop:Generator_TableVarName="tableRealInventory" msprop:Generator_TablePropName="RealInventory" msprop:Generator_RowDeletingName="RealInventoryRowDeleting" msprop:Generator_UserTableName="RealInventory" msprop:Generator_RowChangingName="RealInventoryRowChanging" msprop:Generator_RowEvHandlerName="RealInventoryRowChangeEventHandler" msprop:Generator_RowDeletedName="RealInventoryRowDeleted" msprop:Generator_RowEvArgName="RealInventoryRowChangeEvent" msprop:Generator_RowChangedName="RealInventoryRowChanged" msprop:Generator_RowClassName="RealInventoryRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StorageID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnStorageID" msprop:Generator_ColumnPropNameInRow="StorageID" msprop:Generator_ColumnPropNameInTable="StorageIDColumn" msprop:Generator_UserColumnName="StorageID" type="xs:long" />
+              <xs:element name="GoodsID" msprop:Generator_ColumnVarNameInTable="columnGoodsID" msprop:Generator_ColumnPropNameInRow="GoodsID" msprop:Generator_ColumnPropNameInTable="GoodsIDColumn" msprop:Generator_UserColumnName="GoodsID" type="xs:long" minOccurs="0" />
+              <xs:element name="ProductionDate" msprop:Generator_ColumnVarNameInTable="columnProductionDate" msprop:Generator_ColumnPropNameInRow="ProductionDate" msprop:Generator_ColumnPropNameInTable="ProductionDateColumn" msprop:Generator_UserColumnName="ProductionDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="GoodsNum" msprop:Generator_ColumnVarNameInTable="columnGoodsNum" msprop:Generator_ColumnPropNameInRow="GoodsNum" msprop:Generator_ColumnPropNameInTable="GoodsNumColumn" msprop:Generator_UserColumnName="GoodsNum" type="xs:int" minOccurs="0" />
+              <xs:element name="PurchasePrice" msprop:Generator_ColumnVarNameInTable="columnPurchasePrice" msprop:Generator_ColumnPropNameInRow="PurchasePrice" msprop:Generator_ColumnPropNameInTable="PurchasePriceColumn" msprop:Generator_UserColumnName="PurchasePrice" type="xs:double" minOccurs="0" />
+              <xs:element name="SalePrice" msprop:Generator_ColumnVarNameInTable="columnSalePrice" msprop:Generator_ColumnPropNameInRow="SalePrice" msprop:Generator_ColumnPropNameInTable="SalePriceColumn" msprop:Generator_UserColumnName="SalePrice" type="xs:double" minOccurs="0" />
+              <xs:element name="Discount" msprop:Generator_ColumnVarNameInTable="columnDiscount" msprop:Generator_ColumnPropNameInRow="Discount" msprop:Generator_ColumnPropNameInTable="DiscountColumn" msprop:Generator_UserColumnName="Discount" type="xs:int" minOccurs="0" />
+              <xs:element name="MemberPrice" msprop:Generator_ColumnVarNameInTable="columnMemberPrice" msprop:Generator_ColumnPropNameInRow="MemberPrice" msprop:Generator_ColumnPropNameInTable="MemberPriceColumn" msprop:Generator_UserColumnName="MemberPrice" type="xs:double" minOccurs="0" />
+              <xs:element name="MemberDiscount" msprop:Generator_ColumnVarNameInTable="columnMemberDiscount" msprop:Generator_ColumnPropNameInRow="MemberDiscount" msprop:Generator_ColumnPropNameInTable="MemberDiscountColumn" msprop:Generator_UserColumnName="MemberDiscount" type="xs:int" minOccurs="0" />
+              <xs:element name="Remark" msprop:Generator_ColumnVarNameInTable="columnRemark" msprop:Generator_ColumnPropNameInRow="Remark" msprop:Generator_ColumnPropNameInTable="RemarkColumn" msprop:Generator_UserColumnName="Remark" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Out" msprop:Generator_ColumnVarNameInTable="columnOut" msprop:Generator_ColumnPropNameInRow="Out" msprop:Generator_ColumnPropNameInTable="OutColumn" msprop:Generator_UserColumnName="Out" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
         <xs:element name="SaleDetailView" msprop:Generator_TableClassName="SaleDetailViewDataTable" msprop:Generator_TableVarName="tableSaleDetailView" msprop:Generator_TablePropName="SaleDetailView" msprop:Generator_RowDeletingName="SaleDetailViewRowDeleting" msprop:Generator_UserTableName="SaleDetailView" msprop:Generator_RowChangingName="SaleDetailViewRowChanging" msprop:Generator_RowEvHandlerName="SaleDetailViewRowChangeEventHandler" msprop:Generator_RowDeletedName="SaleDetailViewRowDeleted" msprop:Generator_RowEvArgName="SaleDetailViewRowChangeEvent" msprop:Generator_RowChangedName="SaleDetailViewRowChanged" msprop:Generator_RowClassName="SaleDetailViewRow">
           <xs:complexType>
             <xs:sequence>
@@ -1454,6 +1503,10 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MemberID, 
       <xs:selector xpath=".//mstns:CategoryIncome" />
       <xs:field xpath="mstns:GoodsID" />
     </xs:unique>
+    <xs:unique name="RealInventory_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:RealInventory" />
+      <xs:field xpath="mstns:StorageID" />
+    </xs:unique>
     <xs:unique name="SaleDetailView_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:SaleDetailView" />
       <xs:field xpath="mstns:GoodsID" />
@@ -1465,7 +1518,7 @@ SELECT SalesID, EmployeeID, TotalPrice, ActualPay, Change, SalesDate, MemberID, 
       <msdata:Relationship name="FK_EmployeePay_Payment" msdata:parent="Payment" msdata:child="EmployeePay" msdata:parentkey="PaymentID" msdata:childkey="PaymentID" msprop:Generator_UserChildTable="EmployeePay" msprop:Generator_ChildPropName="GetEmployeePayRows" msprop:Generator_ParentPropName="PaymentRow" msprop:Generator_UserRelationName="FK_EmployeePay_Payment" msprop:Generator_RelationVarName="relationFK_EmployeePay_Payment" msprop:Generator_UserParentTable="Payment" />
       <msdata:Relationship name="FK_Inventory_Goods" msdata:parent="Goods" msdata:child="Inventory" msdata:parentkey="GoodsID" msdata:childkey="GoodsID" msprop:Generator_UserChildTable="Inventory" msprop:Generator_ChildPropName="GetInventoryRows" msprop:Generator_ParentPropName="GoodsRow" msprop:Generator_UserRelationName="FK_Inventory_Goods" msprop:Generator_RelationVarName="relationFK_Inventory_Goods" msprop:Generator_UserParentTable="Goods" />
       <msdata:Relationship name="FK_SalesInfo_Inventory" msdata:parent="Inventory" msdata:child="SalesInfo" msdata:parentkey="StorageID" msdata:childkey="StorageID" msprop:Generator_UserChildTable="SalesInfo" msprop:Generator_ChildPropName="GetSalesInfoRows" msprop:Generator_ParentPropName="InventoryRow" msprop:Generator_UserRelationName="FK_SalesInfo_Inventory" msprop:Generator_RelationVarName="relationFK_SalesInfo_Inventory" msprop:Generator_UserParentTable="Inventory" />
-      <msdata:Relationship name="FK_SalesInfo_SalesOrder" msdata:parent="SalesOrder" msdata:child="SalesInfo" msdata:parentkey="SalesID" msdata:childkey="SalesInfoID" msprop:Generator_UserChildTable="SalesInfo" msprop:Generator_ChildPropName="GetSalesInfoRows" msprop:Generator_ParentPropName="SalesOrderRow" msprop:Generator_UserRelationName="FK_SalesInfo_SalesOrder" msprop:Generator_RelationVarName="relationFK_SalesInfo_SalesOrder" msprop:Generator_UserParentTable="SalesOrder" />
+      <msdata:Relationship name="FK_SalesInfo_SalesOrder" msdata:parent="SalesOrder" msdata:child="SalesInfo" msdata:parentkey="SalesID" msdata:childkey="SalesID" msprop:Generator_UserChildTable="SalesInfo" msprop:Generator_ChildPropName="GetSalesInfoRows" msprop:Generator_ParentPropName="SalesOrderRow" msprop:Generator_UserRelationName="FK_SalesInfo_SalesOrder" msprop:Generator_RelationVarName="relationFK_SalesInfo_SalesOrder" msprop:Generator_UserParentTable="SalesOrder" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

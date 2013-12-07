@@ -161,9 +161,11 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
                             <Button Content="保存" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Save_Button_Click" />
                             <Button Content="解聘员工" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Dismiss_Button_Click" />
+                            <Button Content="重置密码" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ResetPWD_Button_Click" />
                         </Grid>
                     </Border>
                 </Grid>
