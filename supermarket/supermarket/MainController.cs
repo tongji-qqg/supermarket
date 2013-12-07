@@ -33,7 +33,7 @@ namespace supermarket
         supermarket.system.SystemController systemController;
         static private MainController mc = new MainController();
         MainWindow mainWin;
-        
+        SupermarketDataSet.EmployeeRow user;
         #endregion 
 
         #region function
@@ -45,6 +45,7 @@ namespace supermarket
         public void startMainWindow(SupermarketDataSet.EmployeeRow er)
         {
             mainWin = new MainWindow( er);
+            user = er;
             Application.Current.MainWindow = mainWin;
             mainWin.Show();                            
         }
@@ -97,7 +98,7 @@ namespace supermarket
                         inventoryController.showGoodsInfo(set);
                         break;
                     case "收银":
-                        saleController.showPos(1, "guoguo");
+                        saleController.showPos(user.EmployeeID, user.Name);
                         break;
                     case "新加会员":                        
                         saleController.showNewMember(set);

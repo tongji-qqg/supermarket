@@ -94,7 +94,7 @@ namespace Suppermarket_POS
             int num = 1;
             try
             {
-                storageID = Convert.ToInt64(textBoxGoodsID.Text);
+                storageID = Convert.ToInt64(textBoxGoodsID.Text);                
             }
             catch (Exception ex)
             {
@@ -113,11 +113,23 @@ namespace Suppermarket_POS
 
             DataRow goodsInventory = inventoryConnector.DataTable.Rows.Find(storageID);
 
-            if (goodsInventory == null)
+            if (goodsInventory == null)                             
             {
                 MessageBox.Show("无此商品！请确认商品编号是否正确！");
                 return;
             }
+            if( !(goodsInventory["Out"] is DBNull) && Convert.ToBoolean(goodsInventory["Out"]) == true)                         
+            {
+                MessageBox.Show("此商品已售光！");
+                return;
+            }
+            if( !(goodsInventory["GoodsNum"] is DBNull) && Convert.ToInt32( goodsInventory["GoodsNum"])<=0) 
+            {
+                MessageBox.Show("此商品已售光！");
+                return;
+            }
+                
+                
 
             int goodsID = Convert.ToInt32(goodsInventory["GoodsID"]);
             DataRow goods = goodsConnector.DataTable.Rows.Find(goodsID);
@@ -153,7 +165,12 @@ namespace Suppermarket_POS
             {
                 //折扣率
                 Double discount = 100;
-                double salePrice = Convert.ToDouble(goodsInventory["SalePrice"]);
+                double salePrice = Convert.ToDouble(goodsInventory["PurchasePrice"]);
+                try
+                {
+                    salePrice = Convert.ToDouble(goodsInventory["SalePrice"]);
+                }
+                catch { MessageBox.Show("此商品尚未设定价格，请及时通知管理人员！\n使用采购价格！"); }
                 double memberPrice = 0;
                 int memberDiscount = 100;
 
@@ -301,7 +318,7 @@ namespace Suppermarket_POS
                     Convert.ToDouble(Microsoft.VisualBasic.Interaction.InputBox(
                     "实收：", "实收", "", -1, -1));
             }
-            catch (Exception ex)
+            catch 
             {
                 MessageBox.Show("订单确认取消");
                 return;
@@ -319,18 +336,7 @@ namespace Suppermarket_POS
             textBoxChange.Text = change;
             newOrder["ActualPay"] = actualPay;
             newOrder["Change"] = change;
-            /*商品库存数量减少
-            for (int i = 0; i < rowNum; i++)
-            {
-
-                DataRow inventory = inventoryConnector.DataTable.Rows.Find(
-                    Convert.ToInt64(dataGridView1.Rows[i].Cells["商品编号"].Value));
-                DataRow goods = goodsConnector.DataTable.Rows.Find(inventory["GoodsID"]);
-                inventory["GoodsNum"] = Convert.ToInt32(inventory["GoodsNum"])
-                    - Convert.ToInt32(dataGridView1.Rows[i].Cells["数量"].Value);
-                goods["GoodsNum"] = Convert.ToInt32(goods["GoodsNum"])
-                    - Convert.ToInt32(dataGridView1.Rows[i].Cells["数量"].Value);
-            }*/
+            /*商品库存数量减少*/
             if (isMember)
             {
                 DataRow member = memberConnector.DataTable.Rows.Find(Convert.ToInt64(textBoxMemberID.Text));

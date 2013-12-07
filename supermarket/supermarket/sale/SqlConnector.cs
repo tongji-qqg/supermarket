@@ -1,7 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
-
+using System;
 namespace Suppermarket_POS
 {
     enum ConnectionType { Express, Other };
@@ -23,12 +23,16 @@ namespace Suppermarket_POS
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message, "创建适配器出错");
+                MessageBox.Show(ex.Message, "创建适配器出错,请检查网络或服务器配置！");
             }
         }
         public void Update()
         {
-            SqlDataAdapter.Update(DataTable);
+            try
+            {
+                SqlDataAdapter.Update(DataTable);
+            }
+            catch (Exception ex) { MessageBox.Show("连接数据库失败，详细原因："+ex.Message); }
         }
     }
 }
