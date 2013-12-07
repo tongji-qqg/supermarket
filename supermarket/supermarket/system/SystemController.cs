@@ -98,13 +98,13 @@ namespace supermarket.system
             }
         }
 
-        public void showChangeUser(SupermarketDataSet set)
+        public LoginWindow showChangeUser(SupermarketDataSet set)
         {
             if (!showIfWindowAlive(ChangeUserWin))
             {
-                ChangeUserWin = new supermarket.system.LoginWindow();
-                ChangeUserWin.Show();
+                ChangeUserWin = new supermarket.system.LoginWindow();                
             }
+            return (LoginWindow)ChangeUserWin;
         }
 
         private bool showIfWindowAlive(Window w)

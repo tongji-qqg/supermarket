@@ -69,6 +69,7 @@ namespace supermarket.system
                 try
                 {
                     systemcontroller.changePassword(OldPassword.Password, NewPassword.Password, sds);
+                    MessageBox.Show("修改成功");
                     this.Close();
                 }
                 catch

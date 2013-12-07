@@ -32,7 +32,7 @@ namespace supermarket
         supermarket.sale.SaleController saleController;
         supermarket.system.SystemController systemController;
         static private MainController mc = new MainController();
-
+        MainWindow mainWin;
         
         #endregion 
 
@@ -44,7 +44,7 @@ namespace supermarket
 
         public void startMainWindow(SupermarketDataSet.EmployeeRow er)
         {
-            MainWindow mainWin = new MainWindow( er);
+            mainWin = new MainWindow( er);
             Application.Current.MainWindow = mainWin;
             mainWin.Show();                            
         }
@@ -196,8 +196,11 @@ namespace supermarket
                         }
                   
                     case "切换账号":
-                        {
-                            systemController.showChangeUser(set);
+                        {                            
+                            supermarket.system.LoginWindow l = systemController.showChangeUser(set);
+                            Application.Current.MainWindow = l;
+                            mainWin.Close();
+                            l.Show();
                             break; 
                         }
                     default: 
