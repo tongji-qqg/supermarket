@@ -9,9 +9,10 @@
         Loaded="Window_Loaded" 
         Icon="/skin/logo.png" 
         WindowStartupLocation="CenterScreen" 
-        mc:Ignorable="d" 
+        
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d"
         Height="320" Width="364">        
     <Window.Resources>
         <Storyboard x:Key="leafLeave" RepeatBehavior="Forever">

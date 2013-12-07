@@ -6,7 +6,6 @@
         AllowsTransparency="True" 
         WindowStyle="None" 
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        Closing="Window_Closing"
         Loaded="Window_Loaded"
         Background="{x:Null}" 
     >
@@ -193,24 +192,39 @@
                     </TabItem.Background>
                     <ItemsControl Style="{StaticResource TabItemGridItemsStyle}">
                         <Border Style="{DynamicResource TabItemMiddleBorderStyle}" Grid.ColumnSpan="3"/>
-                        <UniformGrid Rows="1" Columns="4"  Grid.Column="1">
-                            <TextBlock Text="员工编号：" HorizontalAlignment="Right" FontSize="16"/>
-                            <TextBlock x:Name="EmployeeIDTextBlock" HorizontalAlignment="Left" FontSize="16"/>
-                            <TextBlock Text="员工姓名：" HorizontalAlignment="Right" FontSize="16"/>
-                            <TextBlock x:Name="EmployeeNameTextBlock" HorizontalAlignment="Left" FontSize="16"/>
-                        </UniformGrid>
+
+<<<<<<< HEAD
                         <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
                             <Button Content="修改密码" Style="{DynamicResource Buttonlist}" Click="System_Button_Click">
+=======
+                         <Border  Style="{StaticResource TabItemMiddleBorder1}" Grid.Column="1"/>                        
+                        
+                        <Button Content="商品信息查看" Style="{StaticResource MyButton1}" Grid.Column="1"/>
+                        <Button Content="库存信息查看" Style="{StaticResource MyButton2}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,9,577,7"/>
+                        
+                        <Label Content="欢迎你，User！" Margin="682,10,-752,2" Name="WelcomeString"/> 
+
+                        <UniformGrid Margin="0,11,0,0" Grid.Row="1" Rows="3" Columns="6" Grid.Column="1" Grid.RowSpan="2">
+                            <Button Content="修改密码" Style="{DynamicResource Buttonlist}" Click="ChanCodeButton_Click_1">
+>>>>>>> Inventory
     								<Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/AavanceTools_360UDiskCheck.png" Stretch="Uniform"/>
     								</Button.Background>
     						</Button>
+<<<<<<< HEAD
                             <Button Content="退出系统" Style="{DynamicResource Buttonlist}" Click="closeButton_Click">
+=======
+                            <Button Content="退出系统" Style="{DynamicResource Buttonlist}" Click="ExitButton_Click_1">
+>>>>>>> Inventory
     								<Button.Background>
                                     <ImageBrush ImageSource="skin/ico/ico_SpeedupOpt.png" Stretch="Uniform"/>
     								</Button.Background>
     					    </Button>
+<<<<<<< HEAD
                             <Button Content="切换账号" Style="{DynamicResource Buttonlist}" Click="System_Button_Click">
+=======
+                            <Button Content="切换账号" Style="{DynamicResource Buttonlist}" Click="LogoutButton_Click_1">
+>>>>>>> Inventory
     								<Button.Background>
                                     <ImageBrush ImageSource="skin/csbt/AavanceTools_360QSpeed.png" Stretch="Uniform"/>
     								</Button.Background>
@@ -221,7 +235,6 @@
             </TabControl>
             
             <Rectangle Margin="0" Stroke="Black" HorizontalAlignment="Right" Width="151.5" Grid.Row="1" StrokeThickness="0">                
-                
             </Rectangle>
             
             <Button Content="x" HorizontalAlignment="Right" Margin="0,0,2.625,8" Style="{DynamicResource SysButtonStyle}" Width="44.315" Name="closeButton" Click="closeButton_Click" />

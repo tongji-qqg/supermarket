@@ -36,11 +36,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Reference Include="DynamicDataDisplay">
       <HintPath>.\DynamicDataDisplay.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+=======
     <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
+>>>>>>> Inventory
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -63,6 +66,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+<<<<<<< HEAD
     <Compile Include="finance\ExpenseInfo.xaml.cs">
       <DependentUpon>ExpenseInfo.xaml</DependentUpon>
     </Compile>
@@ -126,17 +130,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SupermarketDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="system\ChangePasswordWindow.xaml.cs">
-      <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="system\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="system\SystemController.cs" />
-    <Compile Include="Test\CrossThreadTestRunner.cs" />
-    <Compile Include="Test\SystemTest.cs" />
     <Page Include="finance\ExpenseInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
+=======
+    <Page Include="ChangeCodeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HumanAffair\EmployeeInfo.xaml">
+>>>>>>> Inventory
       <SubType>Designer</SubType>
     </Page>
     <Page Include="finance\NewExpense.xaml">
@@ -179,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="LogInWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -187,6 +197,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Include="ChangeCodeWindow.xaml.cs">
+      <DependentUpon>ChangeCodeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanAffair\EmployeeInfo.xaml.cs">
+      <DependentUpon>EmployeeInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanAffair\NewEmployee.xaml.cs">
+      <DependentUpon>NewEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HumanAffair\UsePermission.xaml.cs">
+      <DependentUpon>UsePermission.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogInWindow.xaml.cs">
+      <DependentUpon>LogInWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogTest.cs" />
+>>>>>>> Inventory
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -235,10 +264,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="system\ChangePasswordWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="system\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -249,6 +274,24 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
+    <Compile Include="MarketDataSet.cs">
+      <DependentUpon>MarketDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MarketDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MarketDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ProductionInformationWindow.xaml.cs">
+      <DependentUpon>ProductionInformationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PromotionWindow.xaml.cs">
+      <DependentUpon>PromotionWindow.xaml</DependentUpon>
+    </Compile>
+>>>>>>> Inventory
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -340,6 +383,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Resource Include="Images\20120513055821795_easyicon_cn_48.ico" />
     <Resource Include="Images\20120513062941907_easyicon_cn_64.png" />
     <Resource Include="Images\60007.bmp" />
@@ -386,6 +430,9 @@
     <Resource Include="Images\back2.jpg" />
     <Resource Include="Images\back11.jpg" />
     <Resource Include="Images\back13.jpg" />
+=======
+    <Resource Include="skin\frameBackground.jpg" />
+>>>>>>> Inventory
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

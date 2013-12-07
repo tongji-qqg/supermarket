@@ -18,6 +18,8 @@ namespace supermarket.system
     /// <summary>
     /// LoginWindow.xaml 的交互逻辑
     /// </summary>
+    /// 
+
     public partial class LoginWindow : Window
     {
         public LoginWindow()
@@ -93,7 +95,7 @@ namespace supermarket.system
             else this.WindowState = System.Windows.WindowState.Minimized; ;
         }
         #endregion
-
+        
         #region login
         private void LoginInButtonDown(object sender, RoutedEventArgs e)
         {
@@ -128,5 +130,12 @@ namespace supermarket.system
             App.Current.Shutdown();
         }
         #endregion
+
+        public void loginTest()
+        {
+            
+        }
+
+
     }
 }
